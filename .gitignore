@@ -24,3 +24,6 @@ env/
 *.log
 *.out
 *.pdf
+*.toc
+*.synctex.gz
+
