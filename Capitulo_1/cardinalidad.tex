@@ -14,7 +14,7 @@ Dado un conjunto $A$, se denotará su cardinalidad (número de elementos) como $
 	basta notar que $B \cup (A \setminus B) = A$ y que $B \cap (A \setminus B) = \emptyset$, luego $|A| = |B \cup (A \setminus B)| = |B| + |A \setminus B|$, así $|A \setminus B = |A| - |B|$.
 \end{enefecto}
 
-\ObservacionBox{Observación}{
+\ObservacionBox{}{
 	Sean $A$ y $B$ dos conjuntos finitos, entonces:
 	\begin{equation*}
 		|A \cup B| = |A| + |B| - |A \cap B|
@@ -41,14 +41,16 @@ Dado un conjunto $A$, se denotará su cardinalidad (número de elementos) como $
 	\end{align*}
 \end{enefecto}
 
-\TeoremaBox{Proposición (Principio inclusión exclusión)}{
+\begin{prop}[Principio de inclusión exclusión]
+	\label{prop: Principio de inclusión exclusión}
 	Sean $A_1, \dots, A_n$ conjuntos finitos, se tiene:
 	\begin{equation*}
 		\left| \bigcup_{i=1}^n A_i \right| = \sum_{i=1}^n |A_i| - \sum_{1 \le i_1 < i_2 \le n} |A_{i_1} \cap A_{i_2}| + \dots + (-1)^{n-1} |A_1 \cap \dots \cap A_n|
 	\end{equation*}
-}
 
-\ObservacionBox{Observación}{
+\end{prop}
+
+\ObservacionBox{}{
 	Suponga que $C_1$ es la condición que cumplen los elementos $A$ y $C_2$ los de $B$, i.e.:
 	\begin{align*}
 		A & = \{x \in \Omega : x \text{ cumple } C_1\} \\

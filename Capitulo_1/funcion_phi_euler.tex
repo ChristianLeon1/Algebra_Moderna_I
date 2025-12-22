@@ -1,0 +1,89 @@
+\section{Función $\varphi$ de Euler}%
+\label{sec:Función phi de Euler}
+
+\begin{defi}[Función $\varphi$ de Euler]
+	Definimos la función $\varphi: \mathbb{N} \to \mathbb{N}$ como:
+	\begin{equation*}
+		n \mapsto |\{a \in \mathbb{N} : (a, n) = 1 \land a \le n\}|
+	\end{equation*}
+\end{defi}
+
+\begin{prop}
+	Sean $p, q \in \mathbb{Z} ^ {+}$ primos distintos:
+	\begin{enumerate}[label=\roman *), font=\normalfont]
+		\item $\varphi(p) = p-1$
+		\item $\varphi(p^k) = p^{k-1}(p-1), \quad k \in \mathbb{N}$
+		\item $\varphi(p^k q^t) = \varphi(p^k) \cdot \varphi(q^t), \quad k,t \in \mathbb{N}$
+	\end{enumerate}
+\end{prop}
+
+\begin{proof}. \par
+
+	\begin{enumerate}[label=\roman *), font=\normalfont]
+		\item Es evidente.
+		\item Sea $\Omega = \{x \in \mathbb{N} : x \le p^k\}$, sea $a \in \Omega$ tal que $(a, p^k) \neq 1$.
+
+		      Así $(a, p) \neq 1$, más aún $a = pl$ para algún $l \in \mathbb{N}$. Luego, como $a \in \Omega$, $a = pl \le p^k$, por lo cual $l \le p^{k-1}$. De este modo:
+		      \begin{equation*}
+			      |\{a \in \Omega : p \mid a\}| = |\{a \in \Omega : a=pl, l \in \mathbb{N}\}| = |\{l \in \mathbb{N} : l \le p^{k-1}\}| = p^{k-1}
+		      \end{equation*}
+
+		      Ahora:
+		      \begin{align*}
+			      \varphi(p^k) & = |\{a \in \Omega : (a, p^k) = 1\}|        \\
+			                   & = |\Omega| - |\{a \in \Omega : p \mid a\}| \\
+			                   & = p^k - p^{k-1} = p^{k-1}(p-1)
+		      \end{align*}
+		\item Consideremos $\Omega = \{x \in \mathbb{N} : x \le p^k q^t, k,t \in \mathbb{N}\}$, $A = \{a \in \Omega : p \mid a\}$ y $B = \{b \in \Omega : q \mid b\}$.
+
+		      Ahora $A \cap B = \{a \in \Omega : p \mid a \land q \mid a\}$. Note que de manera análoga a ii), tenemos:
+		      \begin{equation*}
+			      |A| = p^{k-1}q^t, \quad |B| = p^k q^{t-1}
+		      \end{equation*}
+
+		      Por otro lado si $a \in A \cap B$, tenemos $p \mid a \land q \mid a \implies \exists l \in \mathbb{N}$ tal que $a = pql$.
+		      Además como $pql = a \le p^k q^t$, se sigue que $l \le p^{k-1}q^{t-1}$, por lo cual:
+		      \begin{equation*}
+			      |A \cap B| = p^{k-1}q^{t-1}
+		      \end{equation*}
+
+		      Por último, sabemos que $\varphi(p^k q^t) = |\{a \in \Omega : (a, p^k q^t) = 1\}|$. Por la proposición \ref{prop: Principio de inclusión exclusión} tenemos:
+		      \begin{align*}
+			      \varphi(p^k q^t) & = |\Omega| - (|A| + |B| - |A \cap B|)                 \\
+			                       & = p^k q^t - p^{k-1}q^t - p^k q^{t-1} + p^{k-1}q^{t-1} \\
+			                       & = q^t(p^k - p^{k-1}) - q^{t-1}(p^k - p^{k-1})         \\
+			                       & = (p^k - p^{k-1})(q^t - q^{t-1})                      \\
+			                       & = [p^{k-1}(p-1)] [q^{t-1}(q-1)]                       \\
+			                       & = \varphi(p^k) \cdot \varphi(q^t)
+		      \end{align*}
+
+	\end{enumerate}
+\end{proof}
+
+\begin{prop}
+	Sean $p_1, \dots, p_n \in \mathbb{N}$ primos distintos, sean $k_1, \dots, k_n \in \mathbb{N} \cup \{0\}$:
+	\begin{align*}
+		\varphi(p_1^{k_1} \dots p_n^{k_n}) & = p_1^{k_1} \dots p_n^{k_n} \left(1 - \frac{1}{p_1}\right) \dots \left(1 - \frac{1}{p_n}\right) \\
+		                                   & = \varphi(p_1^{k_1}) \dots \varphi(p_n^{k_n})
+	\end{align*}
+\end{prop}
+
+\begin{proof}
+	Falta demostrar.
+\end{proof}
+
+\ObservacionBox{}{
+	Observe que dados $n, m \in \mathbb{N}$, tales que $(m,n)=1$, entonces:
+	\begin{equation*}
+		\varphi(n \cdot m) = \varphi(n) \cdot \varphi(m)
+	\end{equation*}
+}
+
+\begin{enefecto}
+	Por el teorema fundamental de la aritmética, podemos expresar $n = p_1^{k_1} \dots p_l^{k_l}$, $m = q_1^{t_1} \dots q_r^{t_r}$, con $p_1, \dots, p_l, q_1, \dots, q_r \in \mathbb{N}$ primos distintos y $k_1, \dots, k_l, t_1, \dots, t_r \in \mathbb{N} \cup \{0\}$, así:
+	\begin{align*}
+		\varphi(n \cdot m) & = \varphi(p_1^{k_1} \dots p_l^{k_l} q_1^{t_1} \dots q_r^{t_r})                \\
+		                   & = \varphi(p_1^{k_1} \dots p_l^{k_l}) \cdot \varphi(q_1^{t_1} \dots q_r^{t_r}) \\
+		                   & = \varphi(n) \cdot \varphi(m)
+	\end{align*}
+\end{enefecto}
