@@ -22,8 +22,11 @@ env/
 # --- Latex ---
 *.aux
 *.log
+*.fls
 *.out
 *.pdf
 *.toc
 *.synctex.gz
-
+*.fdb_latexmk
+*.blg
+*.bbl
