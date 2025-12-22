@@ -1,0 +1,184 @@
+\section{Grupos}%
+\label{sec:Grupos}
+
+\begin{defi}[Grupo]
+	Un grupo es un conjunto no vacío $G$ junto con una operación $\circ: G \times G \to G$, que satisface:
+	\begin{enumerate}[label=\roman*) font=\normalfont]
+		\item Asociatividad: \qquad $a \circ (b \circ c) = (a \circ b) \circ c \quad \forall a, b, c \in G$
+		\item Elemento neutro: \qquad $\exists e \in G : a \circ e = a \quad \forall a \in G$
+		\item Inverso: \qquad $\forall a \in G \quad \exists b \in G : a \circ b = e$
+	\end{enumerate}
+
+\end{defi}
+
+Se denota a esta estructura: $(G, \circ, e)$, en caso de no conocer la identidad $(G, \circ)$. Además, para facilitar la notación el inverso de $a$ elemento de un grupo se denota como $a^{-1}$.
+
+\begin{eje}
+	Sea $\mathbb{Z}$, y la suma usual en los números enteros, es claro que es un grupo.
+\end{eje}
+
+\begin{eje}
+	$(\mathbb{R}, +), (\mathbb{Q}, +), (\mathbb{C}, +)$ son grupos.
+\end{eje}
+
+\begin{eje}
+	$(\mathbb{Z}/n\mathbb{Z}, +)$ es un grupo.
+\end{eje}
+
+\begin{enefecto}
+	Anteriormente se había probado que $+$ es cerrado y está bien definida $\bar{a} + \bar{b} = \overline{a+b}$.
+
+	\begin{enumerate}[label=\roman*), font=\normalfont]
+		\item $+$ es asociativa, pues:
+		      \begin{equation*}
+			      \bar{a} + \overline{(b+c)} = \overline{a+(b+c)} = \overline{(a+b)+c} = \overline{(a+b)} + \bar{c}
+		      \end{equation*}
+		\item Note que la identidad es $\bar{0}$, ya que:
+		      \begin{equation*}
+			      \bar{a} + \bar{0} = \overline{a+0} = \bar{a} \quad \forall \bar{a} \in \mathbb{Z}/n\mathbb{Z}
+		      \end{equation*}
+		\item Ahora dado $\bar{a} \in \mathbb{Z}/n\mathbb{Z}$, note que $a+(-a)=0$, luego:
+		      \begin{align*}
+			      \overline{a+(-a)}         & = \bar{0} \\
+			      \bar{a} + \overline{(-a)} & = \bar{0}
+		      \end{align*}
+		      Así $\forall \bar{a} \in \mathbb{Z}/n\mathbb{Z} \quad \exists \overline{(-a)} \in \mathbb{Z}/n\mathbb{Z} : \bar{a} + \overline{(-a)} = \bar{0}$.
+	\end{enumerate}
+\end{enefecto}
+
+\begin{eje}
+	Sean $A$ un conjunto no vacío, sea $V$ un espacio vectorial, sea $\mathcal{H}$ el conjunto de funciones $f: A \to V$, definamos la operación suma sobre $\mathcal{H}$ como:
+	\begin{align*}
+		+: \mathcal{H} \times \mathcal{H} & \to \mathcal{H}                           \\
+		(f+g)(a)                          & \mapsto f(a) + g(a) \quad \forall a \in A
+	\end{align*}
+\end{eje}
+
+\begin{enefecto} note:
+	\begin{enumerate}[label=\roman*), font=\normalfont]
+		\item Sean $f, g, h \in \mathcal{H}$, sea $a \in A$:
+		      \begin{align*}
+			      [(f+g)+h](a) & = (f+g)(a) + h(a)      \\
+			                   & = (f(a) + g(a)) + h(a) \\
+			                   & = f(a) + (g(a) + h(a)) \\
+			                   & = f(a) + (g+h)(a)      \\
+			                   & = [f+(g+h)](a)
+		      \end{align*}
+		      $\therefore (f+g)+h = f+(g+h)$
+
+		\item Tenemos $\underline{0} \in \mathcal{H}$, definida por: $\underline{0}(a) = 0 \quad \forall a \in A$, sea $f \in \mathcal{H}$, sea $a \in A$,
+		      \begin{equation*}
+			      (f+\underline{0})(a) = f(a) + \underline{0}(a) = f(a) + 0 = f(a)
+		      \end{equation*}
+		      Así $f+\underline{0} = f$, i.e. $\underline{0}$ es el elemento neutro.
+
+		\item Sea $f \in \mathcal{H}$, sea $a \in A$, note que existe $-f(a)$, tal que:
+		      \begin{equation*}
+			      f(a) + (-f(a)) = 0 \quad \forall a \in A,
+		      \end{equation*}
+		      entonces $-f$ es inverso de $f$.
+	\end{enumerate}
+\end{enefecto}
+
+\begin{eje}
+	Sea $V$ un espacio vectorial real, entonces $(V, +)$ es un grupo.
+\end{eje}
+
+\begin{eje}
+	$(\mathcal{M}_{m \times n}(\mathbb{R}), +)$ es un grupo.
+\end{eje}
+
+\begin{eje}
+	Sea $GL_{(n)}(\mathbb{R}) = \{ A \in \mathcal{M}_n(\mathbb{R}) : \det(A) \neq 0 \}$, con el producto de matrices forma un grupo.
+\end{eje}
+
+\begin{eje}
+	Considere $\mathbb{Z}/n\mathbb{Z}$, sea $G \subseteq \mathbb{Z}/n\mathbb{Z}$, el conjunto
+	\begin{equation*}
+		G = \{ \bar{a} : (a, n) = 1 \}
+	\end{equation*}
+	entonces $(G, \cdot)$ con la op. definida por el producto de clases es un grupo.
+\end{eje}
+
+\begin{enefecto} Note:
+	\begin{enumerate}[label=\roman*), font=\normalfont]
+		\item $\forall \bar{a}, \bar{b}, \bar{c} \in G, \quad \bar{a}(\bar{b} \cdot \bar{c}) = \bar{a}(\overline{b \cdot c}) = \overline{a(b \cdot c)} = \overline{(ab)c} = \overline{(ab)} \cdot \bar{c} = (\bar{a} \bar{b}) \bar{c}$.
+		\item $\bar{1} \in G$, pues $(1, n) = 1$, además $\forall \bar{a} \in G \quad \bar{a} \cdot \bar{1} = \bar{a}$.
+		\item Sea $\bar{a} \in G$, entonces $(a, n) = 1$, por tanto $\exists x, y \in \mathbb{Z}$, tal que:
+		      \begin{equation*}
+			      ax + ny = 1
+		      \end{equation*}
+		      Tomando la clase:
+		      \begin{equation*}
+			      \overline{1} = \overline{ax+ny} = \overline{ax} + \overline{ny} = \bar{a}\bar{x} + \bar{n}\bar{y} = \bar{a}\bar{x} + \bar{0}\bar{y} = \bar{a}\bar{x} + \bar{0} = \bar{a}\bar{x}
+		      \end{equation*}
+		      i.e. existe $\bar{x} \in G$, tal que $\bar{a} \cdot \bar{x} = 1$.
+	\end{enumerate}
+\end{enefecto}
+
+\begin{prop}
+	Sea $(G, \circ)$ un grupo, sea $g \in G$ tal que $g \circ g = g$ entonces $g = e$.
+\end{prop}
+
+\begin{proof}
+	Como $g \in G \implies \exists g' \in G$ tal que $g \circ g' = e$, luego:
+	\begin{equation*}
+		g = g \circ e = g \circ (g \circ g') = (g \circ g) \circ g' = g \circ g' = e
+	\end{equation*}
+\end{proof}
+
+\begin{prop}
+	Sea $(G, \circ)$ grupo, $g \in G$, entonces:
+	\begin{equation*}
+		g^{-1} \circ g = g \circ g^{-1} = e
+	\end{equation*}
+\end{prop}
+
+\begin{proof}
+	\begin{equation*}
+		(g^{-1} \circ g) \circ (g^{-1} \circ g) = (g^{-1} \circ (g \circ g^{-1})) \circ g = (g^{-1} \circ e) \circ g = g^{-1} \circ g
+	\end{equation*}
+	Luego por la prop. anterior:
+	\begin{equation*}
+		g^{-1} \circ g = e, \quad \text{i.e. } g \circ g^{-1} = g^{-1} \circ g = e
+	\end{equation*}
+\end{proof}
+
+\begin{prop}
+	Si $(G, \circ)$ es un grupo y $g \in G$, entonces:
+	\begin{equation*}
+		e \circ g = g \circ e = g
+	\end{equation*}
+\end{prop}
+
+\begin{proof}
+	\begin{equation*}
+		e \circ g = (g \circ g^{-1}) \circ g = g \circ (g^{-1} \circ g) = g \circ e = g = g \circ e
+	\end{equation*}
+\end{proof}
+
+\begin{prop}
+	Sea $(G, \circ)$ un grupo, el elemento neutro $e$, es único.
+\end{prop}
+
+\begin{proof}
+	Supongamos que existe $e' \in G$ tal que $g \circ e' = g, \quad \forall g \in G$, en particular:
+	\begin{equation*}
+		e = e \circ e' = e' \circ e = e', \quad \text{i.e. } e \text{ es único.}
+	\end{equation*}
+\end{proof}
+
+\begin{eje}
+	Sea $G_1 = \mathbb{Z}/n\mathbb{Z}$, sea $G_2 = \{\bar{a} \in \mathbb{Z}/n\mathbb{Z} : (a, n)=1\}$, entonces se tienen los grupos: $(G_1, +, \bar{0})$, $(G_2, \cdot, \bar{1})$, es claro que no son iguales ya que: $|G_1| = n$, $|G_2| = \varphi(n)$.
+\end{eje}
+
+\begin{prop}
+	Si $(G, \circ)$ es un grupo y $g \in G$, entonces $g^{-1}$ es único.
+\end{prop}
+
+\begin{proof}
+	Suponga $g' \in G$ tal que $g \circ g' = e$, entonces:
+	\begin{equation*}
+		g^{-1} = g^{-1} \circ e = g^{-1} \circ (g \circ g') = (g^{-1} \circ g) \circ g' = e \circ g' = g'
+	\end{equation*}
+\end{proof}
