@@ -1,0 +1,139 @@
+\documentclass[12pt,letterpaper, twoside]{book}
+
+%Librerías de LaTeX
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[document]{ragged2e}
+\usepackage[left=3cm, right=2cm, top=3cm, bottom=3cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{import}
+\usepackage{fancyhdr}
+\usepackage{wrapfig}
+\usepackage{subcaption}
+\usepackage{csvsimple}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{amsthm}
+\usepackage[breaklinks=true, hidelinks]{hyperref}
+\usepackage{titlesec}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{positioning}
+\usepackage{tkz-base}
+\usepackage{tkz-euclide}
+\usepackage[theorems]{tcolorbox}
+\usepackage{mathrsfs}
+\usepackage{enumitem}
+
+\tcbuselibrary{theorems}
+
+%Configurar para poder insertar código 
+\import{./}{listing_config.tex}
+
+%Configurar enumeraciones. 
+\newtheorem{prop}{Proposición}[section]
+\newtheorem{defi}{Definición}[section]
+\newtheorem{teor}{Teorema}[section]
+\newtheorem{cor}{Corolario}[section]
+\newtheorem{lema}{Lema}[section]
+\newtheorem{obs}{Observación}[chapter]
+\newtheorem{eje}{Ejemplo}[chapter]
+\numberwithin{figure}{section}
+\numberwithin{equation}{section}
+
+% \NewTcbTheorem[number within=section]{mytheo}{My Theorem}{colback=green!5,colframe=green!35!black}{th}
+
+% Definición de colores 
+
+\definecolor{LightGray}{RGB}{240,240,240}
+\definecolor{DarkGray}{RGB}{125,125,125}
+\definecolor{LightBlue}{RGB}{200,221,255}
+\definecolor{DarkBlue}{RGB}{40,103,189}  
+\definecolor{LightOrange}{RGB}{255,211,171}
+\definecolor{DarkOrange}{RGB}{255,122,5}
+
+% Carpeta de los gráficos
+\graphicspath{{/home/enigma/Documentos/ESFM_Documentos/Semestre_3/Algebra_3/}}
+
+%Ingresar datos para la portada
+
+\newcommand\Nombreautor{Ramírez León Christian Yael}
+\newcommand\Materia{Álgebra Moderna I}
+\newcommand\Profesor{Escobar García \par César Alberto}
+\newcommand\Grupo{3FM1}
+\newcommand\Titulo{Apuntes Álgebra Moderna I}
+%Comando para ingresar datos con el sistema internacional
+\newcommand\Pnum[2]{\qty[mode=text, per-mode=fraction]{#1}{#2}}
+
+% Cajas para los teoremas. 
+
+\newcommand\TeoremaBox[1]{
+  \begin{tcolorbox}[colback=LightGray, colframe=DarkGray]
+    \begin{teor}
+      {#1}
+    \end{teor}
+  \end{tcolorbox}
+  }
+\newcommand\ObservacionBox[2]{
+  \begin{tcolorbox}[colback=LightBlue, colframe=DarkBlue]
+    \begin{obs}[{#1}]
+      {#2}
+    \end{obs}
+  \end{tcolorbox}
+  }
+
+\newcommand\CorolarioBox[2]{
+  \begin{tcolorbox}[colback=LightOrange, colframe=DarkOrange]
+    \begin{cor}[{#1}]
+      {#2}
+    \end{cor}
+  \end{tcolorbox}
+  }
+
+% Nuevos comandos 
+\import{./}{nuevos_comandos.tex} 
+
+% Inicio del documento
+
+\begin{document}
+
+%-----portada-----%
+
+\pagenumbering{gobble}
+\import{./}{Portada.tex}
+
+%-----Índice-----%
+
+\tableofcontents
+\clearpage
+\null\thispagestyle{empty}
+\newpage
+
+% Configuración estilo de los capítulos 
+\titleformat{\chapter}[display]{\centering\bfseries\huge}
+{CAPÍTULO \thechapter}{0pt}{\vspace{1ex}\centering}
+[\vspace{1cm}\hrule\vspace{0.1cm}\hrule]
+
+% Encabezado y pie de página 
+\pagestyle{fancy}
+\fancyhf{}
+\lhead[\leftmark]{\Nombreautor}
+\rhead[\Nombreautor]{\rightmark}
+\cfoot[\thepage]{\thepage}
+\setcounter{page}{1}
+\pagenumbering{arabic}
+\justifying
+
+% Inicio del documento 
+
+% Aquí van los capítulos 
+\chapter{Conceptos Previos}
+\import{./Capitulo_1/}{divisibilidad.tex}
+
+\end{document}

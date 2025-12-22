@@ -1,0 +1,4 @@
+\babel@toc {spanish}{}\relax 
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{\numberline {1}Conceptos Previos}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Divisibilidad}{1}{section.1.1}%
