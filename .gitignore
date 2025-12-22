@@ -24,7 +24,7 @@ env/
 *.log
 *.fls
 *.out
-*.pdf
+# *.pdf
 *.toc
 *.synctex.gz
 *.fdb_latexmk
