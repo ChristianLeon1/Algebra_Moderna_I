@@ -95,6 +95,11 @@
   \end{tcolorbox}
   }
 
+% Entorno demostración con título personalizado
+\newenvironment{enefecto}
+    {\begin{proof}[En efecto,]}
+    {\end{proof}}
+
 % Nuevos comandos 
 \import{./}{nuevos_comandos.tex} 
 
@@ -134,5 +139,7 @@
 % Aquí van los capítulos 
 \chapter{Conceptos Previos}
 \import{./Capitulo_1/}{divisibilidad.tex}
+\import{./Capitulo_1/}{cardinalidad.tex}
+\import{./Capitulo_1/}{enteros_modulares.tex}
 
 \end{document}

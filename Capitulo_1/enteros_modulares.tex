@@ -1,0 +1,28 @@
+\section{Enteros Módulo $n$}
+
+\begin{defi}
+	Sea $n \in \mathbb{Z}$, $n > 1$, se define la relación de $a \sim b$ si y sólo si $n \mid (a - b)$, es decir, $a$ es congruente con $b$ módulo $n$.
+\end{defi}
+
+Es fácil ver que esta es una relación de equivalencia en $\mathbb{Z}$. Ahora, definamos en el conjunto cociente $(\mathbb{Z}/\sim)$ las siguientes operaciones:
+
+\begin{align*}
+	\bar{a} + \bar{b}     & = \overline{a + b}     \\
+	\bar{a} \cdot \bar{b} & = \overline{a \cdot b} \\
+\end{align*}
+
+Con $a, b \in \mathbb{Z}$. Entonces las operaciones están bien definidas, i.e., no dependen del representante de clase.
+
+\begin{enefecto}
+	sea $\bar{a}=\bar{a}_1$, $\bar{b}=\bar{b}_1 \iff a \sim a_1 \text{ y } b \sim b_1 \iff n \mid (a-a_1) \land n \mid (b-b_1)$.
+
+	Esto implica:
+	\begin{equation*}
+		n \mid (a-a_1) + (b-b_1) = (a+b) - (a_1+b_1) \iff (a+b) \sim (a_1+b_1) \iff \overline{a+b} = \overline{a_1+b_1}
+	\end{equation*}
+
+	Análogamente para el producto.
+
+\end{enefecto}
+
+Al conjunto de clases de equivalencia módulo $n$ junto con las operaciones definidas se les denotará por $\mathbb{Z}/n\mathbb{Z}$ o $\mathbb{Z}_n$.
