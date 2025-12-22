@@ -1,8 +1,26 @@
-./indent.log
-./Apuntes.aux
-./Apuntes.fls
-./Apuntes.log
-./Apuntes.out
-./Apuntes.toc
-./Apuntes.synctex.gz 
+# --- Archivos de Sistema (Basura) ---
+.DS_Store
+Thumbs.db
 
+# --- Logs y Errores ---
+*.log
+
+# --- Claves y Secretos (¡Muy Importante!) ---
+.env
+
+# --- Javascript / Node ---
+node_modules/
+dist/
+build/
+
+# --- Python ---
+__pycache__/
+*.pyc
+venv/
+env/
+
+# --- Latex ---
+*.aux
+*.log
+*.out
+*.pdf
