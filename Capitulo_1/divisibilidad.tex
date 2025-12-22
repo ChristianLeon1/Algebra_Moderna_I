@@ -7,8 +7,34 @@
 
 \begin{defi}[Máximo Común Divisor]
 	Sea $a, b \in \mathbb{Z}$, al menos uno distinto de cero, definimos a $d \in \mathbb{Z}$ un máximo común divisor de $a$ y $b$, denotado por $(a, b)$, si cumple:
-	\begin{enumerate}[label= \roman*)]
+	\begin{enumerate}[label=\roman*), font=\normalfont]
+		\item $d > 0$.
 		\item $d | a$ y $d | b$.
 		\item Si $c | a$ y $c | b$, entonces $c | d$.
 	\end{enumerate}
 \end{defi}
+
+\begin{prop}[Propiedades de la Divisibilidad]
+	Sean $a, b, c \in \mathbb{Z}$, con $a, b \neq 0$, entonces:
+	\begin{enumerate}[label=\roman*), font=\normalfont]
+		\item Si $a | b$ y $b | c$, entonces $a | c$.
+		\item Si $a | b$ y $a | c$, entonces $a | (b + c)$.
+		\item Si $a | b$, entonces $a | bk$ para todo $k \in \mathbb{Z}$.
+		\item Si $a | b$ y $b \neq 0$, entonces $|a| \leq |b|$.
+		\item Si $a | b$ y $b | a$, entonces $a = \pm b$.
+		\item Si $a | b$, entonces $(a, b) = |a|$.
+		\item Si $c | a$ y $c | b$, entonces $c = ax + by$ para algunos $x, y \in \mathbb{Z}$.
+	\end{enumerate}
+
+\end{prop}
+
+\begin{prop}
+	Sea $a, b \in \mathbb{Z}$, al menos uno distinto de cero, entonces existe un único máximo común divisor de $a$ y $b$.
+\end{prop}
+
+\TeoremaBox{Algoritmo de la división}{
+	Sean $a, b \in \mathbb{Z}$, con $b > 0$, entonces existen únicos $q, r \in \mathbb{Z}$ tales que:
+	\begin{equation*}
+		a = bq + r, \quad 0 \leq r < |b|.
+	\end{equation*}
+}

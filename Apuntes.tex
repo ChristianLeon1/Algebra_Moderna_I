@@ -1,7 +1,6 @@
 \documentclass[12pt,letterpaper, twoside]{book}
 
 %Librerías de LaTeX
-
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
 \usepackage[document]{ragged2e}
@@ -66,17 +65,17 @@
 \newcommand\Nombreautor{Ramírez León Christian Yael}
 \newcommand\Materia{Álgebra Moderna I}
 \newcommand\Profesor{Escobar García \par César Alberto}
-\newcommand\Grupo{3FM1}
+\newcommand\Grupo{5FM1}
 \newcommand\Titulo{Apuntes Álgebra Moderna I}
 %Comando para ingresar datos con el sistema internacional
 \newcommand\Pnum[2]{\qty[mode=text, per-mode=fraction]{#1}{#2}}
 
 % Cajas para los teoremas. 
 
-\newcommand\TeoremaBox[1]{
+\newcommand\TeoremaBox[2]{
   \begin{tcolorbox}[colback=LightGray, colframe=DarkGray]
-    \begin{teor}
-      {#1}
+    \begin{teor}[{#1}]
+      {#2}
     \end{teor}
   \end{tcolorbox}
   }
