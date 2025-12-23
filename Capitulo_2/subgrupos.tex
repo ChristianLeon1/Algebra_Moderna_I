@@ -1,0 +1,116 @@
+\section{Subgrupos}%
+\label{sec:Subgrupos}
+
+\begin{defi}[Subgrupo]
+	Sea $(G, \circ, e)$ un grupo, sea $H \subseteq G$ un subconjunto de $G$, diremos que $H$ es un subgrupo de $G$, si con la misma operación $\circ$, definida en $G$, forma un grupo. Se denotará $H \le G$.
+\end{defi}
+
+\begin{eje}
+	Sea $(G=\mathbb{Z}, +, 0)$, para algún $a \in \mathbb{Z}$, definamos:
+	\begin{equation*}
+		H_a = \{ t \in \mathbb{Z} : t = na, n \in \mathbb{Z} \}
+	\end{equation*}
+	entonces $(H_a, +, 0)$ es un subgrupo de $G$.
+\end{eje}
+
+\begin{proof}
+	Claramente $H_a \subseteq G$, además $+$ es cerrada en $H_a$, pues si $n_1 a, n_2 a \in H_a \implies n_1 a + n_2 a = (n_1+n_2)a \in H_a$.
+
+	\begin{enumerate}[label=\roman*), font=\normalfont]
+		\item $+$ es asociativa, porque hereda la asociatividad de $G$.
+		\item $0 \in H_a$, ya que $0 = 0 \cdot a \in H_a$, además $na + 0 = na \quad \forall na \in H_a$.
+		\item Si $na \in H_a$, como $n \in \mathbb{Z} \implies -n \in \mathbb{Z}$, así $\exists -na \in H_a \implies na + (-na) = 0$.
+	\end{enumerate}
+\end{proof}
+
+\begin{eje}
+	Sea $SL_n(\mathbb{R}) = \{ A \in GL_n(\mathbb{R}) : \det A = 1 \}$, entonces $SL_n(\mathbb{R}) \le GL_n(\mathbb{R})$, este es llamado el grupo especial lineal.
+\end{eje}
+
+\ObservacionBox{}{
+	Sea $(G, \circ, e)$ grupo, sea $H \le G$, entonces $e \in H$.
+}
+
+\begin{enefecto}
+	como $H \neq \emptyset$, $\exists g \in H$, además $\exists g^{-1} \in H$ al ser un subgrupo, así:
+	\begin{equation*}
+		g \circ g^{-1} = e, \quad \text{i.e. } e \in H.
+	\end{equation*}
+\end{enefecto}
+
+\begin{prop}
+	Si $(G, \circ, e)$ es un grupo y $\{H_\lambda\}_{\lambda \in I}$ es una colección arbitraria de subgrupos, entonces:
+	\begin{equation*}
+		\bigcap_{\lambda \in I} H_\lambda, \text{ es un subgrupo de } G.
+	\end{equation*}
+\end{prop}
+
+\begin{proof}
+	Como $H_\lambda \le G \quad \forall \lambda \in I$, $\bigcap_{\lambda \in I} H_\lambda \neq \emptyset$ pues $e \in H_\lambda \quad \forall \lambda \in I$.
+	Sean $a, b \in \bigcap_{\lambda \in I} H_\lambda$, entonces $a, b \in H_\lambda \quad \forall \lambda \in I$, además $\circ$ es cerrada en $\bigcap_{\lambda \in I} H_\lambda$, ya que $a \circ b \in H_\lambda \quad \forall \lambda \in I$, así $a \circ b \in \bigcap_{\lambda \in I} H_\lambda$.
+	Luego:
+	\begin{enumerate}[label=\roman*), font=\normalfont]
+		\item $\circ$ es asociativa en $\bigcap_{\lambda \in I} H_\lambda$, ya que es asociativa en $H_{\lambda}, \forall \lambda \in I$.
+		\item $e \in \bigcap_{\lambda \in I} H_\lambda$.
+		\item Dado que $a \in \bigcap_{\lambda \in I} H_\lambda$, entonces $a \in H_\lambda \forall \lambda \in I$, así $\exists a^{-1} \in H_\lambda \forall \lambda \in I$ tal que $a \circ a^{-1} = e$, luego $a^{-1} \in \bigcap_{\lambda \in I} H_\lambda$.
+	\end{enumerate}
+\end{proof}
+
+\begin{prop}
+	Sea $(G, \circ, e)$ un grupo, sean $H, K \le G$, entonces $H \cup K$ es un subgrupo de $G$ si y sólo si $H \subseteq K \lor K \subseteq H$.
+\end{prop}
+
+\begin{proof} Será demostrada primero la reciprocidad.\par
+	$(\Leftarrow)$ Basta notar que si $H \subseteq K$, $H \cup K = K$ y $K \le G$, así $H \cup K \le G$. Análogo si $K \subseteq H$.
+
+	$(\Rightarrow)$ Sea $H \cup K \le G$. Supongamos que $H \not\subseteq K \land K \not\subseteq H$, sean $a \in H \setminus K$ y $b \in K \setminus H$.
+	Sea $c = a \circ b$. Como $H \cup K \le G$, entonces $c \in H \cup K$, así $c \in H \lor c \in K$.
+
+	Si $c \in H \implies a^{-1} \circ c = b \in H$, lo cual no puede ser (pues $b \in K \setminus H$).
+	Si $c \in K \implies c \circ b^{-1} = a \in K$, lo cual no puede ser (pues $a \in H \setminus K$).
+
+	Por lo cual $H \subseteq K \lor K \subseteq H$.
+\end{proof}
+
+\begin{defi}[Orden de un grupo]
+	Sea $(G, \circ, e)$ un grupo, el orden del grupo será la cardinalidad de $G$ y se denota $|G|$.
+\end{defi}
+
+\begin{defi}
+	Sea $(G, \circ, e)$ un grupo, diremos que es un grupo finito si $G$ es un conjunto finito. En caso contrario se le dice infinito.
+\end{defi}
+
+\begin{defi}
+	Sea $(G, \circ, e)$ un grupo, sea $S \subseteq G$, con $S \neq \emptyset$, el grupo generado por $S$ en $G$ denotado por $\langle S \rangle$ es el menor de los subgrupos que lo contiene, i.e.:
+	\begin{equation*}
+		\langle S \rangle = \bigcap_{\substack{S \subseteq H \\ H \le G}} H
+	\end{equation*}
+	Si $S$ es finito, y sea $H = \langle S \rangle$, diremos que $H$ es finitamente generado.
+\end{defi}
+
+\begin{eje}
+	Todo subgrupo finito de $G$ es finitamente generado, más aún, si $H \le G$ y es finito $\langle H \rangle = H$.
+\end{eje}
+
+\begin{proof}
+	Dado que:
+	\begin{equation*}
+		\langle H \rangle = \bigcap_{\substack{H' \le G \\ H \subseteq H'}} H' \subseteq H' \quad \forall H' \le G \text{ tales que } H \subseteq H',
+	\end{equation*}
+	además como $H \le G$ y $H \subseteq H$, entonces $H$ es uno de los términos de la intersección, así:
+	\begin{equation*}
+		\langle H \rangle \subseteq H \land H \subseteq \bigcap_{\substack{H' \le G \\ H \subseteq H'}} H' = \langle H \rangle
+	\end{equation*}
+	Por lo tanto $\langle H \rangle = H$.
+\end{proof}
+
+\begin{eje}
+	$(\mathbb{Z}, +, 1)$ es finitamente generado, basta notar que:
+	\begin{equation*}
+		\mathbb{Z} = \langle \{1\} \rangle
+	\end{equation*}
+\end{eje}
+
+\begin{eje}
+	$(\mathbb{Q}, +, 1)$, $\mathbb{Q}$ no es finito ni es finitamente generado.
+\end{eje}
