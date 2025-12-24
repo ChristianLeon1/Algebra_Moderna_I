@@ -1,0 +1,191 @@
+\section{El grupo Simétrico $S_n$}
+\label{sec:Grupo_Simetrico}
+
+Recordemos que $S_n$ con la composición de funciones es un grupo. Cada elemento de $S_n$ se llama una permutación (la cual es una función biyectiva de $\{1, \dots, n\}$ en sí mismo). En este caso si $\sigma \in S_n$ se denotará:
+\begin{equation*}
+    \sigma = \begin{pmatrix} 1 & 2 & \cdots & n \\ \sigma(1) & \sigma(2) & \cdots & \sigma(n) \end{pmatrix}
+\end{equation*}
+
+\begin{defi}
+    Un ciclo de longitud $1 \leq k \leq n$ en $S_n$ es un elemento de $S_n$ tal que existen $\{i_1, \dots, i_k\} \subseteq \{1, \dots, n\}$ con $\sigma(i_1) = i_2, \sigma(i_2) = i_3, \dots, \sigma(i_{k-1}) = i_k, \sigma(i_k) = i_1$ y $\sigma(j) = j \ \forall j \notin \{i_1, \dots, i_k\}$.
+\end{defi}
+
+Note que en este caso:
+\begin{equation*}
+\begin{aligned}
+    \sigma^2(i_1) &= \sigma(\sigma(i_1)) = \sigma(i_2) = i_3 \quad \text{y} \quad \sigma^k(i_1) = i_1 \\
+    \sigma^3(i_1) &= \sigma(\sigma^2(i_1)) = \sigma(i_3) = i_4 \\
+    &\vdots \\
+    \sigma^l(i_1) &= i_{1+l} \qquad \text{si } 1 \leq l+1 \leq k, \ l \leq k-1, \ \sigma^k(i_j) = i_{j+k-k} = i_j
+\end{aligned}
+\end{equation*}
+
+Más aún:
+\begin{equation*}
+    \sigma^l(i_j) = i_{j+l} \qquad 1 \leq j+l \leq k
+\end{equation*}
+\begin{equation*}
+    \sigma^l(i_j) = i_{j+l-k} \qquad j+l > k \quad (1 \leq l \leq k-j)
+\end{equation*}
+
+En este caso, en lugar de escribir
+\begin{equation*}
+    \sigma = \begin{pmatrix} 1 & \cdots & i_1 & i_2 & \cdots & i_k & \cdots & n \\ 1 & \cdots & i_2 & i_3 & \cdots & i_1 & \cdots & n \end{pmatrix}
+\end{equation*}
+Escribiremos $\sigma = (i_1 \ i_2 \ i_3 \ \dots \ i_k)$ y se tiene que $\sigma$ se puede denotar de $k$ diferentes formas, a saber:
+\begin{equation*}
+    \sigma = (i_1, \dots, i_k) = (i_2, i_3, \dots, i_k, i_1) = \dots = (i_k, i_1, i_2, \dots, i_{k-1})
+\end{equation*}
+
+Si $k=1$, $\sigma(i) = i \ \forall i$, es decir, $\sigma = id$ y se denota por $\sigma = (1) = (2) = \dots = (k) = (n)$.
+
+Si $k=2$, $\sigma(i_1, i_2)$ y se llama una transposición. En este caso:
+\begin{equation*}
+\begin{aligned}
+    \sigma^2(i_1) &= \sigma(i_2) = i_1 \\
+    \sigma^2(i_2) &= \sigma(i_1) = i_2
+\end{aligned}
+\end{equation*}
+Así, $\sigma^2 = id$, es decir, $\sigma = \sigma^{-1}$.
+
+\vspace{0.5cm}
+
+Si $\sigma$ es un ciclo de longitud $k$ también se le llama un $k$-ciclo. Observe que si $\sigma$ es un $k$-ciclo, $\sigma^k = id$, de hecho $|\sigma| = k$.
+
+\begin{equation*}
+    \sigma^l(i_j) = \begin{cases} 
+        i_{j+l} & \text{si } 1 \leq l \leq k-j \\
+        i_{l-k+j} & \text{si } k-j < l \leq k
+    \end{cases}
+\end{equation*}
+
+En particular si $k=l$, $\sigma^k(i_j) = i_{k-k+j} = i_j$.
+Así $|\sigma| \mid k$. Además $\sigma^l(i_1) \neq i_1, \forall 1 \leq l < k$ así que $|\sigma| \geq k$, de donde $|\sigma| = k$.
+
+\begin{defi}
+    Diremos que dos ciclos $\sigma, \tau \in S_n$ son disjuntos si:
+    \begin{enumerate}
+        \item[i)] Cuando $\sigma(i_1) = i_2$ con $i_1 \neq i_2$ se tiene que $\tau(i_1) = i_1$.
+        \item[ii)] Cuando $\tau(i_1) = i_2$ con $i_1 \neq i_2$ se tiene que $\sigma(i_1) = i_1$.
+    \end{enumerate}
+    (Parafraseando, los elementos que mueve $\sigma$, $\tau$ los fija y recíprocamente).
+\end{defi}
+
+\begin{eje}
+    Consideremos $S_5$, entonces $\sigma = (1 \ 2)$ y $\tau = (3 \ 4 \ 5)$ son disjuntos.
+\end{eje}
+
+\NotaBox{Nota}{
+    Si $\sigma = (i_1, \dots, i_k)$ y $\tau = (j_1, \dots, j_l)$, entonces $\sigma$ y $\tau$ son disjuntos si y sólo si
+    \begin{equation*}
+        \{i_1, \dots, i_k\} \cap \{j_1, \dots, j_l\} = \emptyset
+    \end{equation*}
+}
+
+\ObservacionBox{}{
+    Si $\sigma, \tau$ son ciclos disjuntos, entonces $\sigma \circ \tau = \tau \circ \sigma$, es decir, conmutan.
+}
+
+\begin{proof}
+    Sea $\sigma = (i_1, \dots, i_k)$ y $\tau = (j_1, \dots, j_l)$. Claramente $\sigma \circ \tau$ y $\tau \circ \sigma$ tienen el mismo dominio. Ahora si $s \notin \{i_1, \dots, i_k, j_1, \dots, j_l\}$:
+    \begin{equation*}
+    \begin{aligned}
+        (\sigma \circ \tau)(s) &= \sigma(\tau(s)) = \sigma(s) = s \\
+        (\tau \circ \sigma)(s) &= \tau(\sigma(s)) = \tau(s) = s
+    \end{aligned}
+    \end{equation*}
+    Si $s \in \{i_1, \dots, i_k\}$ entonces $s \notin \{j_1, \dots, j_l\}$, así que:
+    \begin{equation*}
+        (\sigma \circ \tau)(s) = \sigma(\tau(s)) = \sigma(s)
+    \end{equation*}
+    Más aún $\sigma(s) \in \{i_1, \dots, i_k\}$, luego $\sigma(s) \notin \{j_1, \dots, j_l\}$ y $\tau(\sigma(s)) = \sigma(s)$, por lo tanto $(\tau \circ \sigma)(s) = (\sigma \circ \tau)(s)$.
+    
+    Por simetría si $s \in \{j_1, \dots, j_l\}$, $(\tau \circ \sigma)(s) = (\sigma \circ \tau)(s)$ en cualquier caso se tiene la igualdad y por lo tanto $\sigma \circ \tau = \tau \circ \sigma$.
+\end{proof}
+
+\TeoremaBox{Teorema}{
+    Sea $\theta \in S_n$, entonces $\theta$ se puede representar de manera única como producto de ciclos ajenos (disjuntos) salvo orden.
+}
+
+\begin{proof}
+    Sea $\{i_1, \dots, i_k\}$ los elementos que mueve $\theta$ y procedamos por inducción sobre $k$.
+    
+    Para $k=1$, $\theta=id$ no hay nada que ver $id=(1)$.
+    
+    Para $k=2$, $\theta=(i_1, i_2)$ y ya se tiene.
+    
+    Suponga el resultado para todo $1 \leq l \leq k$ y considere que $\theta$ mueve a los elementos $\{i_1, \dots, i_k, i_{k+1}\}$. Considere que $\theta$ mueve a los elementos $\{i_1, \dots, i_k, i_{k+1}\}$. Observe que $i_1, \theta(i_1), \theta^2(i_1), \dots, \theta^{k+1}(i_1) \in \{i_1, \dots, i_{k+1}\}$, por lo tanto $\{i_1, \theta(i_1), \dots, \theta^{k+1}(i_1)\} \subseteq \{i_1, \dots, i_{k+1}\}$, luego existen $1 \leq l, l' \leq k+2$ y $\theta^l(i_1) = \theta^{l'}(i_1)$ y podemos suponer $l > l'$, en este caso $\theta^{l-l'}(i_1) = i_1$, y $1 \leq l-l' \leq k+2-l' \leq k+1$, es decir existe $p$ tal que $\theta^p(i_1) = i_1$, $1 \leq p \leq k+1$.
+    
+    Sea $p$ el mínimo entero para el cual pasa esto. \par Sea $\sigma = (i_1, \theta(i_1), \dots, \theta^{p-1}(i_1))$.
+    $\{i_1, \theta(i_1), \dots, \theta^{p-1}(i_1)\} \subseteq \{i_1, \dots, i_{k+1}\}$ y definamos
+    \begin{equation*}
+        \tau(i_j) = \begin{cases} 
+            i_j & \text{si } i_j = \theta^l(i_1) \text{ para algún } 1 \leq l \leq p-1 \\
+            \theta(i_j) & \text{si } i_j \neq \theta^l(i_1) \ \forall 1 \leq l \leq p-1
+        \end{cases}
+    \end{equation*}
+    
+    Entonces $\sigma \circ \tau = \theta$. Si $j \notin \{i_1, \dots, i_{k+1}\}$ entonces $j \neq \theta^l(i_1) \ \forall 1 \leq l \leq p-1$ y entonces
+    \begin{equation*}
+        (\sigma \circ \tau)(j) = \sigma(\tau(j)) = \sigma(\theta(j)) = \theta(j) = j = \theta(j)
+    \end{equation*}
+    
+    Si $j \in \{i_1, \dots, i_{k+1}\} \cap \{i_1, \theta(i_1), \dots, \theta^{p-1}(i_1)\}$, entonces $j = \theta^l(i_1)$ con $0 \leq l \leq p-1$.
+    \begin{equation*}
+        \theta(j) = \theta^{l+1}(i_1) \quad \text{y} \quad \sigma \circ \tau(j) = \sigma(\tau(j)) = \sigma(\theta^l(i_1)) \overset{(*)}{=} \sigma(i_j)
+    \end{equation*}
+    (Definición: Como $j$ está en el soporte de $\sigma$, $\tau(j)=j$, luego $\sigma(\tau(j)) = \sigma(j)$. Y como $\sigma$ es el ciclo $(i_1, \dots, \theta^{p-1}(i_1))$, $\sigma(j) = \theta(j)$).
+    En cualquier caso $\theta(j) = (\sigma \circ \tau)(j)$ por lo tanto $\theta = \sigma \circ \tau$.
+    
+    Ahora $\tau$ mueve a los elementos $\{i_1, \dots, i_{k+1}\} \setminus \{i_1, \sigma(i_1), \dots, \sigma^{p-1}(i_1)\}$ cuya cardinalidad es menor o igual a $k$. Por hipótesis de inducción $\tau$ es producto de ciclos disjuntos y por lo tanto $\theta$ lo es.
+    
+    Unicidad: Suponga ahora que
+    \begin{equation*}
+        \theta = \sigma_1 \dots \sigma_k = \tau_1 \dots \tau_l
+    \end{equation*}
+    Con los $\sigma_i$'s ciclos disjuntos a pares y los $\tau_i$'s ciclos disjuntos a pares.
+    
+    Si $\theta = id$ no hay nada que ver, si no, sea $i_1$ un elemento que mueve $\theta$, entonces existen $1 \leq i \leq k$ y $1 \leq j \leq l$ tales que $\sigma_i, \tau_j$ mueven a $i_1$, de hecho $i, j$ son únicos pues los $\sigma_i$'s y los $\tau_i$'s son disjuntos o más aún como son disjuntos conmutan, por lo que podemos pensar que $i=1=j$, en este caso $\sigma_2, \dots, \sigma_k, \tau_2, \dots, \tau_l$ no mueven a $i_1$.
+    
+    Además $\sigma_1 = (i_1, \sigma_1(i_1), \dots, \sigma_1^{s-1}(i_1))$, $\tau_1 = (i_1, \tau(i_1), \dots, \tau^{r-1}(i_1))$ con $s$ y $r$ los órdenes de $\sigma_1$ y $\tau_1$ respectivamente. Como los $\sigma_i$'s son disjuntos $\sigma_j$ no mueve a ninguno de $\{i_1, \sigma(i_1), \dots, \sigma^{k-1}(i_1)\} \ \forall 1 < j \leq k$. Análogamente $\tau_j$ no mueve a ninguno de \par $\{i_1, \tau(i_1), \dots, \tau^{l-1}(i_1)\} \ \forall 1 < j \leq l$. Por tanto para $m \in \mathbb{N}$
+    \begin{equation*}
+    \begin{aligned}
+        \theta^m(i_1) &= (\sigma_1 \dots \sigma_k)^m(i_1) = (\sigma_1 \dots \sigma_k)^{m-1}((\sigma_1 \dots \sigma_k)(i_1)) \\
+        &= (\sigma_1 \dots \sigma_k)^{m-1}(\sigma_1(i_1)) = \dots = \sigma_1^m(i_1)
+    \end{aligned}
+    \end{equation*}
+    
+    Análogamente
+    \begin{equation*}
+    \begin{aligned}
+        \theta^m(i_1) &= \tau_1^m(i_1) \\
+        \sigma_1^m(i_1) &= \tau_1^m(i_1)
+    \end{aligned}
+    \end{equation*}
+    
+    Ahora podemos suponer que $s \leq r$, entonces
+    \begin{equation*}
+        i_1 = \sigma_1^s(i_1) = \tau_1^s(i_1)
+    \end{equation*}
+    $s > r-1$ o $s \geq r$, de donde $s=r$.
+    
+    Más aún, como $\sigma_1^m(i_1) = \tau_1^m(i_1) \ \forall m \in \mathbb{N}$ se tiene que $\sigma_1 = \tau_1$.
+    Ahora de la igualdad $\theta = \sigma_1 \dots \sigma_k = \tau_1 \dots \tau_l$ se obtiene $\sigma_2 \dots \sigma_k = \tau_2 \dots \tau_l$.
+    Podemos suponer $k \leq l$. En cuyo caso realizando el mismo proceso obtenemos
+    $\sigma_k = \tau_k$ y $Id = \tau_{k+1} \dots \tau_l$.
+    Como los $\tau_j$ son disjuntos a pares necesariamente $\tau_{k+1} \dots \tau_l$ tienen longitud uno. Por lo tanto $l=k$.
+\end{proof}
+
+\CorolarioBox{}{
+    Sea $\theta \in S_n$, entonces el orden de $\theta$ es el mínimo común múltiplo de los órdenes de los ciclos que aparecen en su factorización.
+}
+
+\begin{proof}
+    Sea $\theta = \sigma_1 \dots \sigma_k$ con los $\sigma_i$'s ciclos disjuntos a pares y $n_i = o(\sigma_i)$
+    $m = [n_1, \dots, n_k]$ entonces
+    \begin{equation*}
+        \theta^m = (\sigma_1 \dots \sigma_k)^m = \sigma_1^m \dots \sigma_k^m = id
+    \end{equation*}
+    de donde $o(\theta) \mid m$.
+    Si $o(\theta) < m$, $Id = \theta^{o(\theta)} = \sigma_1^{o(\theta)} \dots \sigma_k^{o(\theta)}$, por lo cual $n_i \mid o(\theta) \ \forall i$, de donde $m = [n_1, \dots, n_k] \mid o(\theta)$ de donde $m = o(\theta)$.
+\end{proof}

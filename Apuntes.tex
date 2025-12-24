@@ -15,6 +15,7 @@
 \usepackage{siunitx}
 \usepackage{import}
 \usepackage{fancyhdr}
+\setlength{\headheight}{15.35403pt}
 \usepackage{wrapfig}
 \usepackage{subcaption}
 \usepackage{csvsimple}
@@ -25,6 +26,7 @@
 \usepackage{titlesec}
 \usepackage{tikz}
 \usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
 \usetikzlibrary{positioning}
 \usepackage{tkz-base}
 \usepackage{tkz-euclide}
@@ -47,6 +49,7 @@
 \newtheorem{eje}{Ejemplo}[chapter]
 \numberwithin{figure}{section}
 \numberwithin{equation}{section}
+\newtheorem{nota}{Nota}[section]
 
 % \NewTcbTheorem[number within=section]{mytheo}{My Theorem}{colback=green!5,colframe=green!35!black}{th}
 
@@ -97,6 +100,13 @@
   \end{tcolorbox}
   }
 
+\newcommand\NotaBox[2]{
+\begin{tcolorbox}[colback=yellow!10, colframe=yellow!40!black]
+    \begin{nota}[{#1}]
+        {#2}
+    \end{nota}
+\end{tcolorbox}
+}
 % Entorno demostración con título personalizado
 \newenvironment{enefecto}
     {\begin{proof}[En efecto,]}
@@ -153,4 +163,5 @@
 
 \chapter{Productos Directos}
 \import{./Capitulo_3/}{Producto_directo.tex}
+\import{./Capitulo_3/}{Grupo_Simetrico.tex}
 \end{document}

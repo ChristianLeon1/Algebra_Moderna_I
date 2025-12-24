@@ -2,5 +2,239 @@
 \label{sec:Productos Directos}
 
 \begin{defi}
-    Sea $(H, \circ), (K, \ast)$ dos grupos, definamos en $G=H \times K$, la función 
+    Sea $(H, \circ), (K, \ast)$ dos grupos, definamos en $G=H \times K$, la función $\odot : G \times G \to G$, dada por:
+\begin{equation*}
+     (h_1, k_1) \odot (h_2, k_2) = (h_1 \circ h_2, k_1 * k_2)
+\end{equation*}
+   Claramente $\odot$ es una operación en $G$ y se verifica que con esta operación, $G$ forma un grupo con identidad $(e_{H}, e_{K})$. \par 
+   También se tiene que $\bar{H}= H \times \{ e_K \}$ y $\{ e_H\} \times K = \bar{K}$ son subgrupos normales de $G$ tales que $\bar{H} \cap \bar{K} = e_{G} = (e_H, e_K)$ y $G = \bar{H} \bar{K}$ en este caso a $G$ se le llama el producto directo externo de $H$ con $K$ 
 \end{defi}
+
+\begin{defi}
+    Si $G$ es un grupo tal que existen $H, K \leq G$ con $H \triangleleft G$, $K \triangleleft G$, $G = HK$, $H \cap K = \{e\}$, diremos que $G$ es el producto directo interno de $H$ y $K$.
+\end{defi}
+
+\ObservacionBox{}{
+    El producto directo de una cantidad finita de grupos es asociativo (la igualdad se da salvo isomorfismo); es decir,
+    \begin{equation*}
+        (H_1 \times H_2) \times H_3 \cong H_1 \times (H_2 \times H_3) \qquad (\text{Se escribe } H_1 \times H_2 \times H_3)
+    \end{equation*}
+    Verificarlo.
+}
+
+\TeoremaBox{Teorema chino del residuo}{
+    Sea $n \in \mathbb{N} \setminus \{1\}$. Entonces $\mathbb{Z}_n \cong \mathbb{Z}_{p_1^{e_1}} \times \dots \times \mathbb{Z}_{p_k^{e_k}}$ en donde $n = p_1^{e_1} \dots p_k^{e_k}$ es la factorización en primos de $n$.
+}
+
+\begin{proof}
+    Sea $\varphi: \mathbb{Z}_n \to \mathbb{Z}_{p_1^{e_1}} \times \dots \times \mathbb{Z}_{p_k^{e_k}}$ la función definida por:
+    \begin{equation*}
+        [a]_n \mapsto ([a]_{p_1^{e_1}}, \dots, [a]_{p_k^{e_k}})
+    \end{equation*}
+    La función $\varphi$ está bien definida. Supongamos que $[a]_n = [b]_n$, entonces $n \mid a-b$. Dado que $p_i^{e_i} \mid n$, por transitividad se tiene que $p_i^{e_i} \mid a-b$, es decir $[a]_{p_i^{e_i}} = [b]_{p_i^{e_i}}$, de donde se concluye que $\varphi([a]_n) = \varphi([b]_n)$.
+
+    \begin{itemize}
+        \item $\varphi$ es inyectiva:
+        $\varphi([a]_n) = \varphi([b]_n)$ si y solo si $[a]_{p_i^{e_i}} = [b]_{p_i^{e_i}}$ para todo $1 \leq i \leq k$. Esto implica que $p_i^{e_i} \mid a-b$ para todo $1 \leq i \leq k$. Como los $p_i$ son primos distintos, tenemos que $(p_i^{e_i}, p_j^{e_j}) = 1$ para todo $i \neq j$. En consecuencia, el producto $n = p_1^{e_1} \dots p_k^{e_k}$ divide a $a-b$, de donde $[a]_n = [b]_n$.
+        
+        Nótese además que las cardinalidades coinciden: $n = |\mathbb{Z}_n| = |\mathbb{Z}_{p_1^{e_1}} \times \dots \times \mathbb{Z}_{p_k^{e_k}}| = p_1^{e_1} \dots p_k^{e_k}$. Al ser una función inyectiva entre conjuntos finitos del mismo tamaño, $\varphi$ es biyectiva.
+
+        \item $\varphi$ es un homomorfismo:
+        \begin{align*}
+            \varphi([a]_n + [b]_n) &= \varphi([a+b]_n) = ([a+b]_{p_1^{e_1}}, \dots, [a+b]_{p_k^{e_k}}) \\
+            &= ([a]_{p_1^{e_1}} + [b]_{p_1^{e_1}}, \dots, [a]_{p_k^{e_k}} + [b]_{p_k^{e_k}}) \\
+            &= ([a]_{p_1^{e_1}}, \dots, [a]_{p_k^{e_k}}) + ([b]_{p_1^{e_1}}, \dots, [b]_{p_k^{e_k}}) \\
+            &= \varphi([a]_n) + \varphi([b]_n)
+        \end{align*}
+    \end{itemize}
+    Finalmente, $\varphi$ es un isomorfismo y por lo tanto $\mathbb{Z}_n \cong \mathbb{Z}_{p_1^{e_1}} \times \dots \times \mathbb{Z}_{p_k^{e_k}}$.
+\end{proof}
+
+\begin{eje}
+    Sea $G$ un grupo de orden $pq$ con $p, q$ primos distintos. Si $H, K$ son subgrupos normales de $G$ con $|H|=p$ y $|K|=q$, entonces $G \cong H \times K$.
+\end{eje}
+
+\begin{proof}
+    Como $H, K \trianglelefteq G$, si tomamos $g \in H \cap K$ entonces $o(g) \mid |H|=p$ y $o(g) \mid |K|=q$. Dado que $p$ y $q$ son distintos, $o(g)=1$, lo que implica que $H \cap K = \{e\}$.
+    
+    Más aún, el orden del producto es $|HK| = \frac{|H||K|}{|H \cap K|} = \frac{pq}{1} = |G|$, luego $G = HK$. Además, si $g \in HK$ tuviera dos representaciones $g = h_1 k_1 = h_2 k_2$ con $h_1, h_2 \in H$ y $k_1, k_2 \in K$, entonces $h_1^{-1} h_2 = k_1 k_2^{-1}$. Este elemento pertenecería a la intersección $H \cap K = \{e\}$, lo que implica $h_1 = h_2$ y $k_1 = k_2$. Es decir, la representación de $g \in G$ como producto de un elemento de $H$ y uno de $K$ es única.
+    
+    Definimos la función $\varphi: G \to H \times K$ mediante:
+    \begin{equation*}
+        g = hk \mapsto (h, k)
+    \end{equation*}
+    Note que si $h \in H$ y $k \in K$, tenemos que $hkh^{-1}k^{-1}$ pertenece a $H \cap K$ (pues $H$ y $K$ son normales), y como la intersección es trivial, $hkh^{-1}k^{-1} = e$, luego $hk = kh$.
+
+    \begin{itemize}
+        \item $\varphi$ es un homomorfismo:
+        Sean $g=hk$ y $g_1=h_1k_1$ en $G$ con $h, h_1 \in H$ y $k, k_1 \in K$. Usando que los elementos de $H$ y $K$ conmutan:
+        \begin{align*}
+            \varphi(gg_1) &= \varphi(hkh_1k_1) = \varphi(hh_1kk_1) = (hh_1, kk_1) \\
+            &= (h, k)(h_1, k_1) = \varphi(g)\varphi(g_1)
+        \end{align*}
+
+        \item $\varphi$ es inyectiva:
+        Si $g=hk$, $g_1=h_1k_1$ y $\varphi(g)=\varphi(g_1)$, entonces $(h, k)=(h_1, k_1)$, luego $h=h_1$ y $k=k_1$, de donde $g=g_1$.
+
+        \item $\varphi$ es sobreyectiva:
+        Dado un par $(h, k) \in H \times K$, existe el elemento $g=hk \in G$ tal que $\varphi(g)=(h, k)$.
+    \end{itemize}
+    
+    Por lo tanto $G \cong H \times K$; de hecho, $G$ es el producto directo interno de $H$ y $K$.
+\end{proof}
+
+\CorolarioBox{}{
+    Sea $G$ un grupo abeliano de orden $pq$ con $p, q$ primos distintos, entonces:
+    \[ G \cong \mathbb{Z}_p \times \mathbb{Z}_q \]
+}
+
+\begin{proof}
+    Basta ver que existe un elemento de orden $p$ y un elemento de orden $q$, lo cual nos lo dará el teorema de Cauchy (Ver más adelante).
+\end{proof}
+
+\TeoremaBox{Teorema de Cayley}{
+    Todo grupo $G$ es isomorfo a un subgrupo de permutaciones.
+}
+
+\begin{proof}
+    Sea $S_G$ el grupo de todas las permutaciones del conjunto $G$ (biyeciones de $G$ en sí mismo). Definimos la función $\varphi: G \to S_G$ dada por $\varphi(g) = f_g$, donde $f_g: G \to G$ es la función de multiplicación por la izquierda:
+    \[ f_g(h) = gh \quad \forall h \in G \]
+    
+    Veamos que $\varphi$ es un isomorfismo sobre su imagen, en efecto:
+
+    \begin{itemize}
+        \item $\varphi$ está bien definida (es decir, $f_g \in S_G$):
+        Para cualquier $g \in G$, la función $f_g$ es biyectiva. En efecto, tiene inversa, la cual es $f_{g^{-1}}$, ya que para todo $h \in G$:
+        \[ (f_g \circ f_{g^{-1}})(h) = f_g(g^{-1}h) = g(g^{-1}h) = h = \text{id}(h) \]
+        De manera análoga, $f_{g^{-1}} \circ f_g = \text{id}$. Al ser biyectiva, $f_g$ es una permutación de $G$, por lo que $f_g \in S_G$.
+
+        \item $\varphi$ es un homomorfismo:
+        Sean $g, k \in G$. Queremos ver que $\varphi(gk) = \varphi(g) \circ \varphi(k)$.
+        Evaluamos ambas funciones en un elemento arbitrario $h \in G$:
+        \begin{align*}
+            \varphi(gk)(h) &= f_{gk}(h) = (gk)h \\
+            (\varphi(g) \circ \varphi(k))(h) &= f_g(f_k(h)) = f_g(kh) = g(kh)
+        \end{align*}
+        Por asociatividad, $(gk)h = g(kh)$, por lo tanto $f_{gk} = f_g \circ f_k$, lo que implica que $\varphi$ preserva la operación.
+
+        \item $\varphi$ es inyectiva:
+        Supongamos que $\varphi(g) = \varphi(k)$. Esto significa que las funciones son idénticas, es decir, $f_g = f_k$.
+        \[ f_g(h) = f_k(h) \quad \forall h \in G \implies gh = kh \quad \forall h \in G \]
+        En particular, tomando $h = e$ (neutro de $G$), obtenemos $ge = ke$, lo que implica $g = k$.
+    \end{itemize}
+
+    Concluimos que $\varphi$ es un isomorfismo entre $G$ e $\text{Im}(\varphi)$. Dado que $\text{Im}(\varphi)$ es un subgrupo de $S_G$, hemos demostrado que $G$ es isomorfo a un subgrupo de permutaciones.
+\end{proof}
+
+\begin{eje}
+    Para ilustrar el teorema anterior, consideremos el grupo $S_3 = \{id, \theta, \sigma, \theta\sigma, \sigma\theta, \theta^2\}$.
+    La función $\varphi: S_3 \to S_{S_3}$ asocia a cada $g \in S_3$ una permutación de los elementos de $S_3$.
+    
+    Por ejemplo, si tomamos $g = \theta$, la función asociada $f_\theta: S_3 \to S_3$ (definida por $h \mapsto \theta h$) permuta los elementos de $S_3$ de la siguiente forma:
+    \begin{align*}
+        id &\mapsto \theta \\
+        \theta &\mapsto \theta^2 \\
+        \sigma &\mapsto \theta\sigma \\
+        \theta\sigma &\mapsto \theta^2\sigma \\
+        \sigma\theta &\mapsto \sigma \quad (\text{pues } \theta\sigma\theta = \theta(\theta^{-1}\sigma) = \sigma) \\
+        \theta^2 &\mapsto id
+    \end{align*}
+\end{eje}
+
+\CorolarioBox{}{
+    Sea $G$ un grupo de orden finito $n$, entonces $G \hookrightarrow S_n$.
+}
+
+\begin{proof}
+    Sabemos que $G \hookrightarrow S_X$ y $S_X \cong S_n$. En efecto, si $G = \{a_1, \dots, a_n\}$, definimos $\psi: S_X \to S_n$ dada por $f \mapsto \bar{f}$, en donde si $f(a_i) = a_j$, entonces $\bar{f}(i) = j$, con $X = \{a_1, \dots, a_n\}$ y $\{1, \dots, n\}$.
+
+    \begin{itemize}
+        \item $\psi$ está bien definida:
+        Pues si $f: X \to X$ es biyectiva, en efecto:
+        
+        \begin{itemize}
+            \item $\bar{f}$ inyectiva:
+            $\bar{f}(i) = \bar{f}(j) \implies f(a_i) = f(a_j) \implies a_i = a_j \implies i = j$ (pues $f$ es inyectiva).
+            
+            \item $\bar{f}$ es sobre:
+            Dado $j \in \{1, \dots, n\}$, tenemos $a_j \in G$. Como $f$ es biyectiva, $\exists a_i \in \{1, \dots, n\}$ tal que $f(a_i) = a_j$, luego $\bar{f}(i) = j$.
+        \end{itemize}
+
+        \item $\psi$ es homomorfismo:
+        $\psi(g \circ f) = \psi(g) \circ \psi(f)$. En efecto, $\overline{g \circ f}(i) = j$ si $(g \circ f)(a_i) = a_j$.
+        Suponga que $f(a_i) = a_k$ y $g(a_k) = a_j$, entonces $\bar{f}(i) = k$ y $\bar{g}(k) = j$.
+        Más aún, $(g \circ f)(a_i) = g(f(a_i)) = g(a_k) = a_j$, así que $\overline{g \circ f}(i) = j$.
+        Luego $(\bar{g} \circ \bar{f})(i) = \bar{g}(\bar{f}(i)) = \bar{g}(k) = j$.
+        Así que $\overline{g \circ f} = \bar{g} \circ \bar{f}$, de donde $\psi(g \circ f) = \overline{g \circ f} = \bar{g} \circ \bar{f} = \psi(g) \circ \psi(f)$.
+
+        \item $\psi$ es inyectiva:
+        $\psi(f) = \psi(g) \implies \bar{f} = \bar{g} \implies \bar{f}(i) = \bar{g}(i) \ \forall 1 \leq i \leq n \implies f(a_i) = g(a_i) \ \forall 1 \leq i \leq n \implies f = g$.
+
+        \item $\psi$ es sobre:
+        Sea $h \in S_n$, entonces $\exists f: S_X \to S_X$ dada por $f(a_i) = a_{h(i)}$ tal que $(\psi(f))(i) = \bar{f}(i) = h(i) \ \forall 1 \leq i \leq n$. Por lo tanto $h = \bar{f} = \psi(f)$.
+    \end{itemize}
+    
+    Luego $S_X \cong S_n$ y $G \hookrightarrow S_n$.
+\end{proof}
+
+\TeoremaBox{}{
+    Sea $G$ un grupo finito, $H \leq G$. $X = \{Hg \mid g \in G\} = (G/H)$ entonces existe $\varphi: G \to S_X$ un homomorfismo tal que $N = \text{Ker } \varphi$ es el mayor subgrupo normal en $G$ contenido en $H$.
+}
+
+\begin{proof}
+    Sea $\varphi: G \to S_X$ definida por $\varphi(g) = f_g$ con $f_g: X \to X$ dada por:
+    \[ f_g(Hk) = Hkg^{-1} \]
+    
+    Veamos que $f_g$ no depende del representante de clase ($f_g$ es función).
+    En efecto, Si $Hk = Hk_1$, entonces $kk_1^{-1} \in H$, luego $kgg^{-1}k_1^{-1} \in H$ o $Hkg^{-1} = Hk_1g^{-1}$, así que $f(Hk) = Hkg^{-1} = f(Hk_1)$, por lo cual, $f_g$ es función.
+
+    Note que $f_g \in S_X$ pues,
+    \begin{itemize}
+        \item $f_g$ es inyectiva:
+        $f_g(Hk) = f_g(Hk_1)$ si y solo si $Hkg^{-1} = Hk_1g^{-1}$ si y solo si $Hk = Hk_1$.
+        
+        \item $f_g$ es sobreyectiva:
+        Dado $Hk \in X$ se tiene $f_g(Hkg) = Hkgg^{-1} = Hk$.
+    \end{itemize}
+
+    Veamos que $\varphi$ es homomorfismo:
+    \[ \varphi(gg_1) = f_{gg_1} \overset{?}{=} f_g \circ f_{g_1} = \varphi(g)\varphi(g_1) \]
+    pues
+    \[ f_{gg_1}(Hk) = Hk(gg_1)^{-1} = H(kg_1^{-1})g^{-1} = f_g(Hkg_1^{-1}) = f_g(f_{g_1}(Hk)) = (f_g \circ f_{g_1})(Hk) \]
+    
+    Sea $N = \text{Ker } \varphi$, claramente $N \trianglelefteq G$, además para $n \in N$ tenemos:
+    \[ \text{Id} = \varphi(n) = f_n \quad \text{con } f_n(Hk) = Hkn^{-1} \]
+    Así que $Hkn^{-1} = Hk \quad \forall Hk \in X$ o $Hkn^{-1} = Hk \quad \forall k \in G$, en particular para $k \in H$, $H = Hk$ y $Hn^{-1} = Hkn^{-1} = Hk = H$ de donde $n \in H$. Luego $N \subseteq H$.
+
+    Sea $N_1 \trianglelefteq G$ con $N_1 \subseteq H$, veamos que $N_1 \subseteq N$. Sea $n_1 \in N_1$, $\varphi(n_1) = f_{n_1}$ con $f_{n_1}(Hk) = Hkn_1^{-1} = Hkn_1^{-1}k^{-1}k \quad \forall k \in G$.
+    Como $N_1 \trianglelefteq G$, $kn_1^{-1}k^{-1} \in N_1 \subseteq H$ así que $H(kn_1^{-1}k^{-1})k = Hk$, es decir $f_{n_1}(Hk) = Hk$ de donde $f_{n_1} = \text{Id}$, es decir $n_1 \in \text{Ker } \varphi$ y $N_1 \subseteq N$.
+\end{proof}
+
+\CorolarioBox{}{
+    Sea $G$ finito $H \leq G$, $H \neq G$ tal que $|G| \nmid [G:H]!$ entonces $H$ contiene un subgrupo normal en $G$ no trivial.
+}
+
+\begin{proof}
+    Si $\varphi$ fuera inyectiva entonces $G \cong \varphi(G) \leq S_X$ así que $|G| \mid |S_X| = [G:H]!$ lo cual por hipótesis no se cumple.
+    Luego $\{e\} \neq \text{Ker } \varphi \subseteq H$, y como $\text{Ker } \varphi \trianglelefteq G$, concluimos que $H$ contiene un subgrupo normal no trivial (y $\text{Ker } \varphi \neq G$ pues $H \neq G$).
+\end{proof}
+
+\CorolarioBox{}{
+    Sea $p$ primo, $G$ un grupo finito tal que $p$ es el menor primo que divide a $|G|$ y $H \leq G$, $H \neq G$ con $[G:H]=p$, entonces $H \trianglelefteq G$.
+}
+
+\begin{proof}
+    Sea $|G|=pm$.
+    
+    Si $m=1$, como $[G:H]=p$, entonces $|H| = \frac{|G|}{[G:H]} = \frac{p}{p} = 1$, luego $H=\{e\}$, el cual es normal en $G$.
+    
+    Si $m \neq 1$, los factores primos de $m$ son mayores o iguales a $p$. Veamos que esto implica que $|G| \nmid [G:H]!$, es decir, $pm \nmid p!$.
+    Procedemos por reducción al absurdo para justificar esta afirmación:
+    Supongamos que $|G| \mid p!$, entonces $pm \mid p!$, lo que implica que $m \mid (p-1)!$.
+    Si $q$ es un factor primo de $m$, entonces $q \mid (p-1)!$, lo cual implica que $q \leq p-1$.
+    Sin embargo, $q$ es un factor de $|G|$ (a través de $m$), y por hipótesis $p$ es el menor primo que divide a $|G|$, por lo que $q \geq p$.
+    Tenemos así que $q \leq p-1$ y $q \geq p$, lo cual es una contradicción.
+    
+    Por lo tanto, $|G| \nmid p!$.
+    (La demostración concluye aplicando el corolario anterior).
+\end{proof}
