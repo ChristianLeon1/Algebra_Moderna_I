@@ -114,3 +114,61 @@
 \begin{eje}
 	$(\mathbb{Q}, +, 1)$, $\mathbb{Q}$ no es finito ni es finitamente generado.
 \end{eje}
+
+\begin{prop}
+	\label{prop:probar_subgrupo}
+	Sea $(G, \circ, e)$ un grupo, $H \subseteq G$ no vacío, entonces las cond. son equivalentes:
+	\begin{enumerate}[label=\roman*), font=\normalfont]
+		\item $H \le G$
+		\item $\forall x, y \in H$ se tiene que $x \circ y \in H \land x^{-1} \in H$.
+		\item $\forall x, y \in H$ se tiene que $x \circ y^{-1} \in H$.
+	\end{enumerate}
+\end{prop}
+
+\begin{proof} Se probarán las implicaciones en ciclo.\par
+	\begin{itemize}
+		\item \textsc{i} $\Rightarrow$ \textsc{ii}) Se sigue de la definición ya que la operación en $G$ debe ser una operación en $H$, además de que si $H$ es un subgrupo $\forall x \in H \implies \exists x^{-1} \in H$.
+
+		\item \textsc{ii} $\Rightarrow$ \textsc{iii}) Si $x, y \in H$ por ii) $y^{-1} \in H$, luego $x \circ y^{-1} \in H$ (por ii).
+
+		\item \textsc{iii} $\Rightarrow$ \textsc{i}) Sea $x \in H$, entonces $x \circ x^{-1} = e$, luego, note que si $x \in H$ entonces $x^{-1} = e \circ x^{-1} \in H$.\par
+		      Ahora probemos que la operación es cerrada: sea $x, y \in H$, entonces $y^{-1} \in H$, más aún $(y^{-1})^{-1} = y$, ya que $y^{-1} \circ y = y^{-1} \circ (y^{-1})^{-1} = e$ y por la unicidad del inverso $(y^{-1})^{-1} = y$.
+		      Por lo cual $x \circ y = x \circ (y^{-1})^{-1} \in H$, por lo tanto la operación es cerrada en $H$.
+	\end{itemize}
+\end{proof}
+
+\ObservacionBox{}{
+	Sea $(G, \circ, e)$ un grupo, sean $a, b \in G$ entonces:
+	\begin{equation*}
+		(a \circ b)^{-1} = b^{-1} \circ a^{-1}
+	\end{equation*}
+}
+
+\begin{enefecto}
+	\begin{equation*}
+		(a \circ b)(b^{-1} \circ a^{-1}) = a(b \circ b^{-1}) \circ a^{-1} = (a \circ e) \circ a^{-1} = a \circ a^{-1} = e
+	\end{equation*}
+	Por la unicidad del inverso se sigue $b^{-1} \circ a^{-1} = (a \circ b)^{-1}$.
+\end{enefecto}
+
+Cuando no haya perdida de generalidad para facilitar la escritura de la operación $\circ$ en un grupo $G$, se denotará expresará como el producto, es decir: $a \circ b: = a b$. Además, se podrá expresar la potencia de un elemento $a \in G$ como:
+\begin{equation*}
+	a^n = \underbrace{a \cdots a}_{n-\text{veces}}
+\end{equation*}
+para $n \in \mathbb{Z} ^ {+}$. Si $n = 0$, $a^0 = e$ y podemos observar que $a^{-n} = (a^n)^{-1}$ para $n \in \mathbb{N}$.
+
+\ObservacionBox{}{
+	Si $S \neq \emptyset$, es un subconjunto de un grupo $G$, entonces:
+	\begin{equation*}
+		\langle S \rangle = \{ s_1^{i_1} \dots s_n^{i_n} : s_j \in S, i_j = \pm 1, j=1,\dots,n, n \in \mathbb{N} \}
+	\end{equation*}
+}
+
+\begin{proof}
+	Sea $H = \{ s_1^{i_1} \dots s_n^{i_n} : s_i \in S, i_j = \pm 1, j=1,\dots,n, n \in \mathbb{N} \}$. Sean $s, t \in H$, tales que $s = s_1^{i_1} \dots s_n^{i_n}$, $t = t_1^{j_1} \dots t_m^{j_m}$, con $s_1, \dots, s_n, t_1, \dots, t_m \in S$, $i_1, \dots, i_n, j_1, \dots, j_m \in \{1, -1\}$. Notemos que:
+	\begin{equation*}
+		st^{-1} = s_1^{i_1} \dots s_n^{i_n} (t_1^{j_1} \dots t_m^{j_m})^{-1} = s_1^{i_1} \dots s_n^{i_n} t_m^{-j_m} \dots t_1^{-j_1} \in H
+	\end{equation*}
+
+	Así por la proposición \ref{prop:probar_subgrupo} $H \le G$, así $\langle S \rangle \subseteq H$. Ahora sea $N \le G$, tal que $S \subseteq N$, es claro que $s \in N$ (cualquier elemento de esa forma está en $N$), así $H \subseteq N$, así $H = \langle S \rangle$.
+\end{proof}
