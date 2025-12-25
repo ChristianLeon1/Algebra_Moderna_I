@@ -1,0 +1,228 @@
+\section{Grupos Sylow}
+\label{sec: Grupos Sylow}
+
+\begin{defi}
+    Sea $G$ un grupo, diremos que $H$ es un subgrupo maximal de $G$ si cuando $N$ es un subgrupo de $G$ con $H \subseteq N \subseteq G$, entonces $N=G$ o $N=H$
+\end{defi}
+
+\begin{defi}
+    Sea $G$ un grupo, $p$ un primo que divide a $|G|$. Diremos que $P$ es un $p$-subgrupo de Sylow de $G$ si $P$ es un $p$-grupo maximal (con respecto a la propiedad de ser $p$-grupo) es decir, si $H$ es un $p$-grupo tal que $P \subseteq H \subseteq G$ entonces $H=G$ o $H=P$
+\end{defi}
+
+\ObservacionBox{}{
+    Si $G$ es un grupo finito, y $p$ es primo que divide a $|G|$ entonces existe un $p$-subgrupo Sylow de $G$
+}
+
+\begin{proof}
+    Sea $\mathcal{A} = \{ H \le G \mid H \text{ es } p\text{-grupo} \}$. Por el teorema de Cauchy $G$ tiene elementos de orden $p$, si $o(a)=p$, entonces $H=\langle a \rangle \in \mathcal{A}$. Luego, $\mathcal{A} \neq \emptyset$.
+    
+    Sea $\{H_\lambda\}_{\lambda \in \Lambda}$ una cadena en $\mathcal{A}$. Sea $H = \bigcup_{\lambda \in \Lambda} H_\lambda$, entonces $H \in \mathcal{A}$ y en efecto si $a, b \in H$, existe $\lambda_1, \lambda_2 \in \Lambda$ tal que $a \in H_{\lambda_1}$ y $b \in H_{\lambda_2}$, como los $\{H_\lambda\}_{\lambda \in \Lambda}$ forman una cadena. Podemos suponer $H_{\lambda_1} \subseteq H_{\lambda_2}$ en cuyo caso $a, b \in H_{\lambda_2}$ y como $H_{\lambda_2} \le G$, $ab^{-1} \in H_{\lambda_2} \subseteq H$, así $H \le G$.
+    
+    Más aún si $a \in H$, $a \in H_\lambda$ para algún $\lambda \in \Lambda$ así que $o(a)=p^n$ para algún $n \in \mathbb{N}$, luego $H$ es $p$-grupo. Por lo tanto $H \in \mathcal{A}$, luego, $\mathcal{A}$ tiene elementos maximales y por el lema de Zorn $G$ los tiene.
+\end{proof}
+
+\TeoremaBox{Segundo y Tercer Teorema de Sylow}{
+    Sea $G$ grupo finito, $p$ primo que divide a $|G|$, $\ell_p$ la cantidad de $p$-grupos Sylow, entonces:
+    \begin{enumerate}
+        \item[i)] $\ell_p \mid |G|$ y $\ell_p \equiv 1 \pmod p$.
+        \item[ii)] Los $p$-grupos Sylow son conjugados.
+    \end{enumerate}
+}
+
+\begin{proof}
+    Sea $P$ un $p$-grupo Sylow de $G$ y $X = \{gPg^{-1} \mid g \in G\}$ los subgrupos conjugados de $P$. (Note que $|X| < +\infty$). Hagamos actuar $G$ en $X$ por conjugación como sigue:
+    \begin{equation*}
+        \tilde{\varphi}: G \times X \to X
+    \end{equation*}
+    \begin{equation*}
+        (g, aPa^{-1}) \mapsto g(aPa^{-1})g^{-1}
+    \end{equation*}
+    $\tilde{\varphi}$ es acción pues:
+    \begin{enumerate}
+        \item[i)] $e(aPa^{-1})e = e a P a^{-1} e = a P a^{-1}$.
+        \item[ii)] $(gh)(aPa^{-1}) = (gh)(aPa^{-1})(gh)^{-1}$
+        \begin{equation*}
+            = g(h a P a^{-1} h^{-1})g^{-1}
+        \end{equation*}
+        \begin{equation*}
+            = g \cdot (h a P a^{-1})
+        \end{equation*}
+        \begin{equation*}
+            = g \cdot (h \cdot aPa^{-1})
+        \end{equation*}
+    \end{enumerate}
+    Además cada elemento de $X$ es un $p$-grupo Sylow. Si $Q$ es un $p$-subgrupo de $G$ con $aPa^{-1} \subseteq Q \subsetneq G$ entonces $P = a^{-1}(aPa^{-1})a \subseteq a^{-1}Qa \subsetneq G$ y $a^{-1}Qa$ es un $p$-grupo (si $q \in a^{-1}Qa$, $g=a^{-1}qa$ con $q \in Q \implies g^{p^s} = (a^{-1}qa)^{p^s} = a^{-1}q^{p^s}a = a^{-1}ea = e$ si $p^s$ es el orden de $q$, luego $g$ tiene orden potencia de $p$). Por la maximalidad de $P$, $P = a^{-1}Qa$, luego $aPa^{-1} = Q$, así $aPa^{-1}$ es maximal.
+    
+    Restringiendo $\tilde{\varphi}$ a $P$, se tiene que $P$ actúa en $X$.
+    Sea $Q \in X$, entonces $[P : St_P(Q)] = p^s$ para algún $s$. Más aún si $s=0$, entonces $P = St_P(Q) = \{p \in P \mid pQp^{-1} = Q\} = P \cap St_G(Q)$, de donde $P \subseteq St_G(Q)$. Además $Q \trianglelefteq St_G(Q) = N_G(Q)$, luego $PQ$ es subgrupo de $St_G(Q)$, más aún es $p$-subgrupo de $G$ y $P, Q \le PQ$.
+    Como $P$ es Sylow, luego $PQ = G$ o $P = PQ = Q$. Si $G=PQ$ entonces $G=St_G(Q)$, luego $Q \trianglelefteq G$. Pero $Q = aPa^{-1}$ para algún $a \in G$, $Q = a^{-1}Qa = P$.
+    
+    En cualquier caso entonces $P=Q$. Es decir, el único elemento de $X$ que bajo la acción se queda fijo es $P$, por lo tanto
+    \begin{equation*}
+        |X| = 1 + \sum_{Q \notin X^P} [P : St_P(Q)]
+    \end{equation*}
+    En particular $|X| \equiv 1 \pmod p$.
+
+    Sea ahora un $Q$ $p$-subgrupo Sylow y suponga que $Q \notin X$, entonces restringiendo $\tilde{\varphi}$ a $Q$. Un argumento análogo muestra que
+    \begin{equation*}
+        |X| \equiv 0 \pmod p
+    \end{equation*}
+    En efecto, si $Q_1 \in X$, entonces $[Q : St_Q(Q_1)] = p^s$ y $s=0$ si y sólo si $Q = St_Q(Q_1) = St_G(Q_1) \cap Q$, luego $Q \subseteq St_G(Q_1)$ y como $Q_1 \trianglelefteq St_G(Q_1)$ entonces $QQ_1 \le St_G(Q_1)$.
+    Más aún $QQ_1$ es $p$-subgrupo. Así $Q \subseteq QQ_1 \subseteq G$ de donde $QQ_1 = G$ o $Q = QQ_1 = Q_1$.
+    Si $QQ_1 = G$, $G = St_G(Q_1)$, luego $Q_1 \trianglelefteq G$, de donde $Q_1 = P \trianglelefteq G$.
+    Luego $P \subsetneq QQ_1$ y $QQ_1$ es $p$-grupo lo cual no puede ser por la maximalidad de $P$. Por lo tanto $Q=Q_1$ \# C (Contradicción) pues $Q_1 \in X$ y $Q \notin X$, es decir, con la acción $\tilde{\varphi}|_Q$, no hay puntos fijos y así
+    \begin{equation*}
+        |X| = \sum_{Q_1 \notin X^G} [Q : St_Q(Q_1)] \equiv 0 \pmod p
+    \end{equation*}
+    Lo cuál no puede ser pues contradice (i), luego $Q \in X$, es decir, es un conjugado de $P$ y por tanto $\ell_p = |X|$ y se tiene $\ell_p \equiv 1 \pmod p$. Más aún
+    \begin{equation*}
+        X = \{ gPg^{-1} \mid g \in G \} = \{ g \cdot P \mid g \in G \} = \mathcal{O}_P
+    \end{equation*}
+    Así,
+    \begin{equation*}
+        \ell_p = |X| = |\mathcal{O}_P| = [G : St_G(P)] \mid |G|
+    \end{equation*}
+\end{proof}
+
+\TeoremaBox{Primer Teorema de Sylow}{
+    Sea $G$ un grupo de orden $|G| = p^s m$ con $p$ primo, $(p,m)=1$ entonces todo $p$-grupo Sylow tiene cardinalidad $p^s$.
+}
+
+\begin{proof}
+    Sea $P$ un $p$-Sylow de $G$. Para ver que $|P|=p^s$ basta probar que $[G:P]=m$ ($|G|=[G:P]|P|$) y para esto, basta ver que $([G:P], p)=1$ pues si esto pasa $p^s m = |G| = [G:P]|P|$, $([G:P], p)=1$, entonces $p^s \mid |P|$, además $|P| \mid |G| = p^s m$, luego, $|P| = p^s p^t$ y $|P| \le p^s m$ (pues $P$ es subgrupo), luego, $p^s p^t \ell = p^s m$ y $(p, m)=1$, de donde $t=0$ o $|P|=p^s$.
+
+    Veamos entonces que $([G:P], p)=1$, tenemos que se sigue del teorema de Lagrange que $[G:P] = [G:N(P)][N(P):P]$ así que basta ver $([G:N(P)], p)=1$, $([N(P):P], p)=1$.
+    
+    Pero por el teorema anterior $[G:N(P)] = [G:St_G(P)] = |\mathcal{O}_P| = \ell_p \equiv 1 \pmod p$, luego $([G:N(P)], p) = 1$.
+    
+    Ahora, si $([N(P):P], p) \neq 1$, $p \mid [N(P):P]$ y como $P \trianglelefteq N(P)$, entonces $p$ divide el orden del grupo $N(P)/P$, luego por el teorema de Cauchy, existe $\bar{X} = X P \in N(P)/P$ tal que $\bar{X}^p = \bar{e} = P$.
+    
+    Observe que:
+    \begin{equation*}
+        \langle \bar{X} \rangle = \frac{\langle X, P \rangle}{P} \le \frac{N(P)}{P} \quad \text{y} \quad (\bar{X})^p = e
+    \end{equation*}
+    
+    \begin{center}
+    $\begin{array}{ccc}
+         N(P)/P & \rule[2pt]{20pt}{0.5pt} & N(P) \\
+         | & & | \\
+         \langle \bar{X} \rangle & \rule[2pt]{20pt}{0.5pt} & \langle X, P \rangle \\
+         | & & | \\
+         P=\bar{e} & \rule[2pt]{20pt}{0.5pt} & P
+    \end{array}$
+    \end{center}
+
+    Por lo tanto, $\frac{\langle X, P \rangle}{P}$ es $p$-grupo, de donde $\langle X, P \rangle$ es $p$-grupo y
+    \begin{equation*}
+        |\langle X, P \rangle| = [\langle X, P \rangle : P] |P| = \left| \frac{\langle X, P \rangle}{P} \right| |P|
+    \end{equation*}
+    
+    Por la maximalidad de $P \subseteq \langle X, P \rangle$, $P = \langle X, P \rangle$ o $x \in P$ y $o(\bar{x})=1$ \# C (Contradicción), luego $([N(P): P], p)=1$.
+    De donde se concluye que $|P| = p^s$.
+\end{proof}
+
+
+\begin{eje}
+    Sea $|G| = pq$ con $p < q$ números primos.
+    Calculamos la cantidad de $q$-subgrupos de Sylow, $n_q$:
+    \begin{equation*}
+        n_q \equiv 1 \pmod q \quad \text{y} \quad n_q \mid p
+    \end{equation*}
+    Los divisores de $p$ son $\{1, p\}$.
+    \begin{itemize}
+        \item Si $n_q = p$, entonces $p \equiv 1 \pmod q$, lo cual implica que $q \mid (p-1)$. Esto es imposible pues $p < q$ (un número mayor no puede dividir a uno menor positivo).
+    \end{itemize}
+    Por lo tanto, $n_q = 1$.
+    Sea $Q$ el único $q$-Sylow de $G$, entonces $Q \trianglelefteq G$.
+
+    Ahora analicemos $n_p$:
+    \begin{equation*}
+        n_p \equiv 1 \pmod p \quad \text{y} \quad n_p \mid q
+    \end{equation*}
+    Los divisores de $q$ son $\{1, q\}$. Así que $n_p$ puede ser $1$ o $q$.
+    
+    Sea $P$ un $p$-Sylow de $G$. Como $Q \trianglelefteq G$ y $P \le G$, y además $Q \cap P = \{e\}$ (pues $|Q|=q$, $|P|=p$ y son primos distintos), tenemos que:
+    \begin{equation*}
+        |QP| = \frac{|Q||P|}{|Q \cap P|} = \frac{qp}{1} = pq = |G|
+    \end{equation*}
+    Por lo tanto $G = QP$. Como $Q$ es normal y $Q \cap P = \{e\}$, $G$ es un producto semidirecto:
+    \begin{equation*}
+        G \cong Q \rtimes_\varphi P
+    \end{equation*}
+    donde $\varphi: P \to \text{Aut}(Q)$ es un homomorfismo.
+    
+    Sabemos que $Q \cong \mathbb{Z}_q$, por lo que $\text{Aut}(Q) \cong \text{Aut}(\mathbb{Z}_q) \cong \mathbb{Z}_{q-1}$.
+    El orden del grupo de automorfismos es $|\text{Aut}(Q)| = q-1$.
+    El homomorfismo $\varphi$ está determinado por la imagen de un generador de $P$. El orden de la imagen debe dividir tanto al orden de $P$ ($p$) como al orden de $\text{Aut}(Q)$ ($q-1$).
+    
+    \textbf{Caso 1:} $p \nmid (q-1)$.
+    En este caso, $\gcd(p, q-1) = 1$. El único elemento de orden que divide a $p$ en $\text{Aut}(Q)$ es la identidad.
+    Por lo tanto, $\varphi$ es el homomorfismo trivial ($\varphi(g) = Id_Q$ para todo $g$).
+    Esto implica que el producto es directo:
+    \begin{equation*}
+        G \cong Q \times P \cong \mathbb{Z}_q \times \mathbb{Z}_p \cong \mathbb{Z}_{pq}
+    \end{equation*}
+    Así, si $p \nmid (q-1)$, el único grupo de orden $pq$ es el cíclico $\mathbb{Z}_{pq}$.
+    
+    \textbf{Caso 2:} $p \mid (q-1)$.
+    Por el Teorema de Cauchy, como $p$ divide al orden de $\text{Aut}(Q)$, existe un subgrupo de orden $p$ en $\text{Aut}(Q)$.
+    Esto permite definir un homomorfismo $\varphi$ no trivial.
+    Por lo tanto, existe un producto semidirecto no abeliano:
+    \begin{equation*}
+        G \cong Q \rtimes P
+    \end{equation*}
+    Este grupo es único salvo isomorfismo (todos los homomorfismos no triviales dan lugar a grupos isomorfos en este caso).
+    \textbf{Ejemplo:} $S_3$ tiene orden $6 = 2 \cdot 3$. Aquí $p=2, q=3$. Como $2 \mid (3-1)$, existe el grupo no abeliano $S_3 \cong \mathbb{Z}_3 \rtimes \mathbb{Z}_2$.
+\end{eje}
+
+\begin{eje}
+    Sea $|G| = 30 = 2 \cdot 3 \cdot 5$.
+    Analicemos los subgrupos de Sylow:
+    \begin{itemize}
+        \item $n_5 \equiv 1 \pmod 5$ y $n_5 \mid 6 \implies n_5 \in \{1, 6\}$.
+        \item $n_3 \equiv 1 \pmod 3$ y $n_3 \mid 10 \implies n_3 \in \{1, 10\}$.
+    \end{itemize}
+    Supongamos que $G$ es simple (es decir, no tiene subgrupos normales propios).
+    Entonces tendríamos $n_5 = 6$ y $n_3 = 10$ (pues si alguno fuera 1, ese Sylow sería normal).
+    
+    Contemos los elementos:
+    \begin{itemize}
+        \item Si $n_5 = 6$, tenemos 6 subgrupos de orden 5. La intersección de cualesquiera dos de ellos es trivial (orden 1).
+        Cada uno tiene $5-1 = 4$ elementos de orden 5.
+        Total de elementos de orden 5: $6 \times 4 = 24$.
+        \item Si $n_3 = 10$, tenemos 10 subgrupos de orden 3.
+        Cada uno tiene $3-1 = 2$ elementos de orden 3.
+        Total de elementos de orden 3: $10 \times 2 = 20$.
+    \end{itemize}
+    Sumando los elementos:
+    \begin{equation*}
+        24 \text{ (orden 5)} + 20 \text{ (orden 3)} = 44 \text{ elementos}
+    \end{equation*}
+    Esto es imposible pues $|G| = 30$.
+    Por lo tanto, nuestra suposición es falsa. Debe ocurrir que $n_5 = 1$ o $n_3 = 1$.
+    Conclusión: Un grupo de orden 30 no puede ser simple (siempre tiene un subgrupo normal de orden 5 o de orden 3).
+\end{eje}
+
+\begin{eje}
+    Sea $|G| = 12 = 2^2 \cdot 3$.
+    \begin{itemize}
+        \item $n_3 \equiv 1 \pmod 3$ y $n_3 \mid 4 \implies n_3 \in \{1, 4\}$.
+        \item $n_2 \equiv 1 \pmod 2$ y $n_2 \mid 3 \implies n_2 \in \{1, 3\}$.
+    \end{itemize}
+    Supongamos que $G$ no es simple. Si $n_3 = 1$, ya terminamos ($P_3 \trianglelefteq G$).
+    Supongamos entonces que $n_3 = 4$.
+    El número de elementos de orden 3 es:
+    \begin{equation*}
+        4 \times (3-1) = 8 \text{ elementos.}
+    \end{equation*}
+    Los elementos restantes son $12 - 8 = 4$.
+    Estos 4 elementos deben formar el único $2$-Sylow de $G$ (que tiene orden 4).
+    Por lo tanto, si $n_3 \neq 1$, obligatoriamente $n_2 = 1$.
+    
+    En cualquier caso, $G$ tiene un subgrupo normal (ya sea el 3-Sylow o el 2-Sylow).
+\end{eje}
+
+\begin{eje}
+    Sea $|G| = p^2 q$ con $p, q$ primos distintos.
+    (El análisis suele ser similar: mostrar que no es simple contando elementos. Por ejemplo, si $p > q$, $n_p = 1$).
+\end{eje}

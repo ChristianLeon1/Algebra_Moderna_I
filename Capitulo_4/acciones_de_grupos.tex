@@ -1,0 +1,309 @@
+\section{Acciones de Grupo}
+
+\begin{defi}
+    Sea $G$ un grupo y $X$ un conjunto no vacío. Diremos que $G$ actúa en $X$ (o que $X$ es un $G$-conjunto) si existe un homomorfismo $\varphi: G \to S_X$, donde $S_X$ es el grupo de permutaciones de $X$ (biyeciones de $X$ en sí mismo).
+\end{defi}
+
+\begin{eje}
+    \textbf{Teorema de Cayley:} Todo grupo $G$ actúa en sí mismo.
+    Sea $X=G$ y definamos $\varphi: G \to S_G$ dada por $\varphi(g) = f_g$, donde $f_g: G \to G$ se define como $f_g(a) = ga$ para todo $a \in G$ (traslación izquierda).
+    
+    Veamos que $f_g \in S_G$:
+    \begin{enumerate}
+        \item $f_g$ es inyectiva: Si $f_g(a) = f_g(b)$, entonces $ga = gb$. Multiplicando por $g^{-1}$ a la izquierda, obtenemos $a = b$.
+        \item $f_g$ es sobreyectiva: Sea $b \in G$. Queremos encontrar $a$ tal que $f_g(a) = b$. Tomamos $a = g^{-1}b$, entonces $f_g(g^{-1}b) = g(g^{-1}b) = (gg^{-1})b = b$.
+    \end{enumerate}
+    Además, $\varphi$ es un homomorfismo de grupos:
+    Para $g, h \in G$, queremos ver que $\varphi(gh) = \varphi(g) \circ \varphi(h)$.
+    Evaluando en un elemento $a \in G$:
+    \begin{equation*}
+        \varphi(gh)(a) = f_{gh}(a) = (gh)a = g(ha) = f_g(ha) = f_g(f_h(a)) = (\varphi(g) \circ \varphi(h))(a)
+    \end{equation*}
+    Por lo tanto, $\varphi(gh) = \varphi(g) \circ \varphi(h)$.
+\end{eje}
+
+\TeoremaBox{}{
+    Sea $G$ un grupo y $X$ un conjunto no vacío. Las siguientes condiciones son equivalentes:
+    \begin{enumerate}
+        \item $G$ actúa en $X$ (existe un homomorfismo $\varphi: G \to S_X$).
+        \item Existe una función $\cdot: G \times X \to X$, denotada por $(g, x) \mapsto g \cdot x$, tal que:
+        \begin{enumerate}
+            \item $e \cdot x = x$ para todo $x \in X$.
+            \item $(gh) \cdot x = g \cdot (h \cdot x)$ para todo $g, h \in G$ y $x \in X$.
+        \end{enumerate}
+    \end{enumerate}
+}
+
+\begin{proof}
+    $\Rightarrow$) Supongamos que existe un homomorfismo $\varphi: G \to S_X$.
+    Para cada $g \in G$, $\varphi(g)$ es una permutación de $X$, es decir, una función biyectiva $\varphi(g): X \to X$.
+    Definamos la función $\cdot: G \times X \to X$ mediante:
+    \begin{equation*}
+        g \cdot x = (\varphi(g))(x)
+    \end{equation*}
+    para todo $g \in G$ y $x \in X$.
+    
+    Verifiquemos las dos condiciones de la definición de acción:
+    \begin{enumerate}
+        \item[(i)] Como $\varphi$ es un homomorfismo de grupos, envía el neutro de $G$ al neutro de $S_X$. Es decir, $\varphi(e) = Id_X$ (la función identidad en $X$).
+        Entonces, para cualquier $x \in X$:
+        \begin{equation*}
+            e \cdot x = (\varphi(e))(x) = Id_X(x) = x
+        \end{equation*}
+        
+        \item[(ii)] Sean $g, h \in G$ y $x \in X$.
+        Por la definición de la operación y la propiedad de homomorfismo de $\varphi$:
+        \begin{equation*}
+            (gh) \cdot x = (\varphi(gh))(x)
+        \end{equation*}
+        Como $\varphi$ es homomorfismo, $\varphi(gh) = \varphi(g) \circ \varphi(h)$. Así:
+        \begin{equation*}
+            (\varphi(gh))(x) = (\varphi(g) \circ \varphi(h))(x)
+        \end{equation*}
+        Por la definición de composición de funciones:
+        \begin{equation*}
+            (\varphi(g) \circ \varphi(h))(x) = \varphi(g)(\varphi(h)(x))
+        \end{equation*}
+        Usando nuevamente la definición de la acción ($g \cdot y = \varphi(g)(y)$):
+        \begin{equation*}
+            \varphi(g)(\varphi(h)(x)) = g \cdot (\varphi(h)(x)) = g \cdot (h \cdot x)
+        \end{equation*}
+        Por lo tanto, $(gh) \cdot x = g \cdot (h \cdot x)$.
+    \end{enumerate}
+
+    $\Leftarrow$) Supongamos que existe una función $\cdot: G \times X \to X$ que satisface las condiciones (a) y (b).
+    Queremos construir un homomorfismo $\varphi: G \to S_X$.
+    Para cada $g \in G$, definamos la función $\sigma_g: X \to X$ dada por:
+    \begin{equation*}
+        \sigma_g(x) = g \cdot x
+    \end{equation*}
+    
+    Primero, debemos demostrar que $\sigma_g$ es una biyección (es decir, $\sigma_g \in S_X$).
+    \begin{enumerate}
+        \item[1.] $\sigma_g$ es inyectiva:
+        Supongamos que $\sigma_g(x) = \sigma_g(y)$ para $x, y \in X$.
+        \begin{equation*}
+            g \cdot x = g \cdot y
+        \end{equation*}
+        Operamos con $g^{-1}$ por la izquierda (usando la propiedad (b)):
+        \begin{equation*}
+            g^{-1} \cdot (g \cdot x) = g^{-1} \cdot (g \cdot y)
+        \end{equation*}
+        \begin{equation*}
+            (g^{-1}g) \cdot x = (g^{-1}g) \cdot y
+        \end{equation*}
+        \begin{equation*}
+            e \cdot x = e \cdot y
+        \end{equation*}
+        Usando la propiedad (a) ($e \cdot x = x$):
+        \begin{equation*}
+            x = y
+        \end{equation*}
+        
+        \item[2.] $\sigma_g$ es sobreyectiva:
+        Sea $y \in X$ arbitrario. Queremos encontrar $x \in X$ tal que $\sigma_g(x) = y$.
+        Proponemos $x = g^{-1} \cdot y$.
+        Evaluamos $\sigma_g(x)$:
+        \begin{equation*}
+            \sigma_g(g^{-1} \cdot y) = g \cdot (g^{-1} \cdot y)
+        \end{equation*}
+        Por la propiedad (b):
+        \begin{equation*}
+            g \cdot (g^{-1} \cdot y) = (gg^{-1}) \cdot y = e \cdot y
+        \end{equation*}
+        Por la propiedad (a):
+        \begin{equation*}
+            e \cdot y = y
+        \end{equation*}
+        Así, $\sigma_g$ es sobreyectiva.
+    \end{enumerate}
+    Al ser inyectiva y sobreyectiva, $\sigma_g \in S_X$.
+    
+    Ahora definimos la función $\varphi: G \to S_X$ como $\varphi(g) = \sigma_g$.
+    Veamos que $\varphi$ es un homomorfismo de grupos.
+    Sean $g, h \in G$. Queremos ver que $\varphi(gh) = \varphi(g) \circ \varphi(h)$.
+    Dos funciones son iguales si toman el mismo valor para todo elemento del dominio. Sea $x \in X$:
+    \begin{equation*}
+        (\varphi(gh))(x) = \sigma_{gh}(x) = (gh) \cdot x
+    \end{equation*}
+    Por otro lado:
+    \begin{equation*}
+        (\varphi(g) \circ \varphi(h))(x) = \varphi(g)(\varphi(h)(x)) = \sigma_g(\sigma_h(x))
+    \end{equation*}
+    \begin{equation*}
+        \sigma_g(\sigma_h(x)) = \sigma_g(h \cdot x) = g \cdot (h \cdot x)
+    \end{equation*}
+    Como la propiedad (b) nos dice que $(gh) \cdot x = g \cdot (h \cdot x)$, concluimos que:
+    \begin{equation*}
+        (\varphi(gh))(x) = (\varphi(g) \circ \varphi(h))(x) \quad \forall x \in X
+    \end{equation*}
+    Por lo tanto, $\varphi(gh) = \varphi(g) \circ \varphi(h)$, y $\varphi$ es un homomorfismo.
+\end{proof}
+
+\begin{eje}
+\begin{enumerate}
+    \item $G$ actúa en sí mismo por multiplicación izquierda (o simplemente por la operación del grupo).
+    La acción está dada por $\varphi: G \to S_G$ o equivalentemente $\tilde{\varphi}: G \times G \to G$ definida por:
+    \begin{equation*}
+        (g, h) \mapsto gh
+    \end{equation*}
+
+    \item Sea $G$ un grupo, $H \leq G$ y $X = \{aH \mid a \in G\}$ el conjunto de clases laterales izquierdas.
+    $G$ actúa en $X$ por traslación izquierda.
+    La acción está definida por $\varphi: G \to S_X$, donde para cada $g \in G$, la función $f_g: X \to X$ es:
+    \begin{equation*}
+        f_g(aH) = (ga)H
+    \end{equation*}
+    Equivalentemente, $\tilde{\varphi}(g, aH) = gaH$.
+
+    \item Sea $G$ un grupo y $X = \{H \mid H \leq G\}$ el conjunto de subgrupos de $G$.
+    $G$ actúa en $X$ por conjugación.
+    Definimos $\varphi: G \to S_X$ tal que $g \mapsto f_g$, con $f_g(H) = gHg^{-1}$.
+    Verifiquemos que es una acción:
+    \begin{itemize}
+        \item $e \cdot H = eHe^{-1} = H$.
+        \item $(gh) \cdot H = (gh)H(gh)^{-1} = g(hHh^{-1})g^{-1} = g(h \cdot H)g^{-1}$.
+    \end{itemize}
+
+    \item Sea $G$ un grupo y $X=G$. $G$ actúa en sí mismo por conjugación.
+    Definimos la acción $\cdot : G \times G \to G$ como:
+    \begin{equation*}
+        g \cdot h = ghg^{-1}
+    \end{equation*}
+
+    \item Sea $G = SL(2, \mathbb{C}) = \{A \in M_{2\times2}(\mathbb{C}) \mid \det A = 1\}$ y sea $X = \{z \in \mathbb{C} \mid \text{Im}(z) > 0\}$ el semiplano superior.
+    Para $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \in G$, definimos la acción:
+    \begin{equation*}
+        A \cdot z = \frac{az + b}{cz + d}
+    \end{equation*}
+    Se verifica que $I \cdot z = z$ y $A \cdot (B \cdot z) = (AB) \cdot z$.
+
+    \item Sea $X = \mathbb{R}^2$ y $G$ el grupo de rotaciones del plano (isomorfo a $SO(2)$):
+    \begin{equation*}
+        G = \{T_\theta : \mathbb{R}^2 \to \mathbb{R}^2 \mid T_\theta(x,y) = (x\cos\theta - y\sin\theta, x\sin\theta + y\cos\theta)\}
+    \end{equation*}
+    Entonces, para un punto $(x_0, y_0) \in \mathbb{R}^2$, su órbita es:
+    \begin{equation*}
+        \mathcal{O}_{(x_0, y_0)} = \{T_\theta(x_0, y_0) \mid T_\theta \in G\} = \{(x,y) \in \mathbb{R}^2 \mid x^2 + y^2 = x_0^2 + y_0^2\}
+    \end{equation*}
+    Es decir, las órbitas son circunferencias centradas en el origen.
+\end{enumerate}
+\end{eje}
+
+\begin{defi}
+    Diremos que una acción de $G$ en $X$ es \textit{transitiva} si existe $x \in X$ tal que su órbita cubre todo el conjunto, es decir:
+    \begin{equation*}
+        \mathcal{O}_x = G \cdot x = X
+    \end{equation*}
+    (Esto implica que solo existe una única órbita).
+\end{defi}
+
+\begin{defi}
+    Sea $X$ un $G$-conjunto. Diremos que $x \in X$ es un \textit{punto fijo} si $g \cdot x = x$ para todo $g \in G$.
+    Esto es equivalente a cualquiera de las siguientes condiciones:
+    \begin{itemize}
+        \item La órbita de $x$ es trivial: $\mathcal{O}_x = \{x\}$.
+        \item El estabilizador de $x$ es todo el grupo: $St_G(x) = G$.
+    \end{itemize}
+\end{defi}
+
+\ObservacionBox{}{
+    Si $X$ es un $G$-conjunto y $x \in X$, entonces el estabilizador $St_G(x)$ es un subgrupo de $G$.
+}
+
+\begin{proof}
+    Sean $g, h \in St_G(x)$. Entonces $g \cdot x = x$ y $h \cdot x = x$.
+    Esto implica que $h^{-1} \cdot x = x$ (multiplicando por $h^{-1}$).
+    Luego:
+    \begin{equation*}
+        (gh^{-1}) \cdot x = g \cdot (h^{-1} \cdot x) = g \cdot x = x
+    \end{equation*}
+    Por lo tanto $gh^{-1} \in St_G(x)$, lo que prueba que es un subgrupo.
+\end{proof}
+
+\NotaBox{}{
+    El conjunto de todos los puntos fijos de $X$ bajo la acción de $G$ se denota por $X^G$.
+}
+
+\ObservacionBox{}{
+    Sea $X$ un $G$-conjunto, entonces las órbitas forman una partición de $X$.
+    Para ver esto basta verificar que inducen una relación de equivalencia, es decir, la relación en $X$ definida por $x \sim y$ si y solo si $y$ y $x$ están en la misma órbita (si y solo si $y = g \cdot x$ para algún $g \in G$) es de equivalencia.
+    \begin{enumerate}
+        \item Reflexiva: Existe $e \in G$ tal que $e \cdot x = x$, así $x \sim x$.
+        \item Simétrica: $x \sim y$, entonces existe $g \in G$ tal que $y = g \cdot x$. Entonces $g^{-1} \cdot y = g^{-1} \cdot (g \cdot x) = e \cdot x = x$.
+        Así, $x = g^{-1} \cdot y$, de donde $y \sim x$.
+        \item Transitiva: $x \sim y$ y $y \sim z$, entonces existen $g_1, g_2 \in G$ tales que $y = g_1 \cdot x$, $z = g_2 \cdot y$. Entonces
+        \begin{equation*}
+            z = g_2 \cdot (g_1 \cdot x) = (g_2 g_1) \cdot x
+        \end{equation*}
+        luego $x \sim z$.
+    \end{enumerate}
+    En particular si $\mathcal{O}_x = Orb(x) = G \cdot x$, tenemos:
+    \begin{equation*}
+        X = \bigcup_{x \in X} \mathcal{O}_x = \left(\bigcup_{x \in X^G} \mathcal{O}_x\right) \cup \left(\bigcup_{x \notin X^G} \mathcal{O}_x\right) 
+        = \left(\bigcup_{x \in X^G} \{x\}\right) \cup \left(\bigcup_{x \notin X^G} \mathcal{O}_x\right)
+    \end{equation*}
+    En particular, si $X$ es finito:
+    \begin{equation*}
+        |X| = |X^G| + \left| \bigcup_{x \notin X^G} \mathcal{O}_x \right|
+    \end{equation*}
+}
+
+
+\begin{eje}
+Consideremos la acción de $G$ en sí mismo por conjugación, es decir, la acción definida por:
+\begin{equation*}
+    g \cdot h = ghg^{-1} \quad \forall g, h \in G
+\end{equation*}
+En este caso, un elemento $h \in G$ es un punto fijo si y solo si su órbita tiene tamaño 1, es decir:
+\begin{equation*}
+    g \cdot h = h \quad \forall g \in G
+\end{equation*}
+Esto equivale a:
+\begin{equation*}
+    ghg^{-1} = h \iff gh = hg \quad \forall g \in G
+\end{equation*}
+Por lo tanto, el conjunto de puntos fijos de esta acción es exactamente el Centro de $G$:
+\begin{equation*}
+    G^G = Z(G) = \{h \in G \mid gh = hg, \forall g \in G\}
+\end{equation*}
+Aplicando la ecuación de las órbitas (vista anteriormente) a esta acción específica, obtenemos la **Ecuación de Clase**:
+\begin{equation*}
+    |G| = |Z(G)| + \sum_{x_i \notin Z(G)} [G : C_G(x_i)]
+\end{equation*}
+donde $C_G(x_i)$ es el centralizador de $x_i$ (que corresponde al estabilizador bajo esta acción).
+\end{eje}
+
+\TeoremaBox{Teorema}{
+    Sea $X$ un $G$-conjunto, $x \in X$, entonces existe una biyección entre las clases laterales de $S_t(x) \le G$ y $\mathcal{O}_x$.
+}
+
+\begin{proof}
+    Definamos $\varphi: \mathcal{L} \to \mathcal{O}_x$ (donde $\mathcal{L}$ es el conjunto de clases laterales izquierdas) dada por:
+    \begin{equation*}
+        g S_t(x) \mapsto g \cdot x
+    \end{equation*}
+
+    Note que esta asignación no depende del representante de clase.
+    Si $g S_t(x) = g_1 S_t(x)$, entonces $g^{-1}g_1 \in S_t(x)$, si y solo si $(g^{-1}g_1) \cdot x = x$, si y solo si $g_1 \cdot x = g \cdot x$.
+    Es decir, $\varphi(g S_t(x)) = \varphi(g_1 S_t(x))$. Luego, $\varphi$ está bien definida.
+
+    $\varphi$ es inyectiva:
+    \begin{equation*}
+        \varphi(g S_t(x)) = \varphi(g_1 S_t(x)) \iff g \cdot x = g_1 \cdot x \iff g^{-1}g_1 \cdot x = x
+    \end{equation*}
+    \begin{equation*}
+        \iff g^{-1}g_1 \in S_t(x) \iff g S_t(x) = g_1 S_t(x)
+    \end{equation*}
+
+    $\varphi$ es sobreyectiva:
+    Dado $y \in \mathcal{O}_x$, existe $g \in G$ tal que $y = g \cdot x$, luego:
+    \begin{equation*}
+        \varphi(g S_t(x)) = g \cdot x = y
+    \end{equation*}
+
+    Por lo tanto $\varphi$ es biyectiva y en particular:
+    \begin{equation*}
+        |\mathcal{O}_x| = |\mathcal{L}| = |\mathcal{G}| = [G : S_t(x)]
+    \end{equation*}
+\end{proof}

@@ -1,0 +1,308 @@
+\ObservacionBox{}{
+    Más aún, de la ecuación de las órbitas tenemos:
+    \begin{equation*}
+        |X| = |X^G| + \sum_{x \notin X^G} [G : St_G(x)]
+    \end{equation*}
+    Todavía más, si $G$ actúa en sí mismo por conjugación. En este caso $X^G = Z(G)$ y al estabilizador $St_G(x)$ se le denomina el \textit{Centralizador} de $x$ en $G$ y se denota por $C_G(x)$.
+    La ecuación se convierte en:
+    \begin{equation*}
+        |G| = |Z(G)| + \sum_{x \notin Z(G)} [G : C_G(x)]
+    \end{equation*}
+    donde la suma corre sobre un sistema de representantes de las clases de conjugación no triviales.
+}
+
+\begin{eje}
+    Sea $G$ un grupo y $X = \{H \mid H \leq G\}$ el conjunto de subgrupos de $G$. Hagamos actuar a $G$ en $X$ por conjugación, es decir, la acción dada por:
+    \begin{equation*}
+        g \cdot H = gHg^{-1}
+    \end{equation*}
+    En este caso, al estabilizador de un elemento $H \in X$ se le llama el \textit{Normalizador} de $H$ en $G$ y se denota por $N_G(H)$.
+    \begin{equation*}
+        N_G(H) = \{g \in G \mid gHg^{-1} = H\}
+    \end{equation*}
+\end{eje}
+
+\ObservacionBox{}{
+    Si $H \leq G$, entonces se cumplen las siguientes propiedades del normalizador $N_G(H) = \{g \in G \mid gHg^{-1} = H\}$:
+    \begin{enumerate}
+        \item $H \trianglelefteq G$ si y solo si $N_G(H) = G$.
+        \item $H \leq N_G(H)$ (es decir, $H$ es un subgrupo del normalizador).
+        \item En general, no siempre ocurre que $N_G(H) = G$. (Ver ejemplo en $S_3$).
+        \item $H \trianglelefteq N_G(H)$ (es decir, $H$ es un subgrupo normal de su propio normalizador).
+    \end{enumerate}
+}
+
+\begin{proof}[Demostración de 1]
+    Queremos probar que $H \trianglelefteq G \iff N_G(H) = G$.
+    
+    $\Rightarrow$) Supongamos que $H \trianglelefteq G$.
+    Por definición de subgrupo normal, para todo $g \in G$ se cumple que $gHg^{-1} = H$.
+    La definición del normalizador es $N_G(H) = \{g \in G \mid gHg^{-1} = H\}$.
+    Como la condición se cumple para todo $g \in G$, entonces todo elemento de $G$ pertenece a $N_G(H)$.
+    Por lo tanto, $G \subseteq N_G(H)$. Como $N_G(H) \subseteq G$ es siempre cierto, concluimos que $N_G(H) = G$.
+
+    $\Leftarrow$) Supongamos que $N_G(H) = G$.
+    Esto significa que para todo $g \in G$, $g \in N_G(H)$.
+    Por la definición del conjunto $N_G(H)$, esto implica que para todo $g \in G$, se cumple $gHg^{-1} = H$.
+    Esta es exactamente la definición de que $H$ sea un subgrupo normal de $G$.
+    Por lo tanto, $H \trianglelefteq G$.
+\end{proof}
+
+\begin{proof}[Demostración de 2]
+    Queremos probar que $H \subseteq N_G(H)$.
+    Sea $h \in H$ un elemento arbitrario. Queremos ver que $h \in N_G(H)$, es decir, que $hHh^{-1} = H$.
+    
+    Como $H$ es un subgrupo (cerrado bajo la operación):
+    \begin{itemize}
+        \item Para cualquier $x \in H$, el conjugado $hxh^{-1}$ es producto de elementos de $H$, por lo que $hxh^{-1} \in H$. Esto muestra que $hHh^{-1} \subseteq H$.
+        \item Para la contención inversa, dado $y \in H$, podemos escribir $y = h(h^{-1}yh)h^{-1}$. Como $h^{-1}yh \in H$, entonces $y$ es un conjugado por $h$ de un elemento de $H$.
+    \end{itemize}
+    (Más simplemente: conjugación por un elemento del mismo subgrupo es un automorfismo interno restringido que envía $H$ en $H$).
+    
+    Por lo tanto, $hHh^{-1} = H$ para todo $h \in H$.
+    Así, todo elemento de $H$ cumple la condición de estar en el normalizador.
+    Conclusión: $H \leq N_G(H)$.
+\end{proof}
+
+\begin{proof}[Demostración de 3 (Ejemplo en $S_3$)]
+    Consideremos el grupo simétrico $S_3$.
+    Sea $N = \langle (1, 2, 3) \rangle = \{e, (1, 2, 3), (1, 3, 2)\}$.
+    Sabemos que $|S_3| = 6$ y $|N| = 3$. El índice es $[S_3 : N] = 2$, por lo que $N \trianglelefteq S_3$.
+    Usando la propiedad 1, como es normal, su normalizador es todo el grupo: $N_{S_3}(N) = S_3$.
+
+    Ahora consideremos $H = \langle (1, 2) \rangle = \{e, (1, 2)\}$.
+    Calculemos su normalizador $N_{S_3}(H)$. Buscamos los $g \in S_3$ tales que $gHg^{-1} = H$.
+    \begin{itemize}
+        \item Claramente $H \subseteq N_{S_3}(H)$ (por la propiedad 2), así que $e$ y $(1, 2)$ están en el normalizador.
+        \item Probemos con otro elemento, por ejemplo $\sigma = (1, 3)$.
+        Conjugamos el generador de $H$:
+        \begin{equation*}
+            (1, 3)(1, 2)(1, 3)^{-1} = (1, 3)(1, 2)(1, 3) = (2, 3)
+        \end{equation*}
+        Como $(2, 3) \notin H$, entonces $(1, 3)H(1, 3)^{-1} \neq H$.
+        Por lo tanto, $(1, 3) \notin N_{S_3}(H)$.
+    \end{itemize}
+    De hecho, haciendo las cuentas para los demás elementos, vemos que el único subgrupo que normaliza a $H$ es el mismo $H$.
+    Así que $N_{S_3}(H) = H \neq S_3$.
+    Esto demuestra que $N_G(H)$ no siempre es todo $G$.
+\end{proof}
+
+\begin{proof}[Demostración de 4]
+    Queremos probar que $H \trianglelefteq N_G(H)$.
+    Ya sabemos por la propiedad 2 que $H$ es un subgrupo de $N_G(H)$. Solo falta probar la normalidad dentro de este grupo.
+    
+    Sea $g \in N_G(H)$ un elemento cualquiera del normalizador.
+    Por la definición misma de $N_G(H)$, este $g$ cumple la condición:
+    \begin{equation*}
+        gHg^{-1} = H
+    \end{equation*}
+    Esta igualdad nos dice directamente que conjugando $H$ por cualquier elemento de $N_G(H)$, obtenemos $H$ nuevamente.
+    
+    Esta es, textualmente, la definición de ser subgrupo normal.
+    Por lo tanto, $H$ es normal en $N_G(H)$.
+\end{proof}
+
+\TeoremaBox{de Cauchy}{
+    Sea $G$ un grupo finito y $p$ un número primo tal que $p$ divide al orden de $G$ ($p \mid |G|$).
+    Entonces, $G$ contiene al menos un elemento de orden $p$.
+    Más precisamente, la cantidad de elementos de $G$ de orden $p$ es congruente con $-1$ módulo $p$.
+}
+
+\begin{proof}
+    Consideremos el conjunto $X$ formado por las $p$-tuplas de elementos de $G$ cuyo producto es la identidad:
+    \begin{equation*}
+        X = \{(x_1, x_2, \dots, x_p) \in G^p \mid x_1 x_2 \dots x_p = e\}
+    \end{equation*}
+    
+    \textit{Paso 1: Calcular la cardinalidad de $X$.}
+    Para formar una tupla en $X$, podemos elegir los primeros $p-1$ elementos ($x_1, \dots, x_{p-1}$) arbitrariamente en $G$. Una vez elegidos, el último elemento $x_p$ está forzado, pues debe cumplir:
+    \begin{equation*}
+        x_1 \dots x_{p-1} x_p = e \implies x_p = (x_1 \dots x_{p-1})^{-1}
+    \end{equation*}
+    Dado que $x_p$ es único para cada elección de los primeros $p-1$ términos, el tamaño de $X$ es:
+    \begin{equation*}
+        |X| = |G|^{p-1}
+    \end{equation*}
+    Como por hipótesis $p$ divide a $|G|$, entonces $p$ divide a $|G|^{p-1}$ (para $p-1 \ge 1$), por lo que:
+    \begin{equation*}
+        |X| \equiv 0 \pmod p
+    \end{equation*}
+
+    \textit{Paso 2: Definir la acción de grupo.}
+    Sea $\mathbb{Z}_p = \langle \sigma \rangle$ el grupo cíclico de orden $p$. Hacemos actuar a $\mathbb{Z}_p$ sobre el conjunto $X$ mediante permutación cíclica de las componentes:
+    \begin{equation*}
+        \sigma \cdot (x_1, x_2, \dots, x_p) = (x_2, x_3, \dots, x_p, x_1)
+    \end{equation*}
+    
+    Verifiquemos que esta acción está bien definida, es decir, que si $(x_1, \dots, x_p) \in X$, entonces su permutación cíclica también está en $X$.
+    Si $x_1 x_2 \dots x_p = e$, multiplicando por $x_1^{-1}$ a la izquierda y por $x_1$ a la derecha (conjugando por $x_1$), obtenemos:
+    \begin{equation*}
+        x_1^{-1} (x_1 x_2 \dots x_p) x_1 = x_1^{-1} e x_1 = e
+    \end{equation*}
+    Simplificando el lado izquierdo:
+    \begin{equation*}
+        (x_1^{-1} x_1) x_2 \dots x_p x_1 = x_2 \dots x_p x_1 = e
+    \end{equation*}
+    Por lo tanto, la tupla rotada $(x_2, \dots, x_p, x_1)$ cumple la condición de producto identidad y pertenece a $X$.
+
+    \textit{Paso 3: Analizar las órbitas y los puntos fijos.}
+    Por el Teorema Órbita-Estabilizador, el tamaño de cualquier órbita divide al orden del grupo que actúa. Aquí, $|\mathbb{Z}_p| = p$ (primo).
+    Por tanto, el tamaño de cualquier órbita $|\mathcal{O}_x|$ solo puede ser 1 o $p$.
+    
+    Las órbitas de tamaño 1 corresponden a los puntos fijos de la acción ($X^{\mathbb{Z}_p}$).
+    Una tupla $x = (x_1, \dots, x_p)$ es un punto fijo si:
+    \begin{equation*}
+        (x_1, x_2, \dots, x_p) = (x_2, x_3, \dots, x_p, x_1)
+    \end{equation*}
+    Esto implica que $x_1 = x_2 = \dots = x_p$.
+    Además, como la tupla está en $X$, el producto debe ser la identidad:
+    \begin{equation*}
+        x_1 \cdot x_1 \dots x_1 = x_1^p = e
+    \end{equation*}
+    Así, los puntos fijos son precisamente las tuplas de la forma $(g, g, \dots, g)$ donde $g^p = e$.
+
+    \textit{Paso 4: Conclusión usando la Ecuación de Clase.}
+    La ecuación de clase para esta acción es:
+    \begin{equation*}
+        |X| = |X^{\mathbb{Z}_p}| + \sum |\mathcal{O}_{\text{tamaño } p}|
+    \end{equation*}
+    Tomando módulo $p$:
+    \begin{equation*}
+        |X| \equiv |X^{\mathbb{Z}_p}| \pmod p
+    \end{equation*}
+    (Pues las órbitas de tamaño $p$ son congruentes con 0 módulo $p$).
+    
+    Sabemos por el Paso 1 que $|X| \equiv 0 \pmod p$. Entonces:
+    \begin{equation*}
+        |X^{\mathbb{Z}_p}| \equiv 0 \pmod p
+    \end{equation*}
+    
+    Sabemos que existe al menos un punto fijo trivial: la tupla $(e, e, \dots, e)$, donde $e^p = e$.
+    Por lo tanto, $|X^{\mathbb{Z}_p}| \ge 1$.
+    Como $|X^{\mathbb{Z}_p}|$ es un múltiplo de $p$ y es al menos 1, debe ser al menos $p$ (es decir, $|X^{\mathbb{Z}_p}| \ge p$).
+    
+    Esto significa que existen al menos $p-1$ tuplas fijas distintas de la trivial.
+    Sea $(a, a, \dots, a)$ una de estas tuplas con $a \neq e$.
+    Entonces $a \in G$ satisface $a^p = e$ y $a \neq e$.
+    Por lo tanto, $a$ es un elemento de orden $p$.
+\end{proof}
+
+\begin{defi}
+    Sea $G$ un grupo y $p$ un número primo. Diremos que $G$ es un \textit{$p$-grupo} si todo elemento de $G$ tiene orden igual a una potencia de $p$. Es decir, para todo $g \in G$, existe $k \ge 0$ tal que $o(g) = p^k$.
+\end{defi}
+
+\ObservacionBox{}{
+    Si $G$ es un $p$-grupo, no necesariamente es finito. (Existen $p$-grupos infinitos, como por ejemplo el grupo de Prüfer $\mathbb{Z}_{p^\infty}$).
+}
+
+\CorolarioBox{}{
+    Si $G$ es un $p$-grupo finito, entonces $|G| = p^n$ para algún $n \in \mathbb{N}$.
+}
+
+\begin{proof}
+    Supongamos que $|G|$ no es una potencia de $p$.
+    Entonces, por el Teorema Fundamental de la Aritmética, existe un primo $q$ tal que $q \mid |G|$ y $q \neq p$.
+    Por el Teorema de Cauchy, como $q$ divide al orden del grupo, existe un elemento $g \in G$ tal que $o(g) = q$.
+    Pero $q$ no es una potencia de $p$ (pues $q \neq p$ son primos).
+    Esto contradice la hipótesis de que $G$ es un $p$-grupo (todos sus elementos deben tener orden potencia de $p$).
+    Por lo tanto, el único divisor primo de $|G|$ es $p$, lo que implica que $|G| = p^n$.
+\end{proof}
+
+
+\CorolarioBox{}{
+    Sea $G$ un grupo finito. Entonces $G$ es un $p$-grupo si y solo si $|G| = p^n$ para algún $n \in \mathbb{N}$.
+}
+
+\begin{proof}
+    $\Rightarrow$) Ya fue probado en el corolario anterior.
+    
+    $\Leftarrow$) Supongamos que $|G| = p^n$.
+    Sea $g \in G$ un elemento cualquiera.
+    Por el Teorema de Lagrange, el orden del elemento divide al orden del grupo, es decir, $o(g) \mid |G|$.
+    Como $|G| = p^n$, los únicos divisores son de la forma $p^k$ con $0 \le k \le n$.
+    Por lo tanto, $o(g) = p^k$.
+    Como esto vale para todo $g \in G$, concluimos que $G$ es un $p$-grupo.
+\end{proof}
+
+\begin{eje}
+    Sea $G$ un grupo de orden $pq$, con $p, q$ primos distintos. Sin pérdida de generalidad, supongamos $p < q$.
+    Por el Teorema de Cauchy, existen elementos $a, b \in G$ tales que $o(a) = p$ y $o(b) = q$.
+    Sean $H = \langle a \rangle$ y $K = \langle b \rangle$ los subgrupos generados.
+    
+    Observamos que:
+    \begin{itemize}
+        \item $[G : K] = p$. Como $p$ es el menor primo que divide al orden de $G$ (pues $p < q$), sabemos por un resultado anterior que $K \trianglelefteq G$.
+        \item $H \cap K = \{e\}$, pues los órdenes de sus elementos son coprimos (salvo la identidad).
+        \item $|HK| = \frac{|H||K|}{|H \cap K|} = pq = |G|$, por lo tanto $G = HK$.
+    \end{itemize}
+
+    Ahora analizamos la normalidad de $H$:
+    \begin{enumerate}
+        \item[i)] Si $H \trianglelefteq G$, como ya tenemos $K \trianglelefteq G$ y intersección trivial, entonces $G$ es el producto directo interno:
+        \begin{equation*}
+            G \cong H \times K \cong \mathbb{Z}_p \times \mathbb{Z}_q \cong \mathbb{Z}_{pq}
+        \end{equation*}
+        En este caso, $G$ es cíclico y abeliano.
+        
+        \item[ii)] Si $H$ no es normal en $G$, entonces $G$ no es abeliano (pues en un grupo abeliano todo subgrupo es normal).
+        Sabemos que siempre existe el grupo cíclico $\mathbb{Z}_{pq}$.
+        Si $G$ no es abeliano, su estructura es un producto semidirecto no trivial.
+    \end{enumerate}
+\end{eje}
+
+\CorolarioBox{}{
+    Sea $G$ un grupo de orden $p^2$, con $p$ primo. Entonces $G$ es abeliano.
+}
+
+\begin{proof}
+    Por el Teorema de Cauchy, existe $a \in G$ tal que $o(a) = p$. Sea $H = \langle a \rangle$.
+    Como $|H| = p$ y $|G| = p^2$, el índice es $[G : H] = p$. Como $p$ es el menor primo que divide a $|G|$, entonces $H \trianglelefteq G$.
+    
+    Consideremos un elemento $b \in G \setminus H$.
+    \begin{itemize}
+        \item \textbf{Caso 1:} Si $o(b) = p^2$, entonces $G = \langle b \rangle \cong \mathbb{Z}_{p^2}$, el cual es abeliano.
+        \item \textbf{Caso 2:} Si todo elemento en $G \setminus H$ tiene orden $p$.
+        Sea $K = \langle b \rangle$. Como $b \notin H$ y $|H|=p$ (primo), $H \cap K = \{e\}$.
+        Al ser $H$ normal y $H \cap K = \{e\}$, el subgrupo $HK$ es isomorfo al producto directo.
+        Como $|HK| = p^2 = |G|$, entonces $G \cong H \times K \cong \mathbb{Z}_p \times \mathbb{Z}_p$.
+        El producto directo de grupos abelianos es abeliano.
+    \end{itemize}
+    En cualquier caso, $G$ es abeliano.
+\end{proof}
+
+\TeoremaBox{}{
+    Sea $G$ un $p$-grupo finito no trivial (es decir, $|G| = p^n$ con $n \ge 1$). Entonces su centro es no trivial:
+    \begin{equation*}
+        Z(G) \neq \{e\}
+    \end{equation*}
+}
+
+\begin{proof}
+    Hagamos actuar a $G$ en sí mismo por conjugación:
+    \begin{equation*}
+        g \cdot x = gxg^{-1}
+    \end{equation*}
+    La Ecuación de Clase para esta acción es:
+    \begin{equation*}
+        |G| = |Z(G)| + \sum_{x_i \notin Z(G)} [G : C_G(x_i)]
+    \end{equation*}
+    donde la suma recorre un sistema de representantes de las clases de conjugación no triviales (aquellas con más de un elemento).
+    
+    Analicemos la divisibilidad por $p$:
+    \begin{enumerate}
+        \item $|G| = p^n$, por lo que $|G|$ es divisible por $p$ (pues $n \ge 1$).
+        \item Para cada $x_i \notin Z(G)$, su centralizador $C_G(x_i)$ es un subgrupo propio de $G$ (si fuera todo $G$, $x_i$ estaría en el centro).
+        Por el Teorema de Lagrange, $[G : C_G(x_i)] = \frac{|G|}{|C_G(x_i)|}$.
+        Como $|G|$ es potencia de $p$, este índice también debe ser una potencia de $p$.
+        Como $x_i \notin Z(G)$, el índice es mayor que 1. Por lo tanto, $p$ divide a $[G : C_G(x_i)]$.
+    \end{enumerate}
+    
+    Entonces, en la ecuación de clase:
+    \begin{equation*}
+        \underbrace{|G|}_{\text{divisible por } p} = |Z(G)| + \underbrace{\sum [G : C_G(x_i)]}_{\text{divisible por } p}
+    \end{equation*}
+    Esto implica que $p$ debe dividir a $|Z(G)|$.
+    
+    Como el neutro $e$ siempre está en el centro, $|Z(G)| \ge 1$.
+    Al ser múltiplo de $p$, concluimos que $|Z(G)| \ge p$, por lo que $Z(G) \neq \{e\}$.
+\end{proof}
