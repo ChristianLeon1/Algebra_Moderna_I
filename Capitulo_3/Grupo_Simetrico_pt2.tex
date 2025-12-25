@@ -1,0 +1,412 @@
+\TeoremaBox{Teorema}{
+    Sea $\theta \in S_n$, entonces $\theta$ se representa siempre como un producto de una cantidad par de transposiciones ó siempre como un producto de una cantidad impar de transposiciones.
+}
+
+\begin{proof}
+    Por un teorema anterior $\theta$ es producto de ciclos disjuntos y cada ciclo es producto de transposiciones, luego $\theta$ es producto de transposiciones. Suponga que:
+    \begin{equation*}
+        \theta = \sigma_1 \dots \sigma_k = \tau_1 \dots \tau_s \quad \text{con}
+    \end{equation*}
+    $\sigma_i$'s y $\tau_j$'s transposiciones, entonces para $P_n$ el polinomio definido anteriormente
+    \begin{equation*}
+        \theta(P_n) = (\sigma_1 \dots \sigma_k)(P_n) = (-1)^k P_n = (\tau_1 \dots \tau_s)P_n = (-1)^s P_n
+    \end{equation*}
+    De donde $(-1)^k = (-1)^s$ o $(-1)^{k-s} = 1$, es decir, $k-s$ siempre es par, luego ambos son pares o ambos son impares.
+\end{proof}
+
+\begin{defi}
+    Sea $\theta \in S_n$ diremos que $\theta$ es par si al representarla como producto de transposiciones consta de un número par de ellas. Es impar en caso contrario.
+\end{defi}
+
+\ObservacionBox{Observación}{
+    Sea $A_n = \{ \theta \in S_n \mid \theta \text{ es par} \} \ \forall n \geq 2$, entonces $A_n \leq S_n$, con $[S_n : A_n] = 2$ y por lo tanto $A_n \trianglelefteq S_n$.
+}
+
+\begin{proof}
+    Primero probemos que es un subgrupo ($A_n \leq S_n$).
+    Si $\theta \in A_n$, entonces $\theta = \tau_1 \dots \tau_s$ con $s=2k$ y los $\tau_i$'s son transposiciones.
+    Luego, el inverso es $\theta^{-1} = (\tau_1 \dots \tau_s)^{-1} = \tau_s^{-1} \dots \tau_1^{-1}$.
+    Como la inversa de una transposición es ella misma ($\tau_i^{-1} = \tau_i$), tenemos $\theta^{-1} = \tau_s \dots \tau_1$, que sigue teniendo $s=2k$ transposiciones. Así, $\theta^{-1} \in A_n$.
+
+    Si además $\theta_1 \in A_n$, digamos $\theta_1 = \rho_1 \dots \rho_r$ con $r=2l$ y $\rho_j$'s transposiciones.
+    Entonces el producto $\theta \circ \theta_1 = \tau_1 \dots \tau_s \rho_1 \dots \rho_r$ consta de $s+r = 2k + 2l = 2(k+l)$ transposiciones.
+    Como $2(k+l)$ es par, $\theta \circ \theta_1 \in A_n$.
+    Por lo tanto $A_n \leq S_n$.
+
+    Ahora analicemos el índice. Si $\theta \in S_n$, entonces:
+    Si $\theta$ es par, $\theta \in A_n$.
+    Si $\theta$ es impar, entonces $\theta \notin A_n$, es decir, $\theta A_n \neq A_n$.
+    
+    Más aún, para cualquier otra permutación impar $\theta_1 \in S_n$, veamos que definen la misma clase lateral, es decir $\theta A_n = \theta_1 A_n$.
+    Esto ocurre si y solo si $\theta_1^{-1} \theta \in A_n$.
+    Como $\theta$ y $\theta_1$ son impares, podemos escribirlas como:
+    \begin{equation*}
+        \theta = \tau_1 \dots \tau_{2k+1} \quad \text{y} \quad \theta_1 = \rho_1 \dots \rho_{2m+1}
+    \end{equation*}
+    con los $\tau_i$ y $\rho_j$ transposiciones.
+    Entonces:
+    \begin{equation*}
+        \theta_1^{-1} \theta = (\rho_1 \dots \rho_{2m+1})^{-1} (\tau_1 \dots \tau_{2k+1}) = \rho_{2m+1} \dots \rho_1 \tau_1 \dots \tau_{2k+1}
+    \end{equation*}
+    El número total de transposiciones es $(2m+1) + (2k+1) = 2m + 2k + 2 = 2(m+k+1)$, que es un número par.
+    Por lo tanto $\theta_1^{-1} \theta \in A_n$, lo que implica $\theta A_n = \theta_1 A_n$.
+
+    Así que las clases laterales izquierdas son exactamente dos: $A_n$ (las pares) y $\theta A_n$ (las impares, donde $\theta$ es cualquier permutación impar fija).
+    Luego, $[S_n : A_n] = 2$.
+    
+    En particular, como 2 es el menor primo que divide a $|S_n|=n!$ (para $n \geq 2$), sabemos por un resultado anterior que cualquier subgrupo de índice igual al menor primo divisor del orden del grupo es normal.
+    Así que $A_n \trianglelefteq S_n$.
+\end{proof}
+
+\TeoremaBox{Teorema}{
+    $A_n = \langle \{ \theta \in S_n \mid \theta \text{ es un } 3\text{-ciclo} \} \rangle, \ n \geq 3$.
+}
+
+\begin{proof}
+    Sea $H = \langle \{ \theta \in S_n \mid \theta \text{ es } 3\text{-ciclo} \} \rangle$. Sea $\theta$ un 3-ciclo, es decir, $\theta = (a_1, a_2, a_3)$, entonces
+    \begin{equation*}
+        \theta = (a_1, a_2, a_3) = (a_1, a_2)(a_2, a_3) \in A_n
+    \end{equation*}
+    luego
+    \begin{equation*}
+        \langle \{ \theta \in S_n \mid \theta \text{ es } 3\text{-ciclo} \} \rangle \subseteq A_n
+    \end{equation*}
+
+    Para la contensión inversa basta ver que cada producto de 2 transposiciones es un producto de 3-ciclos. Consideremos $(a_1, a_2)$ y $(b_1, b_2)$ 2 transposiciones.
+    
+    Si $\{a_1, a_2\} = \{b_1, b_2\}$, entonces:
+    \begin{equation*}
+        (a_1, a_2)(b_1, b_2) = (a_1, a_2)(a_1, a_2) = id = (a_1, a_2, a_3)(a_1, a_3, a_2)
+    \end{equation*}
+    
+    Si tiene un solo elemento distinto podemos suponer que son $(a_1, a_2), (a_2, b_2)$ con $a_1 \neq b_2$ y:
+    \begin{equation*}
+        (a_1, a_2)(a_2, b_2) = (a_1, a_2, b_2)
+    \end{equation*}
+    
+    Si no tienen elementos en común, es decir $(a_1, a_2)(b_1, b_2)$:
+    \begin{equation*}
+        (a_1, a_2)(b_1, b_2) = (a_1, a_2, b_1)(a_2, b_1, b_2)
+    \end{equation*}
+    
+    En cualquier caso cada par de transposiciones es el producto de 3-ciclos, luego, cada permutación par es producto de 3-ciclos, así
+    \begin{equation*}
+        A_n \subseteq \langle \{ \theta \in S_n \mid \theta \text{ es } 3\text{-ciclo} \} \rangle \quad \text{y} \quad A_n = H
+    \end{equation*}
+\end{proof}
+
+\TeoremaBox{Teorema}{
+    Sea $n \geq 2$, entonces $A_n$ es el único subgrupo de índice 2 de $S_n$.
+}
+
+\begin{proof}
+    Si $n=2$, $A_2=\{e\}$ y es claro el resultado.
+    Suponga $n \geq 3$ y sea $H \leq S_n$ tal que $[S_n : H] = 2$.
+    
+    Probemos que $H$ contiene a todos los 3-ciclos.
+    Sea $\sigma$ un 3-ciclo. Como $[S_n : H] = 2$, sabemos que $H$ es un subgrupo normal de $S_n$ ($H \trianglelefteq S_n$).
+    Consideremos el grupo cociente $S_n/H$, el cual tiene orden 2. Por lo tanto, el cuadrado de cualquier elemento en el cociente es la identidad del cociente ($H$). Es decir:
+    \begin{equation*}
+        (\sigma H)^2 = \sigma^2 H = H \implies \sigma^2 \in H
+    \end{equation*}
+    
+    Ahora, dado que $\sigma$ es un 3-ciclo, su orden es 3, por lo que $\sigma^3 = id$. Esto implica que $\sigma^4 = \sigma$.
+    Podemos escribir $\sigma$ como:
+    \begin{equation*}
+        \sigma = \sigma^4 = (\sigma^2)^2
+    \end{equation*}
+    Como ya demostramos que $\sigma^2 \in H$ y $H$ es un subgrupo (cerrado bajo la operación), entonces el cuadrado de $\sigma^2$ también debe estar en $H$.
+    Por lo tanto, $\sigma \in H$.
+    
+    Esto demuestra que $H$ contiene a todos los 3-ciclos. Como sabemos por un teorema anterior que $A_n$ está generado por los 3-ciclos, concluimos que $A_n \subseteq H$.
+    
+    Finalmente, utilizamos la multiplicidad del índice:
+    \begin{equation*}
+        [S_n : A_n] = [S_n : H][H : A_n]
+    \end{equation*}
+    Sustituyendo los valores conocidos:
+    \begin{equation*}
+        2 = 2 \cdot [H : A_n] \implies [H : A_n] = 1
+    \end{equation*}
+    Lo cual implica que $H = A_n$.
+\end{proof}
+
+\ObservacionBox{Observación}{
+    Consideremos el grupo multiplicativo $\{1, -1\}$ con la operación definida por:
+    \begin{equation*}
+        1 \cdot 1 = 1, \quad 1(-1) = -1, \quad (-1)(-1) = 1
+    \end{equation*}
+    Definamos la función $\varphi: S_n \to \{1, -1\}$ como:
+    \begin{equation*}
+        \varphi(\theta) = \begin{cases} 
+            1 & \text{si } \theta \text{ es par} \\
+            -1 & \text{si } \theta \text{ es impar}
+        \end{cases}
+    \end{equation*}
+}
+
+\begin{proof}
+    $\varphi$ es homomorfismo.
+    a) Si $\theta, \theta_1$ son pares, $\theta \cdot \theta_1$ es par y $\varphi(\theta \cdot \theta_1) = 1 = \varphi(\theta)\varphi(\theta_1)$.
+    Si $\theta$ es par y $\theta_1$ impar o viceversa, $\theta \cdot \theta_1$ es impar, luego $\varphi(\theta \theta_1) = -1 = \varphi(\theta)\varphi(\theta_1)$.
+    Si $\theta$ y $\theta_1$ son impares $\varphi(\theta) = -1 = \varphi(\theta_1)$ y $\theta \theta_1$ es par y
+    \begin{equation*}
+        \varphi(\theta \theta_1) = 1 = (-1)(-1) = \varphi(\theta)\varphi(\theta_1)
+    \end{equation*}
+    En cualquier caso $\varphi(\theta \theta_1) = \varphi(\theta)\varphi(\theta_1)$. Más aún $\theta \in \text{Ker } \varphi$ si y solo si $\varphi(\theta) = 1$ si y solo si $\theta$ es par si y solo si $\theta \in A_n$ si y solo si $\text{Ker } \varphi = A_n$.
+\end{proof}
+
+\NotaBox{}{
+    $\varphi$ es sobreyectiva.
+    \begin{equation*}
+        \frac{S_n}{A_n} \cong \{1, -1\} \implies [S_n : A_n] = 2 \quad \text{y } A_n \trianglelefteq S_n
+    \end{equation*}
+}
+
+\begin{defi}
+    Sea $\theta, \theta_1 \in G$, $G$ grupo diremos que $\theta$ y $\theta_1$ son conjugados si existe $\sigma \in G$ tal que $\theta = \sigma \theta_1 \sigma^{-1}$ (conjugación).
+\end{defi}
+
+\ObservacionBox{}{
+    Ser conjugado determina una relación de equivalencia, es decir, la relación $\theta \sim \theta_1$ si y solo si $\theta$ y $\theta_1$ son conjugados es de equivalencia.
+    \begin{enumerate}
+        \item[i)] Reflexiva: $\theta \sim \theta$ pues $\theta = e \theta e^{-1}$.
+        \item[ii)] Simétrica: $\theta \sim \theta_1$ si y solo si existe $\sigma \in G$ tal que $\theta = \sigma \theta_1 \sigma^{-1}$ si y solo si existe $\sigma \in G$ tal que $\theta_1 = \sigma^{-1} \theta \sigma$ si y solo si existe $\sigma^{-1} \in G$ tal que $\theta_1 = \sigma^{-1} \theta (\sigma^{-1})^{-1}$ si y solo si $\theta_1 \sim \theta$.
+        \item[iii)] Transitiva: $\theta \sim \theta_1$ y $\theta_1 \sim \theta_2$ entonces existen $\sigma_1, \sigma_2 \in G$ tales que $\theta = \sigma_1 \theta_1 \sigma_1^{-1}$, $\theta_1 = \sigma_2 \theta_2 \sigma_2^{-1}$, entonces
+        \begin{equation*}
+            \theta = \sigma_1 (\sigma_2 \theta_2 \sigma_2^{-1}) \sigma_1^{-1} = (\sigma_1 \sigma_2)(\theta_2)(\sigma_2^{-1} \sigma_1^{-1}) = (\sigma_1 \sigma_2)(\theta_2)(\sigma_1 \sigma_2)^{-1}
+        \end{equation*}
+        y $\sigma_1 \sigma_2 \in G$, luego $\theta \sim \theta_2$.
+    \end{enumerate}
+    A las clases de equivalencia correspondientes las llamaremos clases de conjugación. Denotemos a la clase de conjugación de $\theta$ por $[\theta]$. Entonces para $\theta \in G$, $[\theta] = \{ \theta \}$ si y solo si $\theta \in Z(G)$, $[\theta] = \{ \sigma \theta \sigma^{-1} \mid \sigma \in G \} = \{ \theta \}$ si y solo si $\sigma \theta \sigma^{-1} = \theta \ \forall \sigma \in G$ si y solo si $\sigma \theta = \theta \sigma \ \forall \sigma \in G$ si y solo si $\theta \in Z(G)$.
+}
+
+\begin{defi}
+    Sean $\theta_1, \theta_2 \in S_n$, diremos que $\theta_1$ y $\theta_2$ tienen la misma estructura en ciclos cuando $\theta_1 = \sigma_1 \dots \sigma_s$, $\theta_2 = \tau_1 \dots \tau_k$ son las respectivas factorizaciones de $\theta_1$ y $\theta_2$ como producto de ciclos disjuntos, entonces $s=k$ y salvo el orden $\sigma_i$ y $\tau_i$ son conjugados (tienen la misma longitud) $\forall 1 \leq i \leq s=k$.
+\end{defi}
+
+\begin{eje}
+    \begin{enumerate}
+        \item Considere $S_6$. $\theta_1 = (1 \ 3)(4 \ 5 \ 6)$, $\theta_2 = (2 \ 4)(1 \ 3 \ 5)$.
+        $\theta_1$ y $\theta_2$ tienen la misma estructura en ciclos.
+        \item Considere $S_{10}$. $\theta_1 = (1 \ 2)(3 \ 4)(5 \ 6 \ 7)$, $\theta_2 = (3 \ 4)(5 \ 6 \ 7)(8 \ 9 \ 10)$.
+        $\theta_1$ y $\theta_2$ tienen la misma estructura en ciclos.
+    \end{enumerate}
+\end{eje}
+
+\ObservacionBox{}{
+    Si $\theta = (a_1, \dots, a_r)$ es un $r$-ciclo y $\gamma \in S_n$, entonces:
+    \begin{equation*}
+        \gamma \theta \gamma^{-1} = (\gamma(a_1), \dots, \gamma(a_r))
+    \end{equation*}
+    Es decir, conjugar un ciclo $\theta$ por $\gamma$ resulta en un ciclo de la misma longitud obtenido aplicando $\gamma$ a los elementos de $\theta$.
+}
+
+\begin{proof}
+    En efecto.
+    Si $a = \gamma(a_i)$ para algún $1 \leq i \leq r$, entonces $\gamma^{-1}(a) = a_i$.
+    \begin{equation*}
+        (\gamma \theta \gamma^{-1})(a) = (\gamma \circ \theta)(\gamma^{-1}(a)) = \gamma(\theta(a_i)) = \gamma(a_{i+1})
+    \end{equation*}
+    (Con la convención $a_{r+1} = a_1$).
+    Esto coincide con la acción del ciclo $(\gamma(a_1), \dots, \gamma(a_r))$ sobre el elemento $a = \gamma(a_i)$.
+    
+    Si $a \notin \{\gamma(a_1), \dots, \gamma(a_r)\}$, entonces $\gamma^{-1}(a) \notin \{a_1, \dots, a_r\}$.
+    Como $\theta$ fija los elementos fuera de su soporte:
+    \begin{equation*}
+        \theta(\gamma^{-1}(a)) = \gamma^{-1}(a)
+    \end{equation*}
+    Así:
+    \begin{equation*}
+        (\gamma \circ \theta \circ \gamma^{-1})(a) = \gamma(\theta(\gamma^{-1}(a))) = \gamma(\gamma^{-1}(a)) = a
+    \end{equation*}
+    Por lo tanto, $\gamma \theta \gamma^{-1}$ fija a todo elemento fuera de $\{\gamma(a_1), \dots, \gamma(a_r)\}$.
+    
+    En conclusión:
+    \begin{equation*}
+        \gamma \theta \gamma^{-1} = (\gamma(a_1) \dots \gamma(a_r))
+    \end{equation*}
+\end{proof}
+
+\TeoremaBox{}{
+    Sean $\theta_1, \theta_2 \in S_n$, entonces $\theta_1$ y $\theta_2$ tienen la misma estructura en ciclos si y solo si $\theta_1$ y $\theta_2$ son conjugados.
+}
+
+\begin{proof}
+    $\Rightarrow$) Supongamos que $\theta_1$ y $\theta_2$ tienen la misma estructura en ciclos.
+    Sean $\theta_1 = \sigma_1 \dots \sigma_k$ y $\theta_2 = \tau_1 \dots \tau_k$ sus respectivas descomposiciones en ciclos disjuntos (incluyendo los ciclos de longitud 1 para cubrir todo el conjunto $\{1, \dots, n\}$).
+    Podemos ordenar los ciclos de tal manera que $\sigma_i$ y $\tau_i$ tengan la misma longitud para todo $1 \leq i \leq k$.
+    
+    Denotemos los elementos de cada ciclo como:
+    \begin{equation*}
+        \sigma_i = (a_{i,1}, a_{i,2}, \dots, a_{i,r_i}) \quad \text{y} \quad \tau_i = (b_{i,1}, b_{i,2}, \dots, b_{i,r_i})
+    \end{equation*}
+    donde $r_i$ es la longitud del ciclo $i$.
+    
+    Definamos la permutación $\gamma \in S_n$ tal que aplique cada elemento de $\sigma_i$ en el elemento correspondiente de $\tau_i$. Es decir:
+    \begin{equation*}
+        \gamma(a_{i,j}) = b_{i,j} \quad \forall 1 \leq i \leq k, \ 1 \leq j \leq r_i
+    \end{equation*}
+    Como los ciclos son disjuntos y cubren todo el conjunto, $\gamma$ es una biyección bien definida.
+    
+    Ahora verifiquemos la conjugación para cada ciclo. Por la observación anterior:
+    \begin{equation*}
+        \gamma \sigma_i \gamma^{-1} = (\gamma(a_{i,1}), \dots, \gamma(a_{i,r_i})) = (b_{i,1}, \dots, b_{i,r_i}) = \tau_i
+    \end{equation*}
+    
+    Entonces:
+    \begin{equation*}
+        \gamma \theta_1 \gamma^{-1} = \gamma (\sigma_1 \dots \sigma_k) \gamma^{-1} = (\gamma \sigma_1 \gamma^{-1}) \dots (\gamma \sigma_k \gamma^{-1}) = \tau_1 \dots \tau_k = \theta_2
+    \end{equation*}
+    Por lo tanto, $\theta_1$ y $\theta_2$ son conjugados.
+
+    $\Leftarrow$) Supongamos ahora que $\theta_1$ y $\theta_2$ son conjugados. Es decir, existe $\gamma \in S_n$ tal que $\theta_2 = \gamma \theta_1 \gamma^{-1}$.
+    Sea $\theta_1 = \sigma_1 \dots \sigma_k$ la descomposición de $\theta_1$ en ciclos disjuntos. Entonces:
+    \begin{equation*}
+        \theta_2 = \gamma (\sigma_1 \dots \sigma_k) \gamma^{-1} = (\gamma \sigma_1 \gamma^{-1}) \dots (\gamma \sigma_k \gamma^{-1})
+    \end{equation*}
+    
+    Por la observación anterior, cada término $(\gamma \sigma_i \gamma^{-1})$ es un ciclo de la misma longitud que $\sigma_i$.
+    Además, como los $\sigma_i$ son disjuntos a pares, sus conjugados también lo son (si $\sigma_i$ y $\sigma_j$ no mueven elementos en común, sus conjugados tampoco).
+    
+    Por la unicidad de la descomposición en ciclos disjuntos (salvo el orden), concluimos que la estructura de ciclos de $\theta_2$ es exactamente la misma que la de $\theta_1$ (los mismos ciclos transformados, conservando sus longitudes).
+\end{proof}
+
+\CorolarioBox{}{
+    Sea $n \ge 3$.
+    \begin{enumerate}
+        \item[a)] Si $N \trianglelefteq A_n$ y $N$ contiene un 3-ciclo, entonces $N = A_n$.
+        \item[b)] Si $N \trianglelefteq S_n$ y $N$ contiene una transposición (2-ciclo), entonces $N = S_n$.
+    \end{enumerate}
+}
+
+\begin{proof}
+    \textbf{a)} Supongamos que $N \trianglelefteq A_n$ contiene un 3-ciclo $\theta_1 = (a_1 \ a_2 \ a_3)$.
+    Queremos ver que $N$ contiene a cualquier otro 3-ciclo $\theta_2 = (b_1 \ b_2 \ b_3)$, y dado que los 3-ciclos generan $A_n$, esto implicará $N=A_n$.
+    
+    Sabemos que en $S_n$ todos los 3-ciclos son conjugados. Es decir, existe $\gamma \in S_n$ tal que:
+    \begin{equation*}
+        \theta_2 = \gamma \theta_1 \gamma^{-1}
+    \end{equation*}
+    
+    Analicemos si podemos garantizar que el conjugador esté en $A_n$ (es decir, que sea par):
+    
+    \textit{Caso $n \ge 5$:}
+    Si $\gamma \in A_n$, entonces $\theta_2 \in N$ por la normalidad de $N$ en $A_n$.
+    Si $\gamma \notin A_n$ (es impar), como $n \ge 5$, existen al menos dos elementos $\{c_1, c_2\}$ en $\{1, \dots, n\}$ que no están en el soporte de $\theta_1$ (que tiene 3 elementos).
+    Definimos $\gamma' = \gamma (c_1 \ c_2)$. Como $(c_1 \ c_2)$ es una transposición disjunta de $\theta_1$, conmuta con $\theta_1$.
+    Además, $\gamma'$ es par (producto de impar por impar).
+    Entonces:
+    \begin{equation*}
+        \gamma' \theta_1 (\gamma')^{-1} = \gamma (c_1 \ c_2) \theta_1 (c_1 \ c_2)^{-1} \gamma^{-1} = \gamma \theta_1 \gamma^{-1} = \theta_2
+    \end{equation*}
+    Como $\gamma' \in A_n$ y $N \trianglelefteq A_n$, concluimos que $\theta_2 \in N$.
+    
+    \textit{Caso $n = 3$:}
+    $A_3 = \{(1), (1 \ 2 \ 3), (1 \ 3 \ 2)\}$.
+    Si $N$ contiene un 3-ciclo, por ejemplo $(1 \ 2 \ 3)$, al ser subgrupo debe contener a su inverso $(1 \ 3 \ 2)$ y a la identidad.
+    Por lo tanto, $N$ contiene a todos los elementos de $A_3$, así que $N = A_3$.
+    
+    \textit{Caso $n = 4$:}
+    En $A_4$, los 3-ciclos se dividen en dos clases de conjugación (por ejemplo, la clase de $(1 \ 2 \ 3)$ y la de $(1 \ 3 \ 2)$).
+    Supongamos que $N$ contiene a $\theta = (1 \ 2 \ 3)$.
+    Como $N \trianglelefteq A_4$, $N$ contiene a toda la clase de conjugación de $\theta$ en $A_4$ (que son 4 elementos: $(1 \ 2 \ 3), (1 \ 4 \ 2), (1 \ 3 \ 4), (2 \ 4 \ 3)$).
+    Además, $N$ debe contener a los inversos de estos elementos (por ejemplo, $(1 \ 3 \ 2)$).
+    Al contener elementos de ambas clases de 3-ciclos y ser cerrado bajo productos, $N$ contendrá a todos los 3-ciclos.
+    Como los 3-ciclos generan $A_4$, entonces $N = A_4$.
+    
+    En todos los casos, $N = A_n$.
+
+    \textbf{b)} Sea $N \trianglelefteq S_n$ tal que contiene una transposición $\tau = (a \ b)$.
+    Como $N$ es normal en $S_n$, contiene a todos los conjugados de $\tau$.
+    Sabemos que en $S_n$ cualquier transposición es conjugada de $\tau$ (tienen la misma estructura de ciclos).
+    Por lo tanto, $N$ contiene a todas las transposiciones.
+    Como todo elemento de $S_n$ se puede escribir como producto de transposiciones, concluimos que $N = S_n$.
+\end{proof}
+
+\begin{defi}
+    Sea $G$ un grupo. Diremos que $G$ es \textit{simple} si sus únicos subgrupos normales son $\{e\}$ y el mismo $G$.
+\end{defi}
+
+\TeoremaBox{}{
+    Sea $n \ge 5$, entonces el grupo alternante $A_n$ es simple.
+}
+
+\begin{proof}
+    Sea $H \trianglelefteq A_n$ con $H \neq \{e\}$. Probaremos que $H$ contiene un 3-ciclo. Por el corolario anterior, esto implicará que $H = A_n$.
+    Sea $\alpha \in H$ con $\alpha \neq e$. Analicemos la descomposición de $\alpha$ en ciclos disjuntos:
+
+    \textit{Caso 1: $\alpha$ contiene un ciclo de longitud $r \ge 4$.}
+    Sea $\alpha = (a_1 \ a_2 \ a_3 \ \dots \ a_r) \tau$, donde $\tau$ son los demás ciclos disjuntos.
+    Sea $\beta = (a_1 \ a_2 \ a_3) \in A_n$.
+    Consideremos el conmutador $\rho = \alpha \beta \alpha^{-1} \beta^{-1} \in H$ (pues $H \trianglelefteq A_n$).
+    \begin{equation*}
+    \begin{aligned}
+        \rho &= \alpha (a_1 \ a_2 \ a_3) \alpha^{-1} (a_1 \ a_3 \ a_2) \\
+             &= (\alpha(a_1) \ \alpha(a_2) \ \alpha(a_3)) (a_1 \ a_3 \ a_2) \\
+             &= (a_2 \ a_3 \ a_4) (a_1 \ a_3 \ a_2) \\
+             &= (a_1 \ a_4 \ a_2)
+    \end{aligned}
+    \end{equation*}
+    Así, $\rho = (a_1 \ a_4 \ a_2)$ es un 3-ciclo que pertenece a $H$.
+
+    \textit{Caso 2: $\alpha$ contiene 3-ciclos en su descomposición.}
+    Si $\alpha$ es un 3-ciclo, ya terminamos.
+    Si no, $\alpha = (a_1 \ a_2 \ a_3)(a_4 \ a_5 \ a_6) \dots$.
+    Sea $\beta = (a_1 \ a_2 \ a_4) \in A_n$.
+    Consideremos $\rho = \alpha \beta \alpha^{-1} \beta^{-1} \in H$:
+    \begin{equation*}
+    \begin{aligned}
+        \rho &= (\alpha(a_1) \ \alpha(a_2) \ \alpha(a_4)) (a_1 \ a_4 \ a_2) \\
+             &= (a_2 \ a_3 \ a_5) (a_1 \ a_4 \ a_2) \\
+             &= (a_1 \ a_4 \ a_3 \ a_5 \ a_2)
+    \end{aligned}
+    \end{equation*}
+    $\rho$ es un 5-ciclo. Aplicando el Caso 1 a $\rho$, concluimos que $H$ contiene un 3-ciclo.
+
+    \textit{Caso 3: $\alpha$ es producto de transposiciones disjuntas.}
+    \begin{enumerate}
+        \item[i)] $\alpha = (a_1 \ a_2)(a_3 \ a_4)$. (Solo dos transposiciones).
+        Como $n \ge 5$, existe $a_5 \notin \{a_1, a_2, a_3, a_4\}$.
+        Sea $\beta = (a_1 \ a_2 \ a_5) \in A_n$.
+        \begin{equation*}
+            \rho = \alpha \beta \alpha^{-1} \beta^{-1} = (a_2 \ a_1 \ a_5)(a_1 \ a_5 \ a_2) = (a_1 \ a_5)(a_2 \ a_5) = (a_1 \ a_2 \ a_5)
+        \end{equation*}
+        Obtenemos directamente un 3-ciclo en $H$.
+
+        \item[ii)] $\alpha = (a_1 \ a_2)(a_3 \ a_4)(a_5 \ a_6) \dots$. (Más de dos transposiciones).
+        Sea $\beta = (a_1 \ a_2 \ a_3) \in A_n$.
+        \begin{equation*}
+            \rho = \alpha \beta \alpha^{-1} \beta^{-1} = (a_2 \ a_1 \ a_4)(a_1 \ a_3 \ a_2) = (a_1 \ a_4)(a_2 \ a_3)
+        \end{equation*}
+        Ahora $\rho$ tiene la forma del subcaso (i) anterior. Aplicando el argumento de (i) a $\rho$, obtenemos un 3-ciclo.
+    \end{enumerate}
+
+    En cualquier caso, $H$ contiene un 3-ciclo. Por lo tanto, $H = A_n$.
+\end{proof}
+
+\TeoremaBox{}{
+    $A_4$ no tiene subgrupos de orden 6.
+}
+
+\begin{proof}
+    Sabemos que $|A_4| = \frac{4!}{2} = 12$.
+    Supongamos que existe $H \leq A_4$ tal que $|H| = 6$.
+    Entonces el índice es $[A_4 : H] = \frac{12}{6} = 2$.
+    
+    Sabemos que todo subgrupo de índice 2 es normal, por lo tanto $H \trianglelefteq A_4$.
+    Además, en el grupo cociente $A_4/H$ (que es de orden 2), el cuadrado de cualquier elemento es la identidad. Esto significa que para todo $\sigma \in A_4$, $\sigma^2 H = H$, es decir, $\sigma^2 \in H$.
+    
+    Consideremos los 3-ciclos de $A_4$. Sea $\theta$ un 3-ciclo.
+    Entonces $\theta^3 = e$, de donde $\theta^4 = \theta$.
+    Podemos escribir $\theta = (\theta^2)^2$.
+    Como $\theta^2 \in H$ (por la propiedad del índice 2), y $H$ es subgrupo, entonces $(\theta^2)^2 \in H$, luego $\theta \in H$.
+    
+    Esto implica que $H$ debe contener a \textbf{todos} los 3-ciclos de $A_4$.
+    Los 3-ciclos en $A_4$ son:
+    $(1 \ 2 \ 3), (1 \ 3 \ 2), (1 \ 2 \ 4), (1 \ 4 \ 2), (1 \ 3 \ 4), (1 \ 4 \ 3), (2 \ 3 \ 4), (2 \ 4 \ 3)$.
+    Hay 8 3-ciclos en total.
+    
+    Por lo tanto, $|H| \ge 8$, lo cual contradice la hipótesis de que $|H| = 6$.
+    Concluimos que no existe tal subgrupo.
+\end{proof}

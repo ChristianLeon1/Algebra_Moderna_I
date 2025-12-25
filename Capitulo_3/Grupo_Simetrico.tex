@@ -116,25 +116,25 @@ Así $|\sigma| \mid k$. Además $\sigma^l(i_1) \neq i_1, \forall 1 \leq l < k$ a
     
     Suponga el resultado para todo $1 \leq l \leq k$ y considere que $\theta$ mueve a los elementos $\{i_1, \dots, i_k, i_{k+1}\}$. Considere que $\theta$ mueve a los elementos $\{i_1, \dots, i_k, i_{k+1}\}$. Observe que $i_1, \theta(i_1), \theta^2(i_1), \dots, \theta^{k+1}(i_1) \in \{i_1, \dots, i_{k+1}\}$, por lo tanto $\{i_1, \theta(i_1), \dots, \theta^{k+1}(i_1)\} \subseteq \{i_1, \dots, i_{k+1}\}$, luego existen $1 \leq l, l' \leq k+2$ y $\theta^l(i_1) = \theta^{l'}(i_1)$ y podemos suponer $l > l'$, en este caso $\theta^{l-l'}(i_1) = i_1$, y $1 \leq l-l' \leq k+2-l' \leq k+1$, es decir existe $p$ tal que $\theta^p(i_1) = i_1$, $1 \leq p \leq k+1$.
     
-    Sea $p$ el mínimo entero para el cual pasa esto. \par Sea $\sigma = (i_1, \theta(i_1), \dots, \theta^{p-1}(i_1))$.
+    Sea $p$ el mínimo entero para el cual pasa esto. \par Sea $\sigma = (i_1, \theta(i_1), \dots, \theta^{p-1}(i_1))$. 
     $\{i_1, \theta(i_1), \dots, \theta^{p-1}(i_1)\} \subseteq \{i_1, \dots, i_{k+1}\}$ y definamos
     \begin{equation*}
         \tau(i_j) = \begin{cases} 
-            i_j & \text{si } i_j = \theta^l(i_1) \text{ para algún } 1 \leq l \leq p-1 \\
+            \sigma(i_j) & \text{si } \sigma(i_j) = \theta^l(i_1) \text{ para algún } 1 \leq l \leq p-1 \\
             \theta(i_j) & \text{si } i_j \neq \theta^l(i_1) \ \forall 1 \leq l \leq p-1
         \end{cases}
     \end{equation*}
     
     Entonces $\sigma \circ \tau = \theta$. Si $j \notin \{i_1, \dots, i_{k+1}\}$ entonces $j \neq \theta^l(i_1) \ \forall 1 \leq l \leq p-1$ y entonces
     \begin{equation*}
-        (\sigma \circ \tau)(j) = \sigma(\tau(j)) = \sigma(\theta(j)) = \theta(j) = j = \theta(j)
+        (\sigma \circ \tau)(j) = \sigma(\tau(j)) = \sigma(\theta(j)) = \sigma(j) = j = \theta(j)
     \end{equation*}
     
     Si $j \in \{i_1, \dots, i_{k+1}\} \cap \{i_1, \theta(i_1), \dots, \theta^{p-1}(i_1)\}$, entonces $j = \theta^l(i_1)$ con $0 \leq l \leq p-1$.
     \begin{equation*}
-        \theta(j) = \theta^{l+1}(i_1) \quad \text{y} \quad \sigma \circ \tau(j) = \sigma(\tau(j)) = \sigma(\theta^l(i_1)) \overset{(*)}{=} \sigma(i_j)
+        \theta(j) = \theta^{l+1}(i_1) \quad \text{y} \quad \sigma \circ \tau(j) = \sigma(\tau(j)) = \sigma(\theta^l(i_1))= \theta^{l+1}(i_1) =\theta(j)
     \end{equation*}
-    (Definición: Como $j$ está en el soporte de $\sigma$, $\tau(j)=j$, luego $\sigma(\tau(j)) = \sigma(j)$. Y como $\sigma$ es el ciclo $(i_1, \dots, \theta^{p-1}(i_1))$, $\sigma(j) = \theta(j)$).
+    (Definición: Como $j$ está en el soporte de $\sigma$, $\tau(j)=\theta(j)$, luego $\sigma(\theta(j)) = \theta(j)$. Y como $\sigma$ es el ciclo $(i_1, \dots, \theta^{p-1}(i_1))$, $\sigma(j) = \theta(j)$).
     En cualquier caso $\theta(j) = (\sigma \circ \tau)(j)$ por lo tanto $\theta = \sigma \circ \tau$.
     
     Ahora $\tau$ mueve a los elementos $\{i_1, \dots, i_{k+1}\} \setminus \{i_1, \sigma(i_1), \dots, \sigma^{p-1}(i_1)\}$ cuya cardinalidad es menor o igual a $k$. Por hipótesis de inducción $\tau$ es producto de ciclos disjuntos y por lo tanto $\theta$ lo es.
@@ -181,11 +181,152 @@ Así $|\sigma| \mid k$. Además $\sigma^l(i_1) \neq i_1, \forall 1 \leq l < k$ a
 }
 
 \begin{proof}
-    Sea $\theta = \sigma_1 \dots \sigma_k$ con los $\sigma_i$'s ciclos disjuntos a pares y $n_i = o(\sigma_i)$
+    Sea $\theta = \sigma_1 \dots \sigma_k$ con los $\sigma_i$'s ciclos disjuntos a pares y $n_i = o(\sigma_i)$, 
     $m = [n_1, \dots, n_k]$ entonces
     \begin{equation*}
         \theta^m = (\sigma_1 \dots \sigma_k)^m = \sigma_1^m \dots \sigma_k^m = id
     \end{equation*}
-    de donde $o(\theta) \mid m$.
+    De donde $o(\theta) \mid m$.
     Si $o(\theta) < m$, $Id = \theta^{o(\theta)} = \sigma_1^{o(\theta)} \dots \sigma_k^{o(\theta)}$, por lo cual $n_i \mid o(\theta) \ \forall i$, de donde $m = [n_1, \dots, n_k] \mid o(\theta)$ de donde $m = o(\theta)$.
 \end{proof}
+
+\ObservacionBox{}{
+    \begin{enumerate}
+        \item Sea $(i \ j)$ una transposición de $S_n$, entonces $(i \ j) = (1 \ i)(1 \ j)(1 \ i)$.
+        \item Sean $x_1, \dots, x_n$ variables. Definimos
+        \begin{equation*}
+            P_n = P_n(x_1, \dots, x_n) = \prod_{1 \leq i < j \leq n} (x_i - x_j) \quad \forall n \geq 2
+        \end{equation*}
+        y hagamos actuar el grupo de permutaciones sobre $P_n$ de la siguiente forma. Para $\theta \in S_n$:
+        \begin{equation*}
+            \theta(P_n) = P_n^\theta = \prod_{1 \leq i < j \leq n} (x_{\theta(i)} - x_{\theta(j)})
+        \end{equation*}
+        \item Si $1 < k \leq n$ y $\theta = (1, k)$, entonces $\theta(P_n) = -P_n$.
+        \item Si $\theta = (i \ j)$ es una transposición, $\theta(P_n) = -P_n$.
+        \item Sea $\theta \in S_n$ un $r$-ciclo, entonces $\theta$ es producto de transposiciones (se puede representar como un producto de transposiciones, no necesariamente única).
+    \end{enumerate}
+}
+
+\begin{proof}[Demostración de 1)]
+    Queremos demostrar que la transposición $(i \ j)$ es igual al producto $(1 \ i)(1 \ j)(1 \ i)$.
+    Llamemos $\sigma = (1 \ i)(1 \ j)(1 \ i)$ y evaluemos su acción sobre los elementos de $\{1, \dots, n\}$ actuando de derecha a izquierda (orden de composición de funciones). Asumimos $1, i, j$ distintos (si alguno es igual, la igualdad es trivial).
+
+    \begin{itemize}
+        \item Para el elemento $1$:
+        \begin{equation*}
+            1 \xrightarrow{(1 \ i)} i \xrightarrow{(1 \ j)} i \xrightarrow{(1 \ i)} 1
+        \end{equation*}
+        Luego $\sigma(1) = 1$. (El $1$ queda fijo, lo cual es correcto pues $(i \ j)$ no mueve al $1$).
+
+        \item Para el elemento $i$:
+        \begin{equation*}
+            i \xrightarrow{(1 \ i)} 1 \xrightarrow{(1 \ j)} j \xrightarrow{(1 \ i)} j
+        \end{equation*}
+        Luego $\sigma(i) = j$.
+
+        \item Para el elemento $j$:
+        \begin{equation*}
+            j \xrightarrow{(1 \ i)} j \xrightarrow{(1 \ j)} 1 \xrightarrow{(1 \ i)} i
+        \end{equation*}
+        Luego $\sigma(j) = i$.
+
+        \item Para cualquier otro elemento $k \notin \{1, i, j\}$:
+        Todas las transposiciones en el producto fijan a $k$, por lo tanto $\sigma(k) = k$.
+    \end{itemize}
+
+    Como $\sigma$ intercambia $i$ con $j$ y deja fijos a los demás elementos (incluido el $1$), concluimos que $\sigma = (i \ j)$.
+\end{proof}
+
+\begin{proof}[Demostración de 2)]
+    Queremos verificar que la acción definida cumple con la propiedad de grupo $(\tau \circ \theta)(P_n) = \tau(\theta(P_n))$.
+    
+    Recordemos que la acción de una permutación $\sigma$ sobre un polinomio en variables $x_1, \dots, x_n$ consiste en reemplazar cada subíndice $k$ por $\sigma(k)$. Es decir, $\sigma$ actúa sobre las posiciones de las variables.
+    
+    Sea $P_n = \prod (x_i - x_j)$.
+    Primero aplicamos $\theta$:
+    \begin{equation*}
+        \theta(P_n) = \prod_{1 \leq i < j \leq n} (x_{\theta(i)} - x_{\theta(j)})
+    \end{equation*}
+    Llamemos $Q(x_1, \dots, x_n)$ a este nuevo polinomio. Notemos que el término que ocupaba la posición asociada al índice $k$ ahora tiene el índice $\theta(k)$.
+    
+    Ahora aplicamos $\tau$ al polinomio $Q$. La regla dice que $\tau$ reemplaza cualquier variable con índice $m$ por la variable con índice $\tau(m)$.
+    En $Q$, tenemos variables de la forma $x_{\theta(i)}$. Aquí el índice es $m = \theta(i)$.
+    Al aplicar $\tau$, reemplazamos $x_{\theta(i)}$ por $x_{\tau(\theta(i))}$.
+    \begin{equation*}
+        \tau(\theta(P_n)) = \prod_{1 \leq i < j \leq n} (x_{\tau(\theta(i))} - x_{\tau(\theta(j))})
+    \end{equation*}
+    
+    Por otro lado, consideremos la permutación compuesta $\rho = \tau \circ \theta$.
+    Si aplicamos $\rho$ directamente a $P_n$, reemplazamos cada índice $k$ por $\rho(k) = \tau(\theta(k))$.
+    \begin{equation*}
+        (\tau \circ \theta)(P_n) = \prod_{1 \leq i < j \leq n} (x_{(\tau \circ \theta)(i)} - x_{(\tau \circ \theta)(j)}) = \prod_{1 \leq i < j \leq n} (x_{\tau(\theta(i))} - x_{\tau(\theta(j))})
+    \end{equation*}
+    
+    Comparando ambas expresiones, tenemos que $(\tau \circ \theta)(P_n) = \tau(\theta(P_n))$.
+\end{proof}
+
+\begin{proof}[Demostración de 3)]
+    Procedamos por inducción sobre $n$.
+    
+    Para $n=2$, tenemos $1 < k \leq 2 \implies k=2$, luego $\theta=(1, 2)$.
+    \begin{equation*}
+        \theta(P_2) = \theta(x_1 - x_2) = x_{\theta(1)} - x_{\theta(2)} = x_2 - x_1 = -(x_1 - x_2) = -P_2
+    \end{equation*}
+    
+    Suponga el resultado cierto para $n$, es decir, para $1 < k \leq n$. Note que:
+    \begin{equation*}
+    \begin{aligned}
+        P_{n+1} &= \prod_{1 \leq i < j \leq n+1} (x_i - x_j) = \prod_{1 \leq i < j \leq n} (x_i - x_j) \cdot \prod_{1 \leq i \leq n} (x_i - x_{n+1}) \\
+        &= P_n \cdot \prod_{1 \leq i \leq n} (x_i - x_{n+1})
+    \end{aligned}
+    \end{equation*}
+    
+    Caso A: Si $1 < k \leq n$, entonces $\theta = (1, k) \in S_n \subseteq S_{n+1}$ (fija a $n+1$).
+    \begin{equation*}
+    \begin{aligned}
+        \theta(P_{n+1}) &= \theta \left( P_n \cdot \prod_{1 \leq i \leq n} (x_i - x_{n+1}) \right) \\
+        &= \theta(P_n) \cdot \theta \left( \prod_{1 \leq i \leq n} (x_i - x_{n+1}) \right) \\
+        &\overset{\text{H.I.}}{=} (-P_n) \cdot \prod_{1 \leq i \leq n} (x_{\theta(i)} - x_{n+1})
+    \end{aligned}
+    \end{equation*}
+    Como $\theta$ solo permuta los elementos $\{1, \dots, n\}$, el conjunto de factores en la productoria es el mismo (solo cambia el orden), por lo tanto el producto permanece invariante.
+    \begin{equation*}
+        = -P_n \cdot \prod_{1 \leq i \leq n} (x_i - x_{n+1}) = -P_{n+1}
+    \end{equation*}
+    
+    Caso B: Si $k=n+1$, entonces $\theta=(1, n+1)$. Descomponemos $P_{n+1}$ cuidadosamente:
+    \begin{align*}
+        \theta(P_{n+1}) &= \theta \left[ \prod_{1 < i < j \leq n} (x_i - x_j) \cdot \prod_{1 < j \leq n} (x_1 - x_j) \cdot \prod_{1 < i < n+1} (x_i - x_{n+1}) \cdot (x_1 - x_{n+1}) \right] \\
+        &= \prod_{1 < i < j \leq n} (x_i - x_j) \cdot \prod_{1 < j \leq n} (x_{n+1} - x_j) \cdot \prod_{1 < i < n+1} (x_i - x_1) \cdot (x_{n+1} - x_1) \\
+        &= \prod_{1 < i < j \leq n} (x_i - x_j) \cdot \prod_{1 < j \leq n} [-(x_j - x_{n+1})] \cdot \prod_{1 < i < n+1} [-(x_1 - x_i)] \cdot [-(x_1 - x_{n+1})] \\
+        &- \left[ \prod_{1 < i < j \leq n} (x_i - x_j) \cdot \prod_{1 < j \leq n} (x_j - x_{n+1}) \cdot \prod_{1 < i < n+1} (x_1 - x_i) \cdot (x_1 - x_{n+1}) \right] \\
+        &= - \left( \prod_{1 \leq i < j \leq n} (x_i - x_j) \cdot \prod_{1 \leq j \leq n} (x_j - x_{n+1}) \right) \\
+        &=P_n \cdot \prod_{1 \leq i \leq n} (x_i - x_{n+1}) = - P_{n+1}
+    \end{align*}
+\end{proof}
+
+\begin{proof}[Demostración de 4)]
+    Si $\theta = (i \ j)$ es una transposición, por la observación 1 sabemos que $(i \ j) = (1 \ i)(1 \ j)(1 \ i)$. Usando la propiedad 3 repetidamente:
+    \begin{equation*}
+    \begin{aligned}
+        \theta(P_n) &= [(1 \ j)(1 \ i)(1 \ j)] P_n \\
+        &= (1 \ j)((1 \ i)((1 \ j) P_n)) \\
+        &= (1 \ j)((1 \ i)(-P_n)) \\
+        &= (1 \ j)(-(-P_n)) \\
+        &= (1 \ j)(P_n) = -P_n
+    \end{aligned}
+    \end{equation*}
+\end{proof}
+
+\begin{proof}[Demostración de 5)]
+    Sea $\theta = (i_1, \dots, i_k)$ un $k$-ciclo. Podemos descomponerlo verificando la acción sobre los elementos:
+    \begin{equation*}
+        (i_1, \dots, i_k) = (i_1, i_2)(i_2, i_3) \dots (i_{k-2}, i_{k-1})(i_{k-1}, i_k)
+    \end{equation*}
+\end{proof}
+
+\begin{eje}
+    $(1 \ 2 \ 3) = (1 \ 2)(2 \ 3)$.
+    También se puede escribir de forma no única, por ejemplo:
+    $(1 \ 2 \ 3) = (4 \ 5)(1 \ 2)(2 \ 3)(4 \ 5) = (1 \ 2)(1 \ 2)(1 \ 2)(2 \ 3)(3 \ 2)(3 \ 2)$.
+\end{eje}
