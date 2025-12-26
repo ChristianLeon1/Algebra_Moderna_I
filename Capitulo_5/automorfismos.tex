@@ -1,0 +1,346 @@
+\section{Automorfismos de Grupos}
+\label{chap:automorfismos}
+
+\begin{defi}
+    Un \textbf{automorfismo} de un grupo $G$ es un isomorfismo de $G$ en sí mismo.
+    Al conjunto de automorfismos se le denota por $\text{Aut}(G)$. Así:
+    \begin{equation*}
+        \text{Aut}(G) = \{ f: G \to G \mid f \text{ es un isomorfismo} \}
+    \end{equation*}
+\end{defi}
+
+\begin{obs}
+    Si $G$ es finito y $f: G \to G$ es un homomorfismo, entonces $f$ es inyectivo si y solo si $f$ es suprayectivo.
+\end{obs}
+
+\begin{proof}
+    Como $G$ es un grupo finito, denotemos su orden por $|G| = n < \infty$.
+    
+    $\Rightarrow)$ Supongamos que $f$ es inyectiva.
+    Dado que $f$ es una función inyectiva, la cantidad de elementos en su imagen es igual a la cantidad de elementos en su dominio.
+    Es decir, $|\text{Im}(f)| = |G| = n$.
+    Sabemos que $\text{Im}(f) \subseteq G$. Dado que $\text{Im}(f)$ es un subconjunto de $G$ y tiene la misma cardinalidad finita que $G$, necesariamente $\text{Im}(f) = G$.
+    Por lo tanto, $f$ es suprayectiva.
+
+    $\Leftarrow)$ Supongamos que $f$ es suprayectiva.
+    Consideremos el núcleo de $f$, $\ker(f)$. Por el Primer Teorema de Isomorfía, sabemos que:
+    \begin{equation*}
+        G / \ker(f) \cong \text{Im}(f)
+    \end{equation*}
+    Tomando cardinalidades:
+    \begin{equation*}
+        \frac{|G|}{|\ker(f)|} = |\text{Im}(f)|
+    \end{equation*}
+    Como $f$ es suprayectiva, $\text{Im}(f) = G$, por lo que $|\text{Im}(f)| = |G|$. Sustituyendo en la ecuación:
+    \begin{equation*}
+        \frac{|G|}{|\ker(f)|} = |G|
+    \end{equation*}
+    Como $|G|$ es finito y no nulo, podemos dividir ambos lados por $|G|$, obteniendo:
+    \begin{equation*}
+        \frac{1}{|\ker(f)|} = 1 \implies |\ker(f)| = 1
+    \end{equation*}
+    El único subgrupo de orden 1 es el trivial, por lo tanto $\ker(f) = \{e\}$.
+    Sabemos que un homomorfismo es inyectivo si y solo si su núcleo es trivial. Concluimos que $f$ es inyectiva.
+\end{proof}
+
+\begin{prop}
+    Sea $G$ un grupo y $a \in G$. Definimos $f_a: G \to G$ por $f_a(g) = aga^{-1}$. Se verifica que $f_a$ es un isomorfismo.
+\end{prop}
+
+\begin{proof}
+    i) $f_a$ es homomorfismo:
+    Sean $g_1, g_2 \in G$.
+    \begin{equation*}
+        f_a(g_1 g_2) = a(g_1 g_2)a^{-1} = a g_1 (a^{-1} a) g_2 a^{-1} = (a g_1 a^{-1})(a g_2 a^{-1}) = f_a(g_1) f_a(g_2)
+    \end{equation*}
+    
+    ii) $f_a$ es inyectiva:
+    \begin{equation*}
+        f_a(g) = f_a(g_1) \iff aga^{-1} = ag_1 a^{-1} \iff g = g_1
+    \end{equation*}
+
+    iii) $f_a$ es sobreyectiva:
+    Dado $y \in G$, existe $x = a^{-1} y a \in G$ tal que:
+    \begin{equation*}
+        f_a(x) = f_a(a^{-1} y a) = a(a^{-1} y a)a^{-1} = (a a^{-1}) y (a a^{-1}) = e y e = y
+    \end{equation*}
+    
+    Por lo tanto, $f_a$ es un isomorfismo de $G$ en sí mismo (un automorfismo).
+\end{proof}
+
+\begin{defi}
+    Al conjunto de los automorfismos de la forma $f_a$ se les llama automorfismos internos de $G$, y se denota por $\text{Im}(G)$.
+    \begin{equation*}
+        \text{Im}(G) = \{ f_a: G \to G \mid f_a(g) = aga^{-1}, \text{ para algún } a \in G \}
+    \end{equation*}
+\end{defi}
+
+\begin{obs}
+    $\text{Aut}(G)$, con la operación de composición de funciones, es un grupo.
+\end{obs}
+
+\begin{proof}
+    Sabemos que la composición de biyecciones es una biyección y la composición de homomorfismos es un homomorfismo.
+    Sean $f, g \in \text{Aut}(G)$. Entonces $f \circ g$ es biyectiva y es homomorfismo, luego $f \circ g \in \text{Aut}(G)$.
+    La asociatividad se hereda de la composición de funciones.
+    La identidad es $Id_G(x) = x$, que trivialmente es un automorfismo.
+    Si $f \in \text{Aut}(G)$, su función inversa $f^{-1}$ también es un isomorfismo, por lo que $f^{-1} \in \text{Aut}(G)$.
+\end{proof}
+
+\begin{eje}
+    Si $G$ es un grupo, definamos $\varphi: G \to \text{Aut}(G)$ como $\varphi(g) = f_g$, donde $f_g: G \to G$ está dado por $f_g(a) = gag^{-1}$.
+    Entonces $\varphi$ es un homomorfismo.
+    
+    En efecto:
+    \begin{equation*}
+        f_{gg_1}(a) = (gg_1)a(gg_1)^{-1} = g(g_1 a g_1^{-1})g^{-1} = g f_{g_1}(a) g^{-1} = f_g(f_{g_1}(a)) = (f_g \circ f_{g_1})(a)
+    \end{equation*}
+    Por lo tanto:
+    \begin{equation*}
+        \varphi(gg_1) = f_{gg_1} = f_g \circ f_{g_1} = \varphi(g) \circ \varphi(g_1)
+    \end{equation*}
+    La imagen de $\varphi$ es justamente $Im(G)$.
+\end{eje}
+
+\TeoremaBox{}{
+    Sea $G$ un grupo, entonces $Im(G) \trianglelefteq \text{Aut}(G)$ y
+    \begin{equation*}
+        G/Z(G) \cong Im(G)
+    \end{equation*}
+}
+
+\begin{proof}
+    Sea $\varphi: G \to \text{Aut}(G)$ dada por $\varphi(g) = f_g$ (como en el ejemplo anterior).
+    Entonces, $\varphi$ es un homomorfismo con imagen $Im(G)$.
+    Además:
+    \begin{equation*}
+        g \in \ker \varphi \iff \varphi(g) = Id_G \iff f_g(a) = a, \forall a \in G
+    \end{equation*}
+    \begin{equation*}
+        \iff gag^{-1} = a, \forall a \in G \iff ga = ag, \forall a \in G \iff g \in Z(G)
+    \end{equation*}
+    Por lo tanto, $\ker \varphi = Z(G)$. Por el Primer Teorema de Isomorfía:
+    \begin{equation*}
+        G / \ker \varphi = G/Z(G) \cong \text{Im}(\varphi) = Im(G)
+    \end{equation*}
+    
+    Ahora, para ver la normalidad ($Im(G) \trianglelefteq \text{Aut}(G)$), sea $f_g \in Im(G)$ y $h \in \text{Aut}(G)$. Para $a \in G$:
+    \begin{equation*}
+        (h \circ f_g \circ h^{-1})(a) = h(f_g(h^{-1}(a))) = h(g h^{-1}(a) g^{-1})
+    \end{equation*}
+    Como $h$ es un homomorfismo:
+    \begin{equation*}
+        = h(g) h(h^{-1}(a)) h(g^{-1}) = h(g) a h(g)^{-1} = f_{h(g)}(a)
+    \end{equation*}
+    Luego, $h \circ f_g \circ h^{-1} = f_{h(g)}$. Como $h(g) \in G$, entonces $f_{h(g)} \in Im(G)$.
+    De donde concluimos que $Im(G) \trianglelefteq \text{Aut}(G)$.
+\end{proof}
+
+\begin{obs}
+    Si $G \cong G_1$, entonces $\text{Aut}(G) \cong \text{Aut}(G_1)$.
+\end{obs}
+
+\begin{proof}
+    Sea $\psi: G \to G_1$ un isomorfismo. Definamos $\Psi: \text{Aut}(G) \to \text{Aut}(G_1)$ dada por:
+    \begin{equation*}
+        f \mapsto h_f = \psi \circ f \circ \psi^{-1}
+    \end{equation*}
+
+    Es decir, $\Psi(f) = \psi \circ f \circ \psi^{-1}$.
+    Demostraremos que $\Psi$ es un isomorfismo, en efecto:
+
+    1. $\Psi$ está bien definida:
+    Es decir, $\psi \circ f \circ \psi^{-1} \in \text{Aut}(G_1)$.
+    En efecto, claramente $\psi \circ f \circ \psi^{-1}$ es biyectiva (composición de biyecciones). Además, para $g_1, g_2 \in G_1$:
+    \begin{align*}
+        h_f(g_1 g_2) &= (\psi \circ f \circ \psi^{-1})(g_1 g_2) = \psi(f(\psi^{-1}(g_1 g_2))) \\
+        &= \psi(f(\psi^{-1}(g_1)\psi^{-1}(g_2))) \quad \text{(pues } \psi^{-1} \text{ es hom.)} \\
+        &= \psi(f(\psi^{-1}(g_1)) \cdot f(\psi^{-1}(g_2))) \quad \text{(pues } f \text{ es hom.)} \\
+        &= \psi(f(\psi^{-1}(g_1))) \cdot \psi(f(\psi^{-1}(g_2))) \quad \text{(pues } \psi \text{ es hom.)} \\
+        &= h_f(g_1) h_f(g_2)
+    \end{align*}
+    Por lo tanto, $h_f \in \text{Aut}(G_1)$.
+
+    2. $\Psi$ es homomorfismo:
+    Sean $f, \rho \in \text{Aut}(G)$.
+    \begin{equation*}
+        \Psi(f \circ \rho) = h_{f \circ \rho} = \psi \circ (f \circ \rho) \circ \psi^{-1}
+    \end{equation*}
+    Por otro lado:
+    \begin{equation*}
+        \Psi(f) \circ \Psi(\rho) = (\psi \circ f \circ \psi^{-1}) \circ (\psi \circ \rho \circ \psi^{-1}) = \psi \circ f \circ (\psi^{-1} \circ \psi) \circ \rho \circ \psi^{-1}
+    \end{equation*}
+    Como $\psi^{-1} \circ \psi = Id_G$, esto se reduce a:
+    \begin{equation*}
+        = \psi \circ f \circ \rho \circ \psi^{-1} = h_{f \circ \rho}
+    \end{equation*}
+    Luego, $\Psi(f \circ \rho) = \Psi(f) \circ \Psi(\rho)$.
+
+    3. $\Psi$ es inyectiva:
+    \begin{equation*}
+        \Psi(f) = \Psi(\rho) \iff \psi \circ f \circ \psi^{-1} = \psi \circ \rho \circ \psi^{-1}
+    \end{equation*}
+    Componiendo con $\psi^{-1}$ a la izquierda y $\psi$ a la derecha:
+    \begin{equation*}
+        \iff \psi^{-1} (\psi \circ f \circ \psi^{-1}) \psi = \psi^{-1} (\psi \circ \rho \circ \psi^{-1}) \psi \iff f = \rho
+    \end{equation*}
+
+    4. $\Psi$ es sobreyectiva:
+    Sea $g \in \text{Aut}(G_1)$. Existe $f = \psi^{-1} \circ g \circ \psi \in \text{Aut}(G)$ tal que:
+    \begin{equation*}
+        \Psi(f) = \psi \circ (\psi^{-1} \circ g \circ \psi) \circ \psi^{-1} = (\psi \circ \psi^{-1}) \circ g \circ (\psi \circ \psi^{-1}) = g
+    \end{equation*}
+    Por lo tanto, $\text{Aut}(G) \cong \text{Aut}(G_1)$.
+\end{proof}
+
+\begin{obs}
+    El recíproco es falso.
+\end{obs}
+
+\begin{proof}
+    Sea $G = S_3$. Sus elementos son:
+    \begin{equation*}
+        S_3 = \{e, \theta=(123), \theta^2=(132), \sigma=(12), \tau=(13), \rho=(23) \}
+    \end{equation*}
+    Sabemos que $S_3$ es generado por $\theta$ y $\sigma$ ($\langle \theta, \sigma \rangle = S_3$) con las relaciones $\theta^3 = e, \sigma^2 = e, \sigma\theta = \theta^2\sigma$.
+    Cualquier automorfismo $f \in \text{Aut}(S_3)$ queda determinado por sus valores en los generadores. Además, un isomorfismo preserva el orden de los elementos.
+    
+    Los elementos de orden 3 son $\{\theta, \theta^2\}$. Los elementos de orden 2 son $\{\sigma, \tau, \rho\}$.
+    Por lo tanto, para $f(\theta)$ tenemos 2 opciones ($\theta$ ó $\theta^2$) y para $f(\sigma)$ tenemos 3 opciones ($\sigma, \tau$ ó $\rho$).
+    En total hay a lo más $2 \times 3 = 6$ automorfismos.
+    
+    Sabemos que $\text{Im}(S_3) \cong S_3/Z(S_3)$. Como $Z(S_3) = \{e\}$, entonces $\text{Im}(S_3) \cong S_3$, por lo que $|\text{Im}(S_3)| = 6$.
+    Como $\text{Im}(S_3) \le \text{Aut}(S_3)$ y $|\text{Aut}(S_3)| \le 6$, concluimos que:
+    \begin{equation*}
+        \text{Aut}(S_3) = \text{Im}(S_3) \cong S_3
+    \end{equation*}
+    (Nota: Existen grupos no isomorfos a $S_3$, como $\mathbb{Z}_2 \times \mathbb{Z}_2$, cuyo grupo de automorfismos es isomorfo a $S_3$, mostrando que el recíproco falla).
+\end{proof}
+
+\TeoremaBox{}{
+    Sean $H_1$ y $H_2$ grupos finitos tales que $\gcd(|H_1|, |H_2|) = 1$. Entonces:
+    \begin{equation*}
+        \text{Aut}(H_1 \times H_2) \cong \text{Aut}(H_1) \times \text{Aut}(H_2)
+    \end{equation*}
+}
+
+\begin{proof}
+    Identificamos a $H_1$ con el subgrupo $H_1 \times \{e_2\}$ y a $H_2$ con $\{e_1\} \times H_2$ dentro de $G = H_1 \times H_2$.
+    
+    Sea $f \in \text{Aut}(H_1 \times H_2)$. Probemos que $f(H_1) = H_1$ y $f(H_2) = H_2$.
+    
+    Sea $(h, e_2) \in H_1$. Su orden $k$ divide a $|H_1|$.
+    Aplicando $f$, el elemento $f(h, e_2)$ debe tener el mismo orden $k$.
+    Sea $f(h, e_2) = (x, y) \in H_1 \times H_2$.
+    Entonces el orden de $(x, y)$ es $(|x|, |y|) = k$.
+    Esto implica que $|y|$ divide a $k$, y por tanto $|y|$ divide a $|H_1|$.
+    Pero $y \in H_2$, por lo que $|y|$ divide a $|H_2|$.
+    Como $(|H_1|, |H_2|) = 1$, la única posibilidad es que $|y| = 1$, es decir, $y = e_2$.
+    Por lo tanto, $f(h, e_2) = (x, e_2) \in H_1$.
+    
+    Esto demuestra que $f(H_1) \subseteq H_1$. Por ser $f$ inyectiva y $H_1$ finito, $f(H_1) = H_1$.
+    Análogamente se demuestra que $f(H_2) = H_2$.
+
+    Dado que $f$ preserva los subgrupos $H_1$ y $H_2$, podemos definir las restricciones:
+    $f|_{H_1}: H_1 \to H_1$ y $f|_{H_2}: H_2 \to H_2$.
+    Estas restricciones son automorfismos de $H_1$ y $H_2$ respectivamente.
+    
+    Definimos la función $\Psi: \text{Aut}(H_1 \times H_2) \to \text{Aut}(H_1) \times \text{Aut}(H_2)$ dada por:
+    \begin{equation*}
+        \Psi(f) = (f|_{H_1}, f|_{H_2})
+    \end{equation*}
+    
+    $\Psi$ es un homomorfismo. En efecto:
+
+    Sean $f, g \in \text{Aut}(H_1 \times H_2)$.
+    \begin{equation*}
+        \Psi(f \circ g) = ((f \circ g)|_{H_1}, (f \circ g)|_{H_2}) = (f|_{H_1} \circ g|_{H_1}, f|_{H_2} \circ g|_{H_2})
+    \end{equation*}
+    (Esto es válido porque $g(H_1) = H_1$, así que la composición se restringe bien).
+    \begin{equation*}
+        = (f|_{H_1}, f|_{H_2}) \cdot (g|_{H_1}, g|_{H_2}) = \Psi(f) \cdot \Psi(g)
+    \end{equation*}
+
+    $\Psi$ es biyectiva. En efecto:
+    \begin{itemize}
+        \item \textbf{Inyectiva:} Si $\Psi(f) = (Id_{H_1}, Id_{H_2})$, entonces $f(h, e_2) = (h, e_2)$ y $f(e_1, k) = (e_1, k)$.
+        Para un elemento arbitrario $(h, k) \in H_1 \times H_2$:
+        \begin{equation*}
+            f(h, k) = f((h, e_2)(e_1, k)) = f(h, e_2)f(e_1, k) = (h, e_2)(e_1, k) = (h, k)
+        \end{equation*}
+        Luego $f = Id_{H_1 \times H_2}$, así que $\ker \Psi$ es trivial.
+        
+        \item \textbf{Sobreyectiva:} Dado $(\alpha, \beta) \in \text{Aut}(H_1) \times \text{Aut}(H_2)$, definimos $f: H_1 \times H_2 \to H_1 \times H_2$ como $f(h, k) = (\alpha(h), \beta(k))$.
+        Es fácil verificar que $f$ es un automorfismo y que $\Psi(f) = (\alpha, \beta)$.
+    \end{itemize}
+    
+    Por lo tanto, $\text{Aut}(H_1 \times H_2) \cong \text{Aut}(H_1) \times \text{Aut}(H_2)$.
+\end{proof}
+
+\TeoremaBox{}{
+    Sea $G$ un grupo cíclico de orden $n$. Entonces:
+    \begin{equation*}
+        \text{Aut}(G) \cong (\mathbb{Z}/n\mathbb{Z})^*
+    \end{equation*}
+    Donde $(\mathbb{Z}/n\mathbb{Z})^*$ es el grupo multiplicativo de las unidades módulo $n$.
+    En particular, $|\text{Aut}(G)| = \varphi(n)$, donde $\varphi$ es la función de Euler.
+}
+
+\begin{proof}
+    Sea $G = \langle g \rangle$ un grupo cíclico de orden $n$.
+    Sea $f \in \text{Aut}(G)$. Como $G$ es cíclico, $f$ queda completamente determinado por la imagen del generador $g$.
+    Sea $f(g) = g^{c_f}$ para algún entero $c_f$.
+    Como $f$ es un automorfismo, $f(g)$ debe ser otro generador de $G$.
+    Sabemos que $g^k$ es un generador de $G$ si y solo si $\gcd(k, n) = 1$.
+    Por lo tanto, $\gcd(c_f, n) = 1$, lo que implica que la clase $\overline{c_f}$ pertenece a $(\mathbb{Z}/n\mathbb{Z})^*$.
+    
+    Definimos la función $\Psi: \text{Aut}(G) \to (\mathbb{Z}/n\mathbb{Z})^*$ dada por:
+    \begin{equation*}
+        \Psi(f) = \overline{c_f} \quad \text{donde } f(g) = g^{c_f}
+    \end{equation*}
+    
+    \textbf{1. $\Psi$ es un homomorfismo:}
+    Sean $f_1, f_2 \in \text{Aut}(G)$ con $f_1(g) = g^{c_{f_1}}$ y $f_2(g) = g^{c_{f_2}}$.
+    \begin{equation*}
+        (f_1 \circ f_2)(g) = f_1(f_2(g)) = f_1(g^{c_{f_2}}) = (f_1(g))^{c_{f_2}} = (g^{c_{f_1}})^{c_{f_2}} = g^{c_{f_1} c_{f_2}}
+    \end{equation*}
+    Por lo tanto, el exponente asociado a la composición es el producto de los exponentes:
+    \begin{equation*}
+        \Psi(f_1 \circ f_2) = \overline{c_{f_1} c_{f_2}} = \overline{c_{f_1}} \cdot \overline{c_{f_2}} = \Psi(f_1) \Psi(f_2)
+    \end{equation*}
+    
+    \textbf{2. $\Psi$ es inyectiva:}
+    \begin{equation*}
+        \Psi(f) = \overline{1} \implies c_f \equiv 1 \pmod n \implies f(g) = g^1 = g
+    \end{equation*}
+    Como el automorfismo fija al generador, fija a todo el grupo. Luego $f = Id_G$.
+    
+    \textbf{3. $\Psi$ es sobreyectiva:}
+    Sea $\overline{k} \in (\mathbb{Z}/n\mathbb{Z})^*$. Entonces $\gcd(k, n) = 1$.
+    Definimos $f: G \to G$ por $f(x) = x^k$.
+    Como $\gcd(k, n) = 1$, la aplicación $x \mapsto x^k$ es una biyección en el grupo cíclico finito y es un homomorfismo ($f(xy) = (xy)^k = x^k y^k$ pues $G$ es abeliano).
+    Así, $f \in \text{Aut}(G)$ y $\Psi(f) = \overline{k}$.
+    
+    Por lo tanto, $\text{Aut}(G) \cong (\mathbb{Z}/n\mathbb{Z})^*$.
+\end{proof}
+
+\begin{cor}
+    Si $p$ es un número primo, entonces:
+    \begin{equation*}
+        \text{Aut}(\mathbb{Z}_p) \cong \mathbb{Z}_{p-1}
+    \end{equation*}
+\end{cor}
+
+\begin{proof}
+    Aplicando el teorema anterior con $G = \mathbb{Z}_p$ (cíclico de orden $p$), tenemos:
+    \begin{equation*}
+        \text{Aut}(\mathbb{Z}_p) \cong (\mathbb{Z}/p\mathbb{Z})^*
+    \end{equation*}
+    El orden de este grupo es $\varphi(p) = p-1$.
+    Sabemos por la teoría de grupos finitos (específicamente por la existencia de raíces primitivas módulo $p$) que el grupo multiplicativo de un cuerpo finito $\mathbb{Z}_p$ es siempre cíclico.
+    Por lo tanto:
+    \begin{equation*}
+        (\mathbb{Z}/p\mathbb{Z})^* \cong C_{p-1} \cong \mathbb{Z}_{p-1}
+    \end{equation*}
+    Así concluimos que $\text{Aut}(\mathbb{Z}_p)$ es isomorfo al grupo cíclico de orden $p-1$.
+\end{proof}
