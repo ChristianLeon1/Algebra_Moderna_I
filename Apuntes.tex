@@ -113,7 +113,10 @@
     {\end{proof}}
 
 % Nuevos comandos 
-\import{./}{nuevos_comandos.tex} 
+\import{./}{nuevos_comandos.tex}
+
+% Comando para páginas en blanco
+\newcommand\emptypage{\null\thispagestyle{empty}\newpage}
 
 % Inicio del documento
 
@@ -154,22 +157,27 @@
 \import{./Capitulo_1/}{cardinalidad.tex}
 \import{./Capitulo_1/}{enteros_modulares.tex}
 \import{./Capitulo_1/}{funcion_phi_euler.tex}
+\emptypage
+
 
 \chapter{Grupos}
 \import{./Capitulo_2/}{definicion_grupo.tex}
 \import{./Capitulo_2/}{subgrupos.tex}
 \import{./Capitulo_2/}{grupo_de_permutaciones.tex}
 \import{./Capitulo_2/}{grupos_ciclicos.tex}
+\emptypage
 
 \chapter{Productos Directos}
 \import{./Capitulo_3/}{Producto_directo.tex}
 \import{./Capitulo_3/}{Grupo_Simetrico.tex}
 \import{./Capitulo_3/}{Grupo_Simetrico_pt2.tex}
+\emptypage
 
 \chapter{Acciones de Grupos}
 \import{./Capitulo_4/}{acciones_de_grupos.tex}
 \import{./Capitulo_4/}{acciones_de_grupos_pt2.tex}
 \import{./Capitulo_4/}{grupos_Sylow.tex}
+\emptypage
 
 \chapter{Automorfismos de Grupos}
 \import{./Capitulo_5/}{automorfismos.tex}
