@@ -1,7 +1,24 @@
-\newcommand\ProdInt[2]{\langle {#1} , {#2} \rangle}
-\newcommand\Norma[1]{|| {#1} ||} 
+\makeatletter
 
-\newcommand\EspacioVectorial[2]{Sea ${#1}$ un espacio vectorial sobre ${#2}$}
+\renewenvironment{proof}[1][\proofname]{\par
+	\pushQED{\qed}%
+	\normalfont \topsep6\p@\@plus6\p@\relax
+	\trivlist
+	\item[\hskip\labelsep
+	            \itshape
+	            #1\@addpunct{.}]\mbox{}\\*
+}{
+	\popQED\endtrivlist\@endpefalse
+}
 
-\newcommand\neada[1]{{#1}_{1}, \dots, {#1}_{n}}
-\newcommand\keada[2]{{#1}_{1}, \dots, {#1}_{#2}}
+\newenvironment{enefecto}[1][En efecto,]{\par
+	\pushQED{\qed}%
+	\normalfont \topsep6\p@\@plus6\p@\relax
+	\trivlist
+	\item[\hskip\labelsep
+	            #1]\ignorespaces % <--- \ignorespaces mantiene el texto seguido
+}{%
+	\popQED\endtrivlist\@endpefalse
+}
+
+\makeatother

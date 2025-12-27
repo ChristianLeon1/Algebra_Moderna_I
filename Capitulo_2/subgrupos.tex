@@ -172,3 +172,49 @@ para $n \in \mathbb{Z} ^ {+}$. Si $n = 0$, $a^0 = e$ y podemos observar que $a^{
 
 	Así por la proposición \ref{prop:probar_subgrupo} $H \le G$, así $\langle S \rangle \subseteq H$. Ahora sea $N \le G$, tal que $S \subseteq N$, es claro que $s \in N$ (cualquier elemento de esa forma está en $N$), así $H \subseteq N$, así $H = \langle S \rangle$.
 \end{proof}
+
+\begin{defi}[Grupo cíclico]
+	Sea $G$ un grupo, si $\exists g \in G$, tal que $\langle g \rangle = G$ diremos que $G$ es cíclico.
+\end{defi}
+
+\begin{eje}
+	$(\mathbb{Z}, +, 0)$ es cíclico, pues:
+	\begin{equation*}
+		\langle 1 \rangle = \mathbb{Z}
+	\end{equation*}
+\end{eje}
+
+\begin{eje}
+	$S_3$ no es cíclico.
+\end{eje}
+
+\begin{eje}
+	$(\mathbb{Q}, +, 0)$ no es cíclico.
+\end{eje}
+
+\ObservacionBox{Nota}{
+	Note que si $G$ es cíclico:
+	\begin{equation*}
+		\langle g \rangle = \{ g^t : t \in \mathbb{Z} \}
+	\end{equation*}
+}
+
+\begin{prop}
+	Si $(G, \circ, e)$ es cíclico, entonces $G$ es abeliano.
+\end{prop}
+
+\begin{proof}
+	Sea $(G, \circ, e)$ cíclico, entonces $\exists g \in G$, tal que $\langle g \rangle = G$. Sean $a, b \in G$, tal que $a = g^n$, $b = g^m$, con $n, m \in \mathbb{Z}$. Es fácil probar que $g^p g^q = g^{p+q} \quad \forall p, q \in \mathbb{Z}$, así:
+	\begin{equation*}
+		ab = g^n g^m = g^{n+m} = g^{m+n} = g^m g^n = ba
+	\end{equation*}
+\end{proof}
+
+\ObservacionBox{Observación}{
+	El recíproco del teorema anterior es falso.
+	En efecto, tome los contraejemplos:
+	\begin{enumerate}
+		\item Sea $n \in \mathbb{Z}^+$, no primo (por ejemplo $n=8$), $((\mathbb{Z}/n\mathbb{Z})^*, \cdot)$ es abeliano, pero no cíclico.
+		\item $(\mathbb{R}^+, \cdot)$ es abeliano pero no cíclico.
+	\end{enumerate}
+}
