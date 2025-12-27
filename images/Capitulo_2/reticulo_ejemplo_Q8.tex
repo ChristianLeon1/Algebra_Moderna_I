@@ -1,0 +1,36 @@
+\begin{tikzpicture}[thick, scale=1]
+
+	% --- 1. Definición de Nodos ---
+
+	% Nodo superior (Q8)
+	\node (Q8) at (0, 6) {\Large $Q_8$};
+
+	% Nodos intermedios (Izquierda, Centro, Derecha)
+	% Aumentamos la separación en X (a -5 y 5) porque el texto es largo
+	\node (Hi) at (-5.5, 3.5) {\large $H_i = \langle i \rangle = \{\pm 1, \pm i\}$};
+	\node (Hj) at (0, 3.5)    {\large $H_j = \langle j \rangle = \{\pm 1, \pm j\}$};
+	\node (Hk) at (5.5, 3.5)  {\large $H_k = \langle k \rangle = \{\pm 1, \pm k\}$};
+
+	% Nodo inferior-medio (H_-1)
+	\node (Hm1) at (0, 1.5) {\large $H_{-1} = \langle -1 \rangle = \{\pm 1\}$};
+
+	% Nodo base (Identidad)
+	\node (e) at (0, -0.5) {\large $\langle 1 \rangle = \{1\}$};
+
+
+	% --- 2. Conexiones ---
+
+	% De Q8 a la fila intermedia
+	\draw (Q8) -- node[above left]  {2} (Hi);
+	\draw (Q8) -- node[left, pos=0.6] {2} (Hj); % pos=0.6 ajusta la altura del número
+	\draw (Q8) -- node[above right] {2} (Hk);
+
+	% De la fila intermedia a H_-1
+	\draw (Hi) -- node[below left]  {2} (Hm1);
+	\draw (Hj) -- node[left, pos=0.4] {2} (Hm1);
+	\draw (Hk) -- node[below right] {2} (Hm1);
+
+	% De H_-1 a la identidad
+	\draw (Hm1) -- node[right] {2} (e);
+
+\end{tikzpicture}
