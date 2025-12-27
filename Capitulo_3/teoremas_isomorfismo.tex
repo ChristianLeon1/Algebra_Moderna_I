@@ -22,11 +22,8 @@
 		(g \ker \varphi) \cdot (g_1 \ker \varphi) = (g g_1) \ker \varphi
 	\end{equation*}
 
-	Definamos $f: G/\ker \varphi \to \text{Im } \varphi$, probemos que está bien definida.
-	\begin{equation*}
-		g \ker \varphi \mapsto \varphi(g)
-	\end{equation*}
-	i.e. no depende del representante de clase. Sean $(g \ker \varphi), (g_1 \ker \varphi) \in G/\ker \varphi$, suponga que $g \ker \varphi = g_1 \ker \varphi \implies g^{-1}g_1 \in \ker \varphi$, entonces:
+	Definamos $f: G/\ker \varphi \to \text{Im } \varphi$, dada por $f(g \ker \varphi) = \varphi(g)$ probemos que está bien definida, i.e. no depende del representante de clase. Sean $(g \ker \varphi), (g_1 \ker \varphi) \in G/\ker \varphi$, suponga que $g \ker \varphi = g_1 \ker \varphi \implies g^{-1}g_1 \in \ker \varphi$, entonces:
+
 	\begin{align*}
 		f(g \ker \varphi)              & = f(\ker \varphi)   \\
 		\varphi(g^{-1}g_1)             & = \varphi(e)        \\
@@ -35,13 +32,13 @@
 		\implies f(g_1 \ker \varphi)   & = f(g \ker \varphi)
 	\end{align*}
 
-	\textbf{Probemos que es inyectiva:} sean $g \ker \varphi, g_1 \ker \varphi \in G/\ker \varphi$, tal que:
+	Probemos que es inyectiva: sean $g \ker \varphi, g_1 \ker \varphi \in G/\ker \varphi$, tal que:
 	\begin{equation*}
 		f(g \ker \varphi) = f(g_1 \ker \varphi) \implies \varphi(g) = \varphi(g_1) \implies g^{-1}g \in \ker \varphi,
 	\end{equation*}
 	así $g^{-1} \ker \varphi = g \ker \varphi$ (Nota: aquí el manuscrito implica igualdad de clases).
 
-	\textbf{Probemos que es sobreyectiva:} sea $a \in \text{Im } \varphi \implies \exists g \in G$, tal que $\varphi(g) = a$, así $f(g \ker \varphi) = \varphi(g) = a$.
+	Probemos que es suprayectiva: sea $a \in \text{Im } \varphi \implies \exists g \in G$, tal que $\varphi(g) = a$, así $f(g \ker \varphi) = \varphi(g) = a$.
 
 	$\therefore f$ es un isomorfismo, y $G/\ker \varphi \cong \text{Im } \varphi$.
 \end{proof}
@@ -61,19 +58,21 @@
 \end{proof}
 
 \begin{eje}
-	Sea $G = GL_n(\mathbb{C})$, sea $N = SL_n(\mathbb{C})$, claramente $SL_n(\mathbb{C}) \le GL_n(\mathbb{C})$ con el producto de matrices. Ahora note que $SL_n(\mathbb{C}) \trianglelefteq GL_n(\mathbb{C})$, en efecto, sea $X \in GL_n(\mathbb{C})$, sea $Y \in SL_n(\mathbb{C})$, note:
-	\begin{equation*}
-		\det(XYX^{-1}) = \det(X)\det(Y)\det(X^{-1}) = \det(X) \cdot 1 \cdot \det(X)^{-1} = 1.
-	\end{equation*}
-	$\implies XYX^{-1} \in SL_n(\mathbb{C}) \quad \forall X \in GL_n(\mathbb{C})$.
-
-	Tomando: $\varphi: GL_n(\mathbb{C}) \to \mathbb{C}^*$, claramente es homomorfismo, ya que dadas $A, B \in GL_n(\mathbb{C})$, $\varphi(AB) = \det(AB) = \det(A)\det(B) = \varphi(A)\varphi(B)$, además note que $A \in \ker \varphi \iff \varphi(A) = 1$, por lo cual $\ker \varphi = SL_n(\mathbb{C})$.
-
-	Así:
-	\begin{equation*}
-		\frac{GL_n(\mathbb{C})}{SL_n(\mathbb{C})} \cong \mathbb{C}^* = \mathbb{C} \setminus \{0\}, \text{ por el } 1^{er} \text{ teorema de isomorfismos.}
-	\end{equation*}
+	Sea $G = GL_n(\mathbb{C})$, sea $N = SL_n(\mathbb{C})$, claramente $SL_n(\mathbb{C}) \le GL_n(\mathbb{C})$ con el producto de matrices.
 \end{eje}
+
+Probemos que $SL_n(\mathbb{C}) \trianglelefteq GL_n(\mathbb{C})$, en efecto, sea $X \in GL_n(\mathbb{C})$, sea $Y \in SL_n(\mathbb{C})$, note:
+\begin{equation*}
+	\det(XYX^{-1}) = \det(X)\det(Y)\det(X^{-1}) = \det(X) \cdot 1 \cdot \det(X)^{-1} = 1.
+\end{equation*}
+$\implies XYX^{-1} \in SL_n(\mathbb{C}) \quad \forall X \in GL_n(\mathbb{C})$.
+
+Tomando: $\varphi: GL_n(\mathbb{C}) \to \mathbb{C}^*$, dada por $\varphi(X) = det(X)$ claramente es homomorfismo, ya que dadas $A, B \in GL_n(\mathbb{C})$, $\varphi(AB) = \det(AB) = \det(A)\det(B) = \varphi(A)\varphi(B)$, además note que $A \in \ker \varphi \iff \varphi(A) = 1$, por lo cual $\ker \varphi = SL_n(\mathbb{C})$.
+
+Así:
+\begin{equation*}
+	\frac{GL_n(\mathbb{C})}{SL_n(\mathbb{C})} \cong \mathbb{C}^* = \mathbb{C} \setminus \{0\}, \text{ por el } 1^{er} \text{ teorema de isomorfismos.}
+\end{equation*}
 
 \TeoremaBox{2do teorema de isomorfismo}{
 	Sea $(G, \circ, e)$ un grupo, sean $H, K \le G$, con $K \trianglelefteq G$ entonces $K \cap H \trianglelefteq H$ y
@@ -89,12 +88,7 @@
 	\end{equation*}
 	entonces $K \trianglelefteq KH$, así $\frac{KH}{K}$ es un grupo.
 
-	Definamos $\varphi: H \to \frac{KH}{K}$, sean $h_1, h_2 \in H$,
-	\begin{equation*}
-		h \mapsto hK
-	\end{equation*}
-
-	entonces: $\varphi(h_1 h_2) = (h_1 h_2)K = h_1 K h_2 K = \varphi(h_1)\varphi(h_2)$, por lo cual es un homomorfismo.
+	Definamos $\varphi: H \to \frac{KH}{K}$ con $\varphi(h) = hK$, sean $h_1, h_2 \in H$, entonces: $\varphi(h_1 h_2) = (h_1 h_2)K = h_1 K h_2 K = \varphi(h_1)\varphi(h_2)$, por lo cual es un homomorfismo.
 
 	Note que $h \in \ker \varphi \iff hK = K \iff h \in K \implies h \in H \land h \in K \implies h \in H \cap K$, i.e. $H \cap K = \ker \varphi$.
 
@@ -105,3 +99,97 @@
 \end{proof}
 
 \import{../images/Capitulo_3/}{reticulo_2do_teo_isomorfismo.tex}
+
+\TeoremaBox{Tercer teorema de isomorfismo}{
+	Sea $(G, \cdot, e)$ un grupo, sean $H, K$ subgrupos normales de $G$, tales que $K \subseteq H \subseteq G$, entonces:
+	\begin{equation*}
+		\frac{G/K}{H/K} \cong \frac{G}{H}
+	\end{equation*}
+}
+
+\begin{proof}
+	Dado que $K \trianglelefteq G$, $K \trianglelefteq H$ al tener $K \subseteq H$, además como $G/H, G/K$ son grupos, $H/K$ también lo es. Sea $\varphi: G/K \to G/H$ dada por $\varphi(gK) = gH$, note que $\varphi$ está bien definida.
+
+	En efecto, sean $g_1 K, g_2 K \in G/K$ tales que $g_1 K = g_2 K$, entonces $g_2^{-1}g_1 \in K$, luego $g_2^{-1}g_1 \in H$, entonces $g_1 H = g_2 H$ así $\varphi(g_1 K) = g_1 H = g_2 H = \varphi(g_2 K)$.
+
+	Ahora probemos que es un homomorfismo, sean $g_1 K, g_2 K \in G/K$:
+	\begin{equation*}
+		\varphi((g_1 K)(g_2 K)) = \varphi(g_1 g_2 K) = g_1 g_2 H = (g_1 H)(g_2 H) = \varphi(g_1 K)\varphi(g_2 K)
+	\end{equation*}
+
+	Note que $gK \in \ker \varphi \iff \varphi(gK) = gH = H \iff g \in H, \quad \therefore \ker \varphi = H/K$.
+
+	Así por el primer teorema de isomorfismo, $H/K \trianglelefteq G/K$ y
+	\begin{equation*}
+		\frac{G/K}{H/K} \cong \frac{G}{H}
+	\end{equation*}
+\end{proof}
+
+\ObservacionBox{}{
+	Sea $(G, \cdot, e)$ un grupo, sean $H, K \le G$, con $H$ finito, y $\frac{H}{H \cap K} \cong \frac{KH}{K}$, entonces:
+	\begin{equation*}
+		|KH| = \frac{|K||H|}{|H \cap K|}
+	\end{equation*}
+}
+
+\begin{enefecto}
+	Dado el isomorfismo, se sigue $[H : H \cap K] = [KH : K]$ y como:
+	$|KH| = |K|[KH : K]$, $|H| = |H \cap K|[H : H \cap K]$, note que al ser $H$ finito, $H \cap K$ es finito, así se sigue:
+	\begin{equation*}
+		|KH| = \frac{|K| |H|}{|H \cap K|}
+	\end{equation*}
+\end{enefecto}
+
+\TeoremaBox{De correspondencia}{
+	Sea $G$ un grupo $K \trianglelefteq G$, entonces existe una correspondencia biyectiva entre los subgrupos de $G$ que contienen a $K$ y los subgrupos de $G/K$, la cual está dada por la proyección $\pi: G \to G/K$ y cumple:
+	\begin{equation*}
+		g \mapsto gK
+	\end{equation*}
+	Si $S^*$ es el subgrupo de $G/K$ que se corresponde con el subgrupo $S$ de $K$ entonces:
+
+	\begin{enumerate}[label=\roman*), font=\normalfont]
+		\item $\pi(S) = S/K = S^*$
+		\item Si $T, S$ son subgrupos de $G$ que contienen a $K$, $T \subseteq S \iff T^* \subseteq S^*$ y en este caso $[S:T] = [S^* : T^*]$
+		\item $T \trianglelefteq G \iff T^* \trianglelefteq G/K$
+	\end{enumerate}
+}
+
+\begin{proof}
+	Consideremos $\pi: G \to G/K$ dada por $\pi(g) = gK$ y sean $H_1, H_2$ subgrupos de $G$ que contienen a $K$.
+
+	Sean $A = \{ H \le G : H \supseteq K \}$, $B = \{ H^* \subseteq G/K : H^* \le G/K \}$, y definamos $\overline{\pi}: A \to B$ como $\overline{\pi}(H) = \pi(H) = \{ hK : h \in H \}$, veamos que $\overline{\pi}$ está bien definida, es decir, que $\overline{\pi}(H) \le G/K$ si $H \le G$.
+	En efecto, sean $h_1 K, h_2 K \in \overline{\pi}(H)$ con $h_1, h_2 \in H$, entonces $(h_1 K)(h_2 K)^{-1} = h_1 h_2^{-1} K$ y $h_1 h_2^{-1} \in H$ luego $h_1 h_2^{-1} K \in \overline{\pi}(H)$, i.e. $\overline{\pi}(H) \le G/K$.
+
+	Note que $\overline{\pi}$ es inyectiva, sea $H_1, H_2 \in A$, suponga que $\overline{\pi}(H_1) = \overline{\pi}(H_2)$, entonces $H_1 K = H_2 K$, sea $h_1 \in H_1 \implies \pi(h_1) = h_1 K \in H_1 K = \overline{\pi}(H_1)$, luego existe $h_2 \in H_2$ tal que $h_1 K = h_2 K$ y así $h_2^{-1}h_1 \in K$ y como $K \subseteq H_2$, $h_1 = h_2(h_2^{-1}h_1) \in H_2 \implies H_1 \subseteq H_2$, análogamente $H_2 \subseteq H_1$, y por tanto $H_1 = H_2$.
+
+	Además $\overline{\pi}$ es suprayectiva, sea $S^* \le G/K$, $\pi^{-1}(S^*) = \{ g \in G : \pi(g) \in S^* \}$ veamos que $\pi^{-1}(S^*)$ es subgrupo de $G$ y $K \subseteq \pi^{-1}(S^*)$.
+
+	Como $S^* \subseteq G/K$, entonces $\overline{K} = e_{G/K} \in S^*$, luego $\forall g \in K, gK = \overline{K} \in S^*$, es decir, $\pi(g) = gK \in S^*$, así que $g \in \pi^{-1}(S^*)$ de donde $K \subseteq \pi^{-1}(S^*)$.
+
+	Ahora si $g_1, g_2 \in \pi^{-1}(S^*)$ entonces $\pi(g_1), \pi(g_2) \in S^* \implies g_1 K, g_2 K \in S^*$ y como $S^* \le G/K$, $g_1 K (g_2 K)^{-1} \in S^*$, i.e.
+	\begin{equation*}
+		\pi(g_1 g_2^{-1}) = (g_1 g_2^{-1})K = (g_1 K)(g_2 K)^{-1} \in S^*
+	\end{equation*}
+	Por lo cual $g_1 g_2^{-1} \in \pi^{-1}(S^*)$. Por lo tanto $\pi^{-1}(S^*) \le G$.
+
+	Es claro que $\pi(\pi^{-1}(S^*)) = S^*$. Así que sea $H \le G$ tal que $\pi(H) = S^*$ note que $\overline{\pi}(H) = \pi(H) = \pi(\pi^{-1}(S^*)) = \overline{\pi}(\pi^{-1}(S^*)) = S^*$ y como $\overline{\pi}$ es inyectiva $H = \pi^{-1}(S^*)$.
+
+	Si $T \subseteq S$ con $K \le S, T \le G$, entonces:
+	\begin{equation*}
+		T^* = \pi(\pi^{-1}(T^*)) = \pi(T) \subseteq \pi(S) = \pi(\pi^{-1}(S^*)) = S^*
+	\end{equation*}
+	Recíprocamente si $T^* \subseteq S^*$, entonces $T = \pi^{-1}(T^*) \subseteq \pi^{-1}(S^*) = S$
+
+	Más aún definamos $\Phi: \frac{S}{T} \to \frac{S^*}{T^*} = \frac{S/K}{T/K}$ dada por: $\Phi(gT) = (gK)T^*$, $\Phi$ está bien definida pues si $g_1 T = g_2 T \implies g_2^{-1}g_1 \in T$ así: $\pi(g_2^{-1}g_1) = g_2^{-1}g_1 K \in T^* \implies g_2^{-1}g_1 K = (g_2 K)^{-1}(g_1 K) \in T^*$, luego $(g_1 K)T^* = (g_2 K)T^*$, luego $\Phi(g_1 T) = \Phi(g_2 T)$.
+
+
+	Además $\Phi$ es inyectiva, en efecto, sea $g_1 T, g_2 T \in S/T$ tal que $\Phi(g_1 T) = \Phi(g_2 T)$, entonces $(g_1 K)T^* = (g_2 K)T^* \implies \pi(g_2^{-1}g_1) = g_2^{-1}g_1 K \in T^*$, donde $g_2^{-1}g_1 \in \pi^{-1}(T^*) = T$, por tanto $g_1 T = g_2 T$.
+
+	Es suprayectiva, pues si $(sK)T^* \in \frac{S^*}{T^*}$ con $s \in S$ entonces existe $sT \in S/T$ tal que $\Phi(sT) = (sK)T^*$
+
+	$\therefore \Phi$ es una biyección y en particular:
+	\begin{equation*}
+		[S:T] = \left| \frac{S}{T} \right| = \left| \frac{S/K}{T/K} \right| = \left[ \frac{S}{K} : \frac{T}{K} \right] = [S^* : T^*]
+	\end{equation*}
+
+\end{proof}
