@@ -1,0 +1,47 @@
+Es fácil observar que dado un grupo $(G, \circ, e)$ y $N \le G$, tal que sea normal, cada clase derecha es una clase izquierda, de este modo se tiene la siguiente proposición.
+
+\begin{prop}
+	Sea $(G, \circ, e)$ un grupo, sea $N \trianglelefteq G$, sea $G/N = \mathcal{L} = \mathcal{R}$, $*$ definida por $(aN)*(bN) = ab$ en $G/N$ está bien definida, i.e. no depende del representante de clase, más aún $G/N$ es un grupo.
+\end{prop}
+
+\begin{proof}
+	Veamos que $*$ está bien definida:
+
+	En efecto, sean $aN, a_1N, bN, b_1N \in G/N$, tales que $aN = a_1N, bN = b_1N$, entonces $Nb = Nb_1$, así $a^{-1}a_1 \in N, b^{-1}b_1 \in N$.
+	Como $N \trianglelefteq G \implies g(a^{-1}a_1)g^{-1} \in N, \forall g \in G$.
+	En particular, tome $g = b^{-1}$:
+	\begin{equation*}
+		b^{-1}(a^{-1}a_1)b_1 = b^{-1}a^{-1}a_1 b_1
+	\end{equation*}
+	Luego:
+	\begin{equation*}
+		(ab)^{-1}a_1 b_1 = b^{-1}a^{-1}a_1 b_1 \in N
+	\end{equation*}
+	Es decir $(ab)N = (a_1 b_1)N$. Por lo tanto la función está bien definida.
+
+	Ahora probemos que $G/N$ es un grupo:
+
+	En efecto, es asociativa, sean $aN, bN, cN \in G/N$:
+	\begin{equation*}
+		(aN * bN) * cN = abN * cN = (ab)cN = a(bc)N = aN * (bc)N = aN * (bN * cN)
+	\end{equation*}
+
+	Note que existe la identidad, tome $N = eN = Ne \in G/N$,
+	\begin{equation*}
+		aN * N = aN * eN = (ae)N = aN
+	\end{equation*}
+
+	Además existe el inverso, dado $aN \in G/N$, existe $a^{-1}N \in G/N$:
+	\begin{equation*}
+		aN * a^{-1}N = (aa^{-1})N = eN = N, \quad \text{entonces } a^{-1}N \text{ es inverso de } aN.
+	\end{equation*}
+
+	$\therefore G/N$ es un grupo.
+\end{proof}
+
+\begin{defi}[Grupo Cociente]
+	Sea $(G, \circ, e)$, sea $N \trianglelefteq G$ normal, definimos al grupo cociente: $G/N := \mathcal{R} = \mathcal{L}$, con la siguiente operación:
+	\begin{equation*}
+		(aN)*(bN) = abN, \quad \text{para } aN, bN \in G/N.
+	\end{equation*}
+\end{defi}

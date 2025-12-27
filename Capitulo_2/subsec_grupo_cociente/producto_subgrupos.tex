@@ -1,0 +1,40 @@
+\begin{defi}[Producto de subgrupos]
+	Sea $(G, \circ, e)$ un grupo, sean $S, T \le G$, definimos el producto de $S$ y $T$ como:
+	\begin{equation*}
+		ST = \{ st : s \in S, t \in T \}
+	\end{equation*}
+\end{defi}
+
+\ObservacionBox{}{
+	Sea $(G, \circ, e)$ un grupo, $S, T \subseteq G$, $ST$, no es necesariamente un subgrupo.
+}
+
+\begin{prop}
+	Sea $(G, \circ, e)$ un grupo, sean $H, K \le G$ entonces $HK$ es un subgrupo si y sólo si $HK = KH$.
+\end{prop}
+
+\begin{proof}
+	\textbf{$\Rightarrow$)} Suponga que $HK \le G$, sean $hk \in HK$, entonces $h \in H$ y $k \in K$, entonces:
+	$k^{-1}h^{-1} = (hk)^{-1} \in HK$, por otro lado, como $k^{-1}h^{-1} \in KH$, así: $HK = (k^{-1}h^{-1})^{-1} \in KH$, luego $HK \subseteq KH$, análogamente $KH \subseteq HK$, por lo tanto $HK = KH$.
+
+	\textbf{$\Leftarrow$)} Supongamos que $HK = KH$, notemos que $HK \neq \emptyset$, ya que $e \circ e \in HK$.
+	Sean $x, y \in HK$, entonces existe $h_1, h_2 \in H, k_1, k_2 \in K$, tal que $x = h_1 k_1$, $y = h_2 k_2$, es claro que $y^{-1} \in HK$, pues $y^{-1} = k_2^{-1}h_2^{-1} \in KH = HK$, así que probemos que $x y^{-1} \in HK$. En efecto,
+	$x y^{-1} = h_1 k_1 (h_2 k_2)^{-1} = h_1 k_1 k_2^{-1}h_2^{-1}$.
+	Note que $k_1 k_2^{-1}h_2^{-1} \in KH = HK$, entonces digamos $h_3 k_3 = k_1 k_2^{-1}h_2^{-1}$ con $h_3 \in H, k_3 \in K$.
+	Luego:
+	$h_1(k_1 k_2^{-1}h_2^{-1}) = h_1(h_3 k_3) \in HK$, por lo tanto $xy^{-1} \in HK$, y por una proposición anterior $HK$ es un subgrupo de $G$.
+\end{proof}
+
+\begin{defi}
+	Sea $(G, \circ, e)$ un grupo, sean $H, K \le G$, $HK$ se llama el producto de $H$ con $K$.
+\end{defi}
+
+\CorolarioBox{}{
+	Si $(G, \circ, e)$ es un grupo abeliano el producto finito de subgrupos es un subgrupo.
+}
+
+\begin{enefecto}
+	es inmediato usando inducción y el hecho que el producto de subgrupos es asociativo.
+\end{enefecto}
+
+
