@@ -1,0 +1,24 @@
+\begin{tikzpicture}[thick, scale=1.2]
+
+	% --- Nodos del Diagrama (Izquierda) ---
+	\node (G) at (0, 3) {\Large $G$};
+	\node (KH) at (0, 1.5) {\Large $KH$};
+	\node (H) at (-2, 0) {\Large $H$};
+	\node (K) at (2, 0) {\Large $K$};
+	\node (HnK) at (0, -1.5) {\Large $H \cap K$};
+
+	% --- Conexiones ---
+	\draw (G) -- (KH);
+	\draw (KH) -- (H);
+	\draw (KH) -- node[above right] {$[KH:K]$} (K);
+	\draw (H) -- node[below left] {$[H:H \cap K]$} (HnK);
+	\draw (K) -- (HnK);
+
+	% --- Ecuaciones (Derecha) ---
+	% Usamos un nodo a la derecha (x=6) con alineación izquierda
+	\node[right, align=left] at (4, 0) {
+	$\displaystyle \left| \frac{KH}{K} \right| = [KH:K]$ \\[1em]
+	$\displaystyle \left| \frac{H}{H \cap K} \right| = [H: H \cap K]$
+	};
+
+\end{tikzpicture}

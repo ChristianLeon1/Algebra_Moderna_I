@@ -1,0 +1,107 @@
+\section{Teoremas de isomorfismo}%
+\label{sec:Teoremas de isomorfismo}
+
+
+\TeoremaBox{1er Teorema de isomorfismo}{
+	Sean $(G, \circ, e), (G_1, *, e_1)$, sea $\varphi: G \to G_1$ un homomorfismo, entonces $(\ker \varphi) \trianglelefteq G$ y:
+	\begin{equation*}
+		G / \ker \varphi \cong \text{Im } \varphi
+	\end{equation*}
+}
+
+\begin{proof}
+
+	Sea $a \in \ker \varphi$, sea $g \in G$.
+	\begin{equation*}
+		\varphi(gag^{-1}) = \varphi(g) * \varphi(a) * \varphi(g^{-1}) = \varphi(g) * e_1 * \varphi(g^{-1}) = \varphi(g) * \varphi(g)^{-1} = e_1
+	\end{equation*}
+	Así $gag^{-1} \in \ker \varphi, \forall g \in G$, entonces $(\ker \varphi) \trianglelefteq G$.
+
+	Notemos que $G/\ker \varphi$ es un grupo con la operación de clases:
+	\begin{equation*}
+		(g \ker \varphi) \cdot (g_1 \ker \varphi) = (g g_1) \ker \varphi
+	\end{equation*}
+
+	Definamos $f: G/\ker \varphi \to \text{Im } \varphi$, probemos que está bien definida.
+	\begin{equation*}
+		g \ker \varphi \mapsto \varphi(g)
+	\end{equation*}
+	i.e. no depende del representante de clase. Sean $(g \ker \varphi), (g_1 \ker \varphi) \in G/\ker \varphi$, suponga que $g \ker \varphi = g_1 \ker \varphi \implies g^{-1}g_1 \in \ker \varphi$, entonces:
+	\begin{align*}
+		f(g \ker \varphi)              & = f(\ker \varphi)   \\
+		\varphi(g^{-1}g_1)             & = \varphi(e)        \\
+		\varphi(g)^{-1} * \varphi(g_1) & = e_1               \\
+		\implies \varphi(g_1)          & = \varphi(g)        \\
+		\implies f(g_1 \ker \varphi)   & = f(g \ker \varphi)
+	\end{align*}
+
+	\textbf{Probemos que es inyectiva:} sean $g \ker \varphi, g_1 \ker \varphi \in G/\ker \varphi$, tal que:
+	\begin{equation*}
+		f(g \ker \varphi) = f(g_1 \ker \varphi) \implies \varphi(g) = \varphi(g_1) \implies g^{-1}g \in \ker \varphi,
+	\end{equation*}
+	así $g^{-1} \ker \varphi = g \ker \varphi$ (Nota: aquí el manuscrito implica igualdad de clases).
+
+	\textbf{Probemos que es sobreyectiva:} sea $a \in \text{Im } \varphi \implies \exists g \in G$, tal que $\varphi(g) = a$, así $f(g \ker \varphi) = \varphi(g) = a$.
+
+	$\therefore f$ es un isomorfismo, y $G/\ker \varphi \cong \text{Im } \varphi$.
+\end{proof}
+
+\CorolarioBox{}{
+	Sea $(G, \circ, e)$ un grupo, $H \le G$, entonces $H \trianglelefteq G$ si y sólo si existe un homomorfismo $\varphi$ de $G$ en otro grupo tal que $H = \ker \varphi$.
+}
+
+\begin{proof}
+	$(\Leftarrow)$ Evidente (por la primera parte del teorema anterior).
+
+	$(\Rightarrow)$ Sea $\varphi: G \to G/H$ con $\varphi(g) = gH$, sean $g_1, g_2 \in G$, entonces:
+	\begin{equation*}
+		\varphi(g_1 g_2) = g_1 g_2 H = g_1 H g_2 H = \varphi(g_1)\varphi(g_2). \quad \therefore \varphi \text{ es un homomorfismo.}
+	\end{equation*}
+	Además $g \in \ker \varphi \iff gH = H \iff g \in H$. $\therefore \ker \varphi = H$.
+\end{proof}
+
+\begin{eje}
+	Sea $G = GL_n(\mathbb{C})$, sea $N = SL_n(\mathbb{C})$, claramente $SL_n(\mathbb{C}) \le GL_n(\mathbb{C})$ con el producto de matrices. Ahora note que $SL_n(\mathbb{C}) \trianglelefteq GL_n(\mathbb{C})$, en efecto, sea $X \in GL_n(\mathbb{C})$, sea $Y \in SL_n(\mathbb{C})$, note:
+	\begin{equation*}
+		\det(XYX^{-1}) = \det(X)\det(Y)\det(X^{-1}) = \det(X) \cdot 1 \cdot \det(X)^{-1} = 1.
+	\end{equation*}
+	$\implies XYX^{-1} \in SL_n(\mathbb{C}) \quad \forall X \in GL_n(\mathbb{C})$.
+
+	Tomando: $\varphi: GL_n(\mathbb{C}) \to \mathbb{C}^*$, claramente es homomorfismo, ya que dadas $A, B \in GL_n(\mathbb{C})$, $\varphi(AB) = \det(AB) = \det(A)\det(B) = \varphi(A)\varphi(B)$, además note que $A \in \ker \varphi \iff \varphi(A) = 1$, por lo cual $\ker \varphi = SL_n(\mathbb{C})$.
+
+	Así:
+	\begin{equation*}
+		\frac{GL_n(\mathbb{C})}{SL_n(\mathbb{C})} \cong \mathbb{C}^* = \mathbb{C} \setminus \{0\}, \text{ por el } 1^{er} \text{ teorema de isomorfismos.}
+	\end{equation*}
+\end{eje}
+
+\TeoremaBox{2do teorema de isomorfismo}{
+	Sea $(G, \circ, e)$ un grupo, sean $H, K \le G$, con $K \trianglelefteq G$ entonces $K \cap H \trianglelefteq H$ y
+	\begin{equation*}
+		\frac{H}{H \cap K} \cong \frac{KH}{K}
+	\end{equation*}
+}
+
+\begin{proof}
+	Como $K \trianglelefteq G$, entonces $KH = HK$, así $KH \le G$, más aún $\forall kh \in KH$, $k \in K, h \in H$, se tiene:
+	\begin{equation*}
+		(kh) K (kh)^{-1} = k(h K h^{-1})k^{-1} = k(K)k^{-1} = K,
+	\end{equation*}
+	entonces $K \trianglelefteq KH$, así $\frac{KH}{K}$ es un grupo.
+
+	Definamos $\varphi: H \to \frac{KH}{K}$, sean $h_1, h_2 \in H$,
+	\begin{equation*}
+		h \mapsto hK
+	\end{equation*}
+
+	entonces: $\varphi(h_1 h_2) = (h_1 h_2)K = h_1 K h_2 K = \varphi(h_1)\varphi(h_2)$, por lo cual es un homomorfismo.
+
+	Note que $h \in \ker \varphi \iff hK = K \iff h \in K \implies h \in H \land h \in K \implies h \in H \cap K$, i.e. $H \cap K = \ker \varphi$.
+
+	Por el primer teorema de isomorfismo:
+	\begin{equation*}
+		\frac{H}{H \cap K} \cong \frac{KH}{K}
+	\end{equation*}
+\end{proof}
+
+\import{../images/Capitulo_3/}{reticulo_2do_teo_isomorfismo.tex}

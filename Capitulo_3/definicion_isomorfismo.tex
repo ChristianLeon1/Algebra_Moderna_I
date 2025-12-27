@@ -1,0 +1,111 @@
+\section{Definición isomorfismo}%
+\label{sec:Definición isomorfismo}
+
+\begin{defi}
+	Sean $(G_1, \circ, e_1)$, $(G_2, \odot, e_2)$ grupos. Un homomorfismo de grupos es una función $\varphi: G_1 \to G_2$ que satisface:
+	\begin{equation*}
+		\varphi(a \circ b) = \varphi(a) \odot \varphi(b) \quad \forall a, b \in G_1
+	\end{equation*}
+\end{defi}
+
+En caso que no haya confusión, se podrá omitir escribir las operaciones $\circ, \odot$ y se escribirá:
+\begin{equation*}
+	\varphi(ab) = \varphi(a)\varphi(b)
+\end{equation*}
+
+\begin{eje}
+	Sea $G_1 = \mathbb{Z}_2 \times \mathbb{Z}_3 = \{ ([a]_2, [b]_3) : a, b \in \mathbb{Z} \}$, con la operación
+	\begin{equation*}
+		([a]_2, [b]_3) \circ ([c]_2, [d]_3) = ([a]_2 + [c]_2, [b]_3 + [d]_3)
+	\end{equation*}
+\end{eje}
+
+Es fácil notar que $(G_1, \circ)$ es un grupo abeliano.
+
+Sea $G_2 = \mathbb{Z}_6$ con la op. de suma de clases, observe que $G_2$ es cíclico, pues $G_2 = \langle [1]_6 \rangle$.
+
+Definamos $\varphi: G_2 \to G_1$, $\varphi$ es un homomorfismo.
+\begin{equation*}
+	[a]_6 \mapsto ([a]_2, [a]_3)
+\end{equation*}
+
+En efecto, sean $[a]_6, [b]_6 \in G_2$:
+\begin{align*}
+	\varphi([a]_6 + [b]_6) & = \varphi([a+b]_6) = ([a+b]_2, [a+b]_3) \\
+	                       & = ([a]_2, [a]_3) + ([b]_2, [b]_3)       \\
+	                       & = \varphi([a]_6) + \varphi([b]_6)
+\end{align*}
+
+Además es inyectiva, suponga que $\varphi([a]_6) = \varphi([b]_6)$:
+\begin{equation*}
+	([a]_2, [a]_3) = ([b]_2, [b]_3) \iff [a]_2 = [b]_2 \land [a]_3 = [b]_3 \iff 2 \mid b-a, 3 \mid b-a \iff 6 \mid b-a \iff [a]_6 = [b]_6
+\end{equation*}
+Note que $|G_1| = |G_2| = 6$ y como es inyectiva, necesariamente es suprayectiva.
+
+$\therefore \varphi$ es un isomorfismo.
+$\therefore G_2 \cong G_1$.
+
+\begin{defi}
+	Sean $(G_1, \circ, e)$, $(G_2, \odot, e)$ grupos, sea $\varphi: G_1 \to G_2$ un homomorfismo, se dice monomorfismo si es inyectiva, se dice epimorfismo si es suprayectiva, si $\varphi$ es biyectiva se dice isomorfismo. Además si existe el isomorfismo entre $G_1$ y $G_2$, diremos que los grupos son isomorfos y se escribirá $G_1 \cong G_2$.
+
+	Se clasificarán todos los grupos finitos salvo isomorfismo entre los grupos de orden finito.
+\end{defi}
+
+\begin{eje}
+	Sea $G_1$ del ejemplo anterior note que $S_3 \not\cong G_1$, pues $S_3$ no es abeliano, suponga que $\varphi: S_3 \to G_1$ con $\varphi(\sigma) = ([a]_2, [a]_3)$, $\varphi(\theta) = ([b]_2, [b]_3)$ es isomorfismo, entonces $\varphi(\sigma \circ \theta) = \varphi(\sigma) + \varphi(\theta) = \varphi(\theta) + \varphi(\sigma) = \varphi(\theta \circ \sigma)$, lo cual es una contradicción.
+\end{eje}
+
+\begin{eje}
+	\label{eje:grupo_ciclico_de_orden_primo}
+	Sea $(G, \circ, e)$ un grupo de orden $p$ con $p$ primo, entonces:
+	\begin{equation*}
+		G \cong \mathbb{Z}/p\mathbb{Z}
+	\end{equation*}
+\end{eje}
+
+En efecto, definamos: $\varphi: G \to \mathbb{Z}/p\mathbb{Z}$, con $g$ generador de $G$.
+\begin{equation*}
+	a = g^i \mapsto \underbrace{\bar{1} + \dots + \bar{1}}_{i\text{-veces}}
+\end{equation*}
+
+Note que es homomorfismo, sean $a, b \in G, a=g^i, b=g^j$, con $1 \le i, j < p$.
+\begin{equation*}
+	\varphi(ab) = \varphi(g^i g^j) = \varphi(g^{i+j}) = \underbrace{\bar{1} + \dots + \bar{1}}_{i+j \text{ veces}} = \underbrace{\bar{1} + \dots + \bar{1}}_{i \text{ veces}} + \underbrace{\bar{1} + \dots + \bar{1}}_{j \text{ veces}} = \varphi(g^i) + \varphi(g^j) = \varphi(a) + \varphi(b)
+\end{equation*}
+
+Además es inyectiva, suponga que $\varphi(a) = \varphi(b) \iff \varphi(g^i) = \varphi(g^j) \iff \varphi(g^i g^{-j}) = \bar{1} - \varphi(e) \iff p \mid i-j \iff p \mid |i-j|$, note además que $|i-j| < p$ se sigue que $0 = |i-j| \iff i=j$, así $a = g^i = g^j = b$.
+
+Y es suprayectiva al ser inyectiva y $|G| = |\mathbb{Z}/p\mathbb{Z}| = p$.
+
+\ObservacionBox{}{
+	Si $(G, \circ, e)$ es de orden $p$, con $p$ primo, entonces es cíclico.
+}
+
+\begin{enefecto}
+	Sea $(G, \circ, e)$ de orden $p$ primo, sea $a \in G \setminus \{e\}$, $o(a) > 1$, y $o(a) \mid |G|$ entonces $o(a) = p$, por otro lado como $o(a) = |\langle a \rangle|$, $|\langle a \rangle| = p$, luego $\langle a \rangle = G$.
+\end{enefecto}
+
+Con el ejemplo \ref{eje:grupo_ciclico_de_orden_primo} se concluye que todos los grupos de orden primo son isomorfos a $\mathbb{Z}/p\mathbb{Z}$, es decir salvo isomorfismo existe un único grupo de orden $p$ primo.
+
+\ObservacionBox{}{
+	$\ker \varphi \le G, \quad \text{Im } \varphi \le G_1$.
+}
+
+\begin{enefecto}
+	Observe que: $\varphi(e) = \varphi(e \circ e) = \varphi(e) \odot \varphi(e)$, donde $\varphi(e)=e_1$, además $\forall a \in G$,
+	\begin{equation*}
+		e_1 = \varphi(e) = \varphi(a \circ a^{-1}) = \varphi(a) \odot \varphi(a^{-1}), \text{ luego: } \varphi(a)^{-1} = \varphi(a^{-1}).
+	\end{equation*}
+
+	Ahora para $a, b \in \ker \varphi$:
+	\begin{equation*}
+		\varphi(a \circ b^{-1}) = \varphi(a) \odot \varphi(b^{-1}) = \varphi(a) \odot \varphi(b)^{-1} = e_1 \odot e_1^{-1} = e_1
+	\end{equation*}
+	Así $ab^{-1} \in \ker \varphi$, luego $\ker \varphi \le G$.
+
+	Sea $h, g \in \text{Im } \varphi$, entonces $\exists a, b \in G$ tal que $\varphi(a)=h, \varphi(b)=g$, luego note:
+	\begin{equation*}
+		\varphi(a \circ b^{-1}) = \varphi(a) \odot \varphi(b^{-1}) = \varphi(a) \odot \varphi(b)^{-1} = h \odot g^{-1}, \text{ así } h \odot g^{-1} \in \text{Im } \varphi
+	\end{equation*}
+	$\therefore \text{Im } \varphi \le G_1$.
+\end{enefecto}
