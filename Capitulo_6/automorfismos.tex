@@ -75,6 +75,34 @@
     \end{equation*}
 \end{defi}
 
+\begin{center}
+\begin{tikzpicture}[
+    node distance=3cm,
+    >={Stealth[scale=1.2]}
+]
+    % Conjuntos G (Elipses)
+    \draw[thick, fill=blue!5] (0,0) ellipse (1.5cm and 2.5cm);
+    \node at (0, 2.8) {\Large $G$};
+
+    \draw[thick, fill=blue!5] (6.5,0) ellipse (1.5cm and 2.5cm);
+    \node at (6.5, 2.8) {\Large $G$};
+
+    % Elementos
+    \node (g) at (0, 0.5) {$\bullet \ g$};
+    \node (aga) at (6.5, 0.5) {$\bullet \ aga^{-1}$};
+
+    % Flecha del mapeo f_a
+    \draw[->, thick, blue] (g) to[bend left=20] node[midway, above] {$f_a$} (aga);
+    \node[blue, below] at (3.2, 0.8) {Conjugación por $a$};
+
+    % Identidad (opcional para mostrar que e va a e)
+    \node (e1) at (0, -1.5) {$\bullet \ e$};
+    \node (e2) at (6.5, -1.5) {$\bullet \ e$};
+    \draw[->, dashed] (e1) -- (e2);
+
+\end{tikzpicture}
+\end{center}
+
 \begin{obs}
     $\text{Aut}(G)$, con la operación de composición de funciones, es un grupo.
 \end{obs}
