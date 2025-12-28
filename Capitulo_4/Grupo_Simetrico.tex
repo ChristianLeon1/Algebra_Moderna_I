@@ -10,6 +10,30 @@ Recordemos que $S_n$ con la composición de funciones es un grupo. Cada elemento
     Un ciclo de longitud $1 \leq k \leq n$ en $S_n$ es un elemento de $S_n$ tal que existen $\{i_1, \dots, i_k\} \subseteq \{1, \dots, n\}$ con $\sigma(i_1) = i_2, \sigma(i_2) = i_3, \dots, \sigma(i_{k-1}) = i_k, \sigma(i_k) = i_1$ y $\sigma(j) = j \ \forall j \notin \{i_1, \dots, i_k\}$.
 \end{defi}
 
+\begin{center}
+\begin{tikzpicture}[
+    >={Stealth[scale=1.2]},
+    node distance=2cm,
+    state/.style={circle, draw, minimum size=0.8cm, thick}
+]
+    % Título opcional
+    \node[above=0.5cm] at (0, 1.5) {\textbf{Ciclo } $\sigma = (1\, 2\, 3)$};
+
+    % Nodos en forma triangular
+    \node[state] (1) at (90:1.5) {1};
+    \node[state] (2) at (330:1.5) {2};
+    \node[state] (3) at (210:1.5) {3};
+
+    % Flechas curvas
+    \draw[->, thick, bend left=20] (1) to node[midway, right] {} (2);
+    \draw[->, thick, bend left=20] (2) to node[midway, below] {} (3);
+    \draw[->, thick, bend left=20] (3) to node[midway, left] {} (1);
+
+    % Texto explicativo
+    \node[below=2cm] {$\sigma(1)=2, \quad \sigma(2)=3, \quad \sigma(3)=1$};
+\end{tikzpicture}
+\end{center}
+
 Note que en este caso:
 \begin{equation*}
 \begin{aligned}

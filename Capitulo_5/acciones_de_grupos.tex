@@ -227,6 +227,8 @@
 
 \ObservacionBox{}{
     Sea $X$ un $G$-conjunto, entonces las órbitas forman una partición de $X$.
+}
+\begin{proof}
     Para ver esto basta verificar que inducen una relación de equivalencia, es decir, la relación en $X$ definida por $x \sim y$ si y solo si $y$ y $x$ están en la misma órbita (si y solo si $y = g \cdot x$ para algún $g \in G$) es de equivalencia.
     \begin{enumerate}
         \item Reflexiva: Existe $e \in G$ tal que $e \cdot x = x$, así $x \sim x$.
@@ -238,6 +240,36 @@
         \end{equation*}
         luego $x \sim z$.
     \end{enumerate}
+
+    \begin{center}
+\begin{tikzpicture}[scale=0.8]
+    % Conjunto X (elipse grande)
+    \draw[thick, fill=gray!5] (0,0) ellipse (5cm and 3cm);
+    \node at (4.5, 2.5) {\Large $X$};
+
+    % Órbita 1 (Grande)
+    \draw[fill=blue!10, draw=blue, thick] (-2.5, 1) ellipse (1.5cm and 1cm);
+    \node at (-2.5, 1) {$\mathcal{O}_{x_1}$};
+    \fill (-3, 1) circle (2pt); \fill (-2, 1.2) circle (2pt); % Puntos dentro
+
+    % Órbita 2 (Mediana)
+    \draw[fill=green!10, draw=green!60!black, thick] (1, 1.5) ellipse (1.2cm and 0.8cm);
+    \node at (1, 1.5) {$\mathcal{O}_{x_2}$};
+
+    % Puntos Fijos (Órbitas de tamaño 1) - Representando X^G
+    \draw[dashed, red] (0, -1.5) ellipse (3cm and 0.8cm);
+    \node[red, right] at (3.2, -1.5) {$X^G$ (Puntos Fijos)};
+
+    % Puntos individuales fijos
+    \fill[red] (-1.5, -1.5) circle (2pt) node[below] {$\cdot$};
+    \fill[red] (0, -1.5) circle (2pt) node[below] {$\cdot$};
+    \fill[red] (1.5, -1.5) circle (2pt) node[below] {$\cdot$};
+
+    % Flecha de acción G
+    \node (G) at (-6, 2) {\Large $G \curvearrowright$};
+\end{tikzpicture}
+\end{center}
+
     En particular si $\mathcal{O}_x = Orb(x) = G \cdot x$, tenemos:
     \begin{equation*}
         X = \bigcup_{x \in X} \mathcal{O}_x = \left(\bigcup_{x \in X^G} \mathcal{O}_x\right) \cup \left(\bigcup_{x \notin X^G} \mathcal{O}_x\right) 
@@ -247,7 +279,7 @@
     \begin{equation*}
         |X| = |X^G| + \left| \bigcup_{x \notin X^G} \mathcal{O}_x \right|
     \end{equation*}
-}
+\end{proof}
 
 
 \begin{eje}

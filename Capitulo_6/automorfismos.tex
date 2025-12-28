@@ -145,6 +145,33 @@
     \begin{equation*}
         f \mapsto h_f = \psi \circ f \circ \psi^{-1}
     \end{equation*}
+Podemos visualizar la acción del automorfismo inducido a través del siguiente diagrama:
+    \begin{center}
+\begin{tikzpicture}[
+    node distance=2.5cm,
+    % Ajustamos el estilo de flecha para usar arrows.meta (ya que lo tienes cargado)
+    >={Stealth[scale=1.2]}, 
+    every node/.style={minimum width=1.2cm, minimum height=1.8cm},
+    arrow/.style={->, thick},
+    curve/.style={->, thick, bend right=25}
+]
+
+% Nodos
+\node (G0) {$G_i$};
+\node (G1) [right=of G0] {$G$};
+\node (G2) [right=of G1] {$G$};
+\node (G3) [right=of G2] {$G_{i+1}$};
+
+% Flechas superiores
+\draw[arrow] (G0) -- node[above] {$\psi_i$} (G1);
+\draw[arrow] (G1) -- node[above] {$f$} (G2);
+\draw[arrow] (G2) -- node[above] {$\psi$} (G3);
+
+% Flecha curva inferior
+\draw[curve] (G0.south) to node[below] {$\psi_{i+1}$} (G3.south);
+
+\end{tikzpicture}
+\end{center}
 
     Es decir, $\Psi(f) = \psi \circ f \circ \psi^{-1}$.
     Demostraremos que $\Psi$ es un isomorfismo, en efecto:
