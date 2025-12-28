@@ -11,12 +11,13 @@
 	\popQED\endtrivlist\@endpefalse
 }
 
-\newenvironment{enefecto}[1][En efecto,]{\par
+\newenvironment{enefecto}[1][Demostración]{\par
 	\pushQED{\qed}%
 	\normalfont \topsep6\p@\@plus6\p@\relax
 	\trivlist
 	\item[\hskip\labelsep
-	            #1]\ignorespaces % <--- \ignorespaces mantiene el texto seguido
+	            \itshape
+	            #1\@addpunct{.}]\mbox{}\\*
 }{%
 	\popQED\endtrivlist\@endpefalse
 }

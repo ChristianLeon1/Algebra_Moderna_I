@@ -1,0 +1,169 @@
+\section{Grupo cíclicos}%
+\label{sec:Grupo cíclicos}
+
+\begin{prop}
+	Sea $(G, \circ, e)$ un grupo cíclico finito, entonces cada subgrupo de $G$ es cíclico.
+\end{prop}
+
+\begin{proof}
+	Sea $H \le G$, con $G = \langle g \rangle$, para algún $g \in G$. Observe que si $H=\{e\}$, hemos terminado, por lo que suponga que $H \neq \{e\}$, entonces $\exists m \in \mathbb{Z}^+$, tal que $g^m \in H$, pues $g^{|G|} = e \in H$.
+
+	Veamos que $\langle g^m \rangle = H$. Claramente $\langle g^m \rangle \subseteq H$. Ahora si $c \in H$, con $c = g^k, k \in \mathbb{Z}^+$. Por el algoritmo de la división $k = mq + r, q \in \mathbb{Z}, 0 \le r < m$, entonces $c = g^k = g^{mq+r} = (g^m)^q g^r$, así $g^r = c ((g^m)^q)^{-1} \in H$ y $r < m$, por la minimalidad de $m$, necesariamente se debe tener $r=0$. Por lo tanto $c \in \langle g^m \rangle \implies H \subseteq \langle g^m \rangle$ así: $H = \langle g^m \rangle$.
+\end{proof}
+
+\begin{prop}
+	Sea $(G, \circ, e)$ un grupo cíclico infinito, $G \cong \mathbb{Z}$.
+\end{prop}
+
+\begin{proof}
+	Sea $G = \langle c \rangle$, con $c \in G$, definamos $\varphi: G \to \mathbb{Z}$, $g^k \mapsto k \cdot 1$.
+
+	Sea $c^k, c^l \in G$, tal que $\varphi(c^k) = \varphi(c^l) \Rightarrow k \cdot 1 = l \cdot 1 \Rightarrow k=l \Rightarrow c^k = c^l$, por lo cual es inyectiva, claramente es suprayectiva, además note:
+	$\varphi(c^k \cdot c^l) = \varphi(c^{k+l}) = (l+k) \cdot 1 = l \cdot 1 + k \cdot 1 = \varphi(c^k) \varphi(c^l)$, por lo cual es un homomorfismo, así
+	$G \cong \mathbb{Z}$
+\end{proof}
+
+\begin{eje}
+	Los subgrupos de $\mathbb{Z}$ son de la forma:
+	\begin{equation*}
+		H = \langle g \rangle = \{ a \cdot n : a \in \mathbb{Z} \}
+	\end{equation*}
+	en particular son cíclicos.
+\end{eje}
+
+\begin{proof}
+	Sea $H \le \mathbb{Z}$, $A = \{ a \in H : a > 0 \} \subseteq \mathbb{N}$, sea $c = \min A$, veamos que $\langle c \rangle = H$.
+
+	Sea $b \in H$, por el algoritmo de la división $b = cq + r$ con $0 \le r < |c| = c$, como $H \le \mathbb{Z}$, $r = b - cq \in H$, como $r > 0 \implies r \in A$ lo cual no puede ser al $r < c$. Por lo tanto $r=0$ y $b = cq \in \langle c \rangle \Rightarrow \langle c \rangle \supseteq H$, además es evidente que $\langle c \rangle \subseteq H$, así $\langle c \rangle = H$.
+\end{proof}
+
+\begin{prop}
+	Los subgrupos de un grupo cíclico son cíclicos.
+\end{prop}
+
+\begin{prop}
+	Sea $(G, \circ, e)$ un grupo finito, entonces $G$ es cíclico si y sólo si para cada divisor $0 < d$ de $|G|$ existe un único subgrupo cíclico de $G$ de orden $d$.
+\end{prop}
+
+\begin{proof}
+	$\Leftarrow$) Note que $|G| \mid |G|$ así por hipótesis existe un único $H \le G$ cíclico tal que $|H| = |G|$, luego $|H| = |G| \iff H = G$, así $G$ es cíclico.
+
+	$\Rightarrow$) Sea $n = |G|$ con $G = \langle c \rangle$ y $d \mid n$. Sea $H = \langle c^{|G|/d} \rangle$, entonces $|H| = o(c^{|G|/d}) = d$. En efecto, note que $(c^{|G|/d})^d = e$ y si $e = (c^{|G|/d})^m$ con $m > 0$, entonces $\frac{|G|m}{d} \ge \frac{|G|d}{d}$, de donde $m \ge d$.
+	Veamos que $H = \langle c^{|G|/d} \rangle$ es el único subgrupo de orden $d$.
+
+	Sea $N \le G$ con $|N|=d$, por el teorema anterior $N = \langle a \rangle$, con $a \in G$, $a = c^k$ con $k \ge 0$.
+
+	Pero $e = a^d = c^{kd}$, de donde $|G| \mid kd$, i.e. existe $q \in \mathbb{Z}$ tal que $|G|q = kd$ o $\frac{|G|}{d}q = k$. De donde: $a = c^k = (c^{\frac{|G|}{d}})^q \in \langle c^{\frac{|G|}{d}} \rangle = H$. Luego $\langle a \rangle \subseteq H$ y como tienen la misma cardinalidad, $N = \langle a \rangle = H$.
+\end{proof}
+
+\begin{prop}
+	Sea $(G, \circ, e)$ un grupo cíclico finito, entonces cada subgrupo de $G$ es cíclico.
+\end{prop}
+
+\begin{proof}
+	Sea $H \le G$, con $G = \langle g \rangle$, para algún $g \in G$. Observe que si $H=\{e\}$, hemos terminado, por lo que suponga que $H \neq \{e\}$, entonces $\exists m \in \mathbb{Z}^+$, tal que $g^m \in H$, pues $g^{|G|} = e \in H$.
+
+	Veamos que $\langle g^m \rangle = H$. Claramente $\langle g^m \rangle \subseteq H$. Ahora si $c \in H$, con $c = g^k, k \in \mathbb{Z}^+$. Por el algoritmo de la división $k = mq + r, q \in \mathbb{Z}, 0 \le r < m$, entonces $c = g^k = g^{mq+r} = (g^m)^q g^r$, así $g^r = c ((g^m)^q)^{-1} \in H$ y $r < m$, por la minimalidad de $m$, necesariamente se debe tener $r=0$. Por lo tanto $c \in \langle g^m \rangle \implies H \subseteq \langle g^m \rangle$ así: $H = \langle g^m \rangle$.
+\end{proof}
+
+\begin{prop}
+	Sea $(G, \circ, e)$ un grupo cíclico infinito, $G \cong \mathbb{Z}$.
+\end{prop}
+
+\begin{proof}
+	Sea $G = \langle c \rangle$, con $c \in G$, definamos $\varphi: G \to \mathbb{Z}$, $g^k \mapsto k \cdot 1$.
+
+	Sea $c^k, c^l \in G$, tal que $\varphi(c^k) = \varphi(c^l) \Rightarrow k \cdot 1 = l \cdot 1 \Rightarrow k=l \Rightarrow c^k = c^l$, por lo cual es inyectiva, claramente es suprayectiva, además note:
+	$\varphi(c^k \cdot c^l) = \varphi(c^{k+l}) = (l+k) \cdot 1 = l \cdot 1 + k \cdot 1 = \varphi(c^k) \varphi(c^l)$, por lo cual es un homomorfismo, así
+	$G \cong \mathbb{Z}$
+\end{proof}
+
+\begin{eje}
+	Los subgrupos de $\mathbb{Z}$ son de la forma:
+	\begin{equation*}
+		H = \langle g \rangle = \{ a \cdot n : a \in \mathbb{Z} \}
+	\end{equation*}
+	en particular son cíclicos.
+\end{eje}
+
+\begin{proof}
+	Sea $H \le \mathbb{Z}$, $A = \{ a \in H : a > 0 \} \subseteq \mathbb{N}$, sea $c = \min A$, veamos que $\langle c \rangle = H$.
+
+	Sea $b \in H$, por el algoritmo de la división $b = cq + r$ con $0 \le r < |c| = c$, como $H \le \mathbb{Z}$, $r = b - cq \in H$, como $r > 0 \implies r \in A$ lo cual no puede ser al $r < c$. Por lo tanto $r=0$ y $b = cq \in \langle c \rangle \Rightarrow \langle c \rangle \supseteq H$, además es evidente que $\langle c \rangle \subseteq H$, así $\langle c \rangle = H$.
+\end{proof}
+
+\begin{prop}
+	Los subgrupos de un grupo cíclico son cíclicos.
+\end{prop}
+
+\begin{prop}
+	Sea $(G, \circ, e)$ un grupo finito, entonces $G$ es cíclico si y sólo si para cada divisor $0 < d$ de $|G|$ existe un único subgrupo cíclico de $G$ de orden $d$.
+\end{prop}
+
+\begin{proof}
+	$\Leftarrow$) Note que $|G| \mid |G|$ así por hipótesis existe un único $H \le G$ cíclico tal que $|H| = |G|$, luego $|H| = |G| \iff H = G$, así $G$ es cíclico.
+
+	$\Rightarrow$) Sea $n = |G|$ con $G = \langle c \rangle$ y $d \mid n$. Sea $H = \langle c^{|G|/d} \rangle$, entonces $|H| = o(c^{|G|/d}) = d$. En efecto, note que $(c^{|G|/d})^d = e$ y si $e = (c^{|G|/d})^m$ con $m > 0$, entonces $\frac{|G|m}{d} \ge \frac{|G|d}{d}$, de donde $m \ge d$.
+	Veamos que $H = \langle c^{|G|/d} \rangle$ es el único subgrupo de orden $d$.
+
+	Sea $N \le G$ con $|N|=d$, por el teorema anterior $N = \langle a \rangle$, con $a \in G$, $a = c^k$ con $k \ge 0$.
+
+	Pero $e = a^d = c^{kd}$, de donde $|G| \mid kd$, i.e. existe $q \in \mathbb{Z}$ tal que $|G|q = kd$ o $\frac{|G|}{d}q = k$. De donde: $a = c^k = (c^{\frac{|G|}{d}})^q \in \langle c^{\frac{|G|}{d}} \rangle = H$. Luego $\langle a \rangle \subseteq H$ y como tienen la misma cardinalidad, $N = \langle a \rangle = H$.
+\end{proof}
+
+\begin{eje}
+	Dada la función $\varphi$ de Euler, sea $n \in \mathbb{Z}^+$, entonces
+	\begin{equation*}
+		n = \sum_{d \mid n} \varphi(d)
+	\end{equation*}
+
+\end{eje}
+
+\begin{proof}
+	Consideremos $\mathbb{Z}/n\mathbb{Z}$ como grupo aditivo, es claro que $n = |\mathbb{Z}/n\mathbb{Z}|$ además es un grupo cíclico, para cada divisor $d$ de $n$, se tiene un único subgrupo de orden $d$, entonces cualquier elemento de orden $d$ está en este subgrupo.
+
+	Por tanto hay tantos generadores de orden $d$ como generadores de este subgrupo, probemos que son exactamente $\varphi(d)$, en efecto, considere $\mathbb{Z}_d$ el grupo cíclico de orden $d$. Si $\gcd(a, d) = 1$, entonces existen $x, y \in \mathbb{Z}$ tal que $ax+by=1$ de donde $ax=1 \pmod d$, luego $x=1 \pmod d$, así $1 \in \langle [a]_d \rangle$, entonces $\langle [a]_d \rangle = \mathbb{Z}_d$.
+
+	Recíprocamente si $\langle [a]_d \rangle = \mathbb{Z}_d$, entonces existe $x \in \mathbb{Z}$ tal que $xa = 1 \pmod d$, así $xa-1 = yd$, i.e. $xa+yd=1$, entonces $\gcd(a, d) = 1$. Por tanto $a$ genera a $\mathbb{Z}_d$ si y sólo si $\gcd(a, d) = 1, \quad 0 < a \le d$.
+	Por tanto la cantidad de generadores de $\mathbb{Z}_d$ es $\varphi(d)$.
+
+	Finalmente, sea $G$ un grupo finito $A_d = \{ g \in G : o(g) = d \}$, entonces:
+	\begin{equation*}
+		G = \bigcup_{d \mid |G|} A_d
+	\end{equation*}
+	y en particular:
+	\begin{equation*}
+		|G| = \sum_{d \mid |G|} |A_d|
+	\end{equation*}
+
+
+	Si $g \in G$, sabemos que $o(g) \mid |G|$, por lo cual digamos $d = o(g) \quad \forall g \in G$, luego $G \subseteq \bigcup_{d \mid |G|} A_d$, basta probar que la unión es disjunta, en efecto, sea $g \in A_{d_1} \cap A_{d_2}$, se tiene que $d_1 = o(g) = d$ de donde $d_1 = o(g) = d_2$, por tanto,
+	\begin{equation*}
+		G = \dot{\bigcup_{d \mid |G|}} A_d \quad \text{y} \quad |G| = \dot{\sum_{d \mid |G|}} |A_d|
+	\end{equation*}
+
+
+	Entonces:
+	\begin{equation*}
+		n = |\mathbb{Z}_n| = \dot{\sum_{d \mid n}} |A_d| = \dot{\sum_{d \mid n}} \varphi(d)
+	\end{equation*}
+
+\end{proof}
+
+\begin{prop}
+	Sea $(G, \circ, e)$ un grupo finito, entonces $G$ es cíclico si y sólo si para cada divisor $d$ de $|G|$ existe a lo más un grupo de orden el divisor. (Nota: el manuscrito dice "existe a lo más un grupo", que junto con la hipótesis de finitud suele implicar la ciclicidad si se combina con la suma de los órdenes).
+\end{prop}
+
+\begin{proof}
+	$\Rightarrow$) Si $G$ es cíclico por el teorema anterior para cada divisor $d$ de $|G|$ existe único subgrupo cíclico de orden $d$, luego existe a lo más uno.
+
+	$\Leftarrow$) Tenemos que
+	\begin{equation*}
+		|\mathbb{Z}_n| = n = |G| = \dot{\sum_{d \mid |G|}} |A_d| = \dot{\sum_{d \mid |G|}} \# \{ \text{Generadores de orden } d \}
+	\end{equation*}
+	\begin{equation*}
+		|\mathbb{Z}_n| = \sum_{d \mid |G|} \varphi(d)
+	\end{equation*}
+	Si alguno de los $A_d \neq \emptyset$, $|A_d| \neq 0$ y el $\varphi(d) \neq 0$, lo cual no puede ser, por lo tanto la igualdad se da siempre y cuando $\forall d \mid |G|$ hay al menos uno de ese orden.
+\end{proof}
+
