@@ -22,7 +22,7 @@
 		(g \ker \varphi) \cdot (g_1 \ker \varphi) = (g g_1) \ker \varphi
 	\end{equation*}
 
-	Definamos $f: G/\ker \varphi \to \text{Im } \varphi$, dada por $f(g \ker \varphi) = \varphi(g)$ probemos que está bien definida, i.e. no depende del representante de clase. Sean $(g \ker \varphi), (g_1 \ker \varphi) \in G/\ker \varphi$, suponga que $g \ker \varphi = g_1 \ker \varphi \implies g^{-1}g_1 \in \ker \varphi$, entonces:
+	Definamos $f: G/\ker \varphi \to \text{Im } \varphi$, dada por $f(g \ker \varphi) = \varphi(g)$ probemos que está bien definida, es decir no depende del representante de clase. Sean $(g \ker \varphi), (g_1 \ker \varphi) \in G/\ker \varphi$, suponga que $g \ker \varphi = g_1 \ker \varphi \implies g^{-1}g_1 \in \ker \varphi$, entonces:
 
 	\begin{align*}
 		f(g \ker \varphi)              & = f(\ker \varphi)   \\
@@ -90,7 +90,7 @@ Así:
 
 	Definamos $\varphi: H \to \frac{KH}{K}$ con $\varphi(h) = hK$, sean $h_1, h_2 \in H$, entonces: $\varphi(h_1 h_2) = (h_1 h_2)K = h_1 K h_2 K = \varphi(h_1)\varphi(h_2)$, por lo cual es un homomorfismo.
 
-	Note que $h \in \ker \varphi \iff hK = K \iff h \in K \implies h \in H \land h \in K \implies h \in H \cap K$, i.e. $H \cap K = \ker \varphi$.
+	Note que $h \in \ker \varphi \iff hK = K \iff h \in K \implies h \in H \land h \in K \implies h \in H \cap K$, es decir $H \cap K = \ker \varphi$.
 
 	Por el primer teorema de isomorfismo:
 	\begin{equation*}
@@ -158,7 +158,7 @@ Así:
 	Consideremos $\pi: G \to G/K$ dada por $\pi(g) = gK$ y sean $H_1, H_2$ subgrupos de $G$ que contienen a $K$.
 
 	Sean $A = \{ H \le G : H \supseteq K \}$, $B = \{ H^* \subseteq G/K : H^* \le G/K \}$, y definamos $\overline{\pi}: A \to B$ como $\overline{\pi}(H) = \pi(H) = \{ hK : h \in H \}$, veamos que $\overline{\pi}$ está bien definida, es decir, que $\overline{\pi}(H) \le G/K$ si $H \le G$.
-	En efecto, sean $h_1 K, h_2 K \in \overline{\pi}(H)$ con $h_1, h_2 \in H$, entonces $(h_1 K)(h_2 K)^{-1} = h_1 h_2^{-1} K$ y $h_1 h_2^{-1} \in H$ luego $h_1 h_2^{-1} K \in \overline{\pi}(H)$, i.e. $\overline{\pi}(H) \le G/K$.
+	En efecto, sean $h_1 K, h_2 K \in \overline{\pi}(H)$ con $h_1, h_2 \in H$, entonces $(h_1 K)(h_2 K)^{-1} = h_1 h_2^{-1} K$ y $h_1 h_2^{-1} \in H$ luego $h_1 h_2^{-1} K \in \overline{\pi}(H)$, es decir $\overline{\pi}(H) \le G/K$.
 
 	Note que $\overline{\pi}$ es inyectiva, sea $H_1, H_2 \in A$, suponga que $\overline{\pi}(H_1) = \overline{\pi}(H_2)$, entonces $H_1 K = H_2 K$, sea $h_1 \in H_1 \implies \pi(h_1) = h_1 K \in H_1 K = \overline{\pi}(H_1)$, luego existe $h_2 \in H_2$ tal que $h_1 K = h_2 K$ y así $h_2^{-1}h_1 \in K$ y como $K \subseteq H_2$, $h_1 = h_2(h_2^{-1}h_1) \in H_2 \implies H_1 \subseteq H_2$, análogamente $H_2 \subseteq H_1$, y por tanto $H_1 = H_2$.
 
@@ -166,7 +166,7 @@ Así:
 
 	Como $S^* \subseteq G/K$, entonces $\overline{K} = e_{G/K} \in S^*$, luego $\forall g \in K, gK = \overline{K} \in S^*$, es decir, $\pi(g) = gK \in S^*$, así que $g \in \pi^{-1}(S^*)$ de donde $K \subseteq \pi^{-1}(S^*)$.
 
-	Ahora si $g_1, g_2 \in \pi^{-1}(S^*)$ entonces $\pi(g_1), \pi(g_2) \in S^* \implies g_1 K, g_2 K \in S^*$ y como $S^* \le G/K$, $g_1 K (g_2 K)^{-1} \in S^*$, i.e.
+	Ahora si $g_1, g_2 \in \pi^{-1}(S^*)$ entonces $\pi(g_1), \pi(g_2) \in S^* \implies g_1 K, g_2 K \in S^*$ y como $S^* \le G/K$, $g_1 K (g_2 K)^{-1} \in S^*$, es decir
 	\begin{equation*}
 		\pi(g_1 g_2^{-1}) = (g_1 g_2^{-1})K = (g_1 K)(g_2 K)^{-1} \in S^*
 	\end{equation*}
