@@ -20,7 +20,7 @@
         \Psi(f) = \overline{c_f} \quad \text{donde } f(g) = g^{c_f}
     \end{equation*}
     
-    \textbf{1. $\Psi$ es un homomorfismo:}
+    1. $\Psi$ es un homomorfismo:
     Sean $f_1, f_2 \in \text{Aut}(G)$ con $f_1(g) = g^{c_{f_1}}$ y $f_2(g) = g^{c_{f_2}}$.
     \begin{equation*}
         (f_1 \circ f_2)(g) = f_1(f_2(g)) = f_1(g^{c_{f_2}}) = (f_1(g))^{c_{f_2}} = (g^{c_{f_1}})^{c_{f_2}} = g^{c_{f_1} c_{f_2}}
@@ -30,13 +30,13 @@
         \Psi(f_1 \circ f_2) = \overline{c_{f_1} c_{f_2}} = \overline{c_{f_1}} \cdot \overline{c_{f_2}} = \Psi(f_1) \Psi(f_2)
     \end{equation*}
     
-    \textbf{2. $\Psi$ es inyectiva:}
+    2. $\Psi$ es inyectiva:
     \begin{equation*}
         \Psi(f) = \overline{1} \implies c_f \equiv 1 \pmod n \implies f(g) = g^1 = g
     \end{equation*}
     Como el automorfismo fija al generador, fija a todo el grupo. Luego $f = Id_G$.
     
-    \textbf{3. $\Psi$ es sobreyectiva:}
+    3. $\Psi$ es sobreyectiva:
     Sea $\overline{k} \in (\mathbb{Z}/n\mathbb{Z})^*$. Entonces $\gcd(k, n) = 1$.
     Definimos $f: G \to G$ por $f(x) = x^k$.
     Como $\gcd(k, n) = 1$, la aplicación $x \mapsto x^k$ es una biyección en el grupo cíclico finito y es un homomorfismo ($f(xy) = (xy)^k = x^k y^k$ pues $G$ es abeliano).
@@ -90,7 +90,7 @@
     $\Rightarrow)$ Si $H$ actúa como grupo en $K$, existe $\tilde{\varphi}: H \times K \to K$ que cumple las condiciones i), ii) de acción y la condición de compatibilidad iii).
     Definamos $\varphi: H \to \text{Aut}(K)$ por $\varphi(h) = f_h$, donde $f_h: K \to K$ está dada por $f_h(k) = \tilde{\varphi}(h, k)$.
     
-    \textbf{1. $\varphi$ está bien definida:}
+    1. $\varphi$ está bien definida:
     Como $\tilde{\varphi}$ es acción, la función $\varphi: H \to S_K$ dada por $h \mapsto f_h$ es un homomorfismo de grupos (propiedad general de acciones).
     Basta ver que la imagen cae en $\text{Aut}(K)$, es decir, que $f_h \in \text{Aut}(K)$ para todo $h$.
     Sabemos que $f_h$ es biyectiva (por ser acción). Además:
@@ -133,8 +133,3 @@
     En general $g k_1 k_2 \neq g k_1 g k_2$ (esto implicaría $e = g$, lo cual no es cierto para todo $g$).
     Además, $gk$ no necesariamente está en $K$ si $K$ no es el grupo total (aunque si tomamos $K=G$, falla la condición de homomorfismo a menos que $G$ sea trivial).
 \end{eje}
-
-
-\begin{enefecto}
-    xd
-\end{enefecto}

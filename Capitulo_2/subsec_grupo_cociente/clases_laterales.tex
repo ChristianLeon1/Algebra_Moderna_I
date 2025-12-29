@@ -26,54 +26,22 @@
 \end{defi}
 
 \begin{prop}
-    Sea $(G, \circ, e)$ un grupo y sea $H \le G$. Entonces, los conjuntos de clases laterales izquierdas $\mathcal{L}$ y derechas $\mathcal{R}$ forman, cada uno, una partición de $G$.
+	Sea $(G, \circ, e)$ un grupo, sea $H \le G$, entonces $\mathcal{L}$ y $\mathcal{R}$ forman una partición de $G$.
 \end{prop}
 
 \begin{proof}
-    Para demostrar esto, basta probar que la colección $\mathcal{R}$ induce una relación de equivalencia en $G$. Definimos la relación $\sim$ de la siguiente manera: dados $a, b \in G$, diremos que $a \sim b$ si y solo si existe un elemento $g \in G$ tal que ambos pertenecen a la misma clase lateral derecha generada por $g$. Es decir:
-    \begin{equation*}
-        a \sim b \iff \exists g \in G \text{ tal que } a, b \in Hg.
-    \end{equation*}
+	Basta probar que $\mathcal{R}$ induce una relación de equivalencia, es decir la relación $\sim$ definida por $a \sim b \iff a, b \in Hg$ es de equivalencia.
+	\begin{enumerate}[label=\roman*), font=\normalfont]
+		\item \textsc{Reflexividad:} $a \sim a \iff a, a \in Hg$. (Esto se cumple pues $a \in Ha$).
+		\item \textsc{Simétrica:} $a \sim b \implies a, b \in Hg \implies b, a \in Hg \implies b \sim a$.
+		\item \textsc{Transitividad:} Si $a \sim b \land b \sim c \implies a, b \in Hg_1 \land b, c \in Hg_2$. \par	     
+		Sea $a = h_1 g_1$, $b = h_2 g_1$, $b = h_3 g_2$, $c = h_4 g_2$, así note que $g_1 = (h_2^{-1} h_3) g_2$.
+		      Luego podemos expresar $a = h_1 (h_2^{-1} h_3) g_2$, como $(h_1 h_2^{-1} h_3) \in H$, $a \in Hg_2$, así $a, c \in Hg_2 \implies a \sim c$.
+	\end{enumerate}
 
-   A continuación, verificamos las propiedades requeridas:
+	$\therefore$ Las clases derechas forman una partición de $G$.
 
-    \begin{enumerate}[label=\roman*), font=\normalfont]
-        \item \textsc{Reflexividad:} Para todo $a \in G$, se cumple que $a \sim a$.
-        Esto es evidente dado que $e \in H$, lo que implica que $a = ea \in Ha$. Por lo tanto, tomando $g = a$, tenemos que $a, a \in Ha$, lo cual satisface la definición.
-
-        \item \textsc{Simetría:} Supongamos que $a \sim b$.
-        Por definición, existe $g \in G$ tal que $a, b \in Hg$. El orden en el que enunciamos la pertenencia al conjunto no altera el hecho lógico; es decir, $b, a \in Hg$. En consecuencia, $b \sim a$.
-
-        \item \textsc{Transitividad:} Supongamos que $a \sim b$ y $b \sim c$.
-        Debemos demostrar que $a \sim c$. Por la hipótesis, sabemos que existen $g_1, g_2 \in G$ tales que:
-        \begin{equation*}
-            a, b \in Hg_1 \quad \text{y} \quad b, c \in Hg_2.
-        \end{equation*}
-        Esto implica que existen elementos $h_1, h_2, h_3, h_4 \in H$ que satisfacen las siguientes igualdades:
-        \begin{align*}
-            a &= h_1 g_1, & b &= h_2 g_1, \\
-            b &= h_3 g_2, & c &= h_4 g_2.
-        \end{align*}
-        Observamos que tenemos dos expresiones para $b$. Igualándolas obtenemos una relación entre los generadores $g_1$ y $g_2$:
-        \begin{align*}
-            h_2 g_1 &= h_3 g_2 \\
-            g_1 &= h_2^{-1} h_3 g_2.
-        \end{align*}
-        Ahora sustituimos esta expresión de $g_1$ en la ecuación original de $a$:
-        \begin{align*}
-            a &= h_1 (h_2^{-1} h_3 g_2) \\
-              &= (h_1 h_2^{-1} h_3) g_2.
-        \end{align*}
-        Dado que $H$ es un subgrupo, el producto y la inversa de elementos de $H$ permanecen en $H$. Sea $h' = h_1 h_2^{-1} h_3 \in H$. Entonces:
-        \begin{equation*}
-            a = h' g_2 \implies a \in Hg_2.
-        \end{equation*}
-        Como ya sabíamos que $c \in Hg_2$, concluimos que $a, c \in Hg_2$, lo que demuestra que $a \sim c$.
-    \end{enumerate}
-
-    Al ser $\sim$ una relación de equivalencia, sus clases de equivalencia forman una partición del conjunto $G$. Dado que la clase de equivalencia de un elemento $a$ bajo esta relación es precisamente la clase lateral $Ha$, concluimos que $\mathcal{R}$ forma una partición de $G$.
-
-    Análogamente, se demuestra que las clases laterales izquierdas $\mathcal{L}$ forman una partición de $G$.
+	Análogamente las clases izquierdas forman una partición de $G$.
 \end{proof}
 
 \ObservacionBox{}{
