@@ -1,0 +1,132 @@
+\TeoremaBox{Caracterización del Producto Semidirecto Interno}{
+Sea $G$ un grupo. Sean $K \triangleleft G$ y $H \leq G$ subgrupos tales que $G = HK$ y $H \cap K = \{e\}$. Entonces
+\begin{equation*}
+G \cong H \ltimes_{\varphi} K
+\end{equation*}
+donde $\varphi$ es la acción por conjugación (inversa).
+}
+
+\begin{proof}
+Definamos la función $f: H \ltimes_{\varphi} K \to G$ mediante la regla de correspondencia:
+\begin{equation*}
+f(a,b) = ab
+\end{equation*}
+para todo $(a,b) \in H \ltimes_{\varphi} K$.
+
+Primero verifiquemos que $f$ es un homomorfismo.
+Sean $(a,b), (a',b') \in H \ltimes_{\varphi} K$. Evaluamos $f$ en el producto de estos elementos:
+\begin{align*}
+f((a,b)(a',b')) &= f(aa', b^{a'}b') \\
+&= (aa')(b^{a'}b')
+\end{align*}
+Recordemos que $b^{a'}$ denota la acción de $a'$ sobre $b$, que definimos como la conjugación inversa. Sustituyendo esto:
+\begin{align*}
+(aa')(b^{a'}b') &= a a' ((a')^{-1} b a') b' \\
+&= a (a' (a')^{-1}) b a' b' \\
+&= a e b a' b' \\
+&= a b a' b'
+\end{align*}
+Por otro lado, calculamos el producto de las imágenes en $G$:
+\begin{equation*}
+f(a,b)f(a',b') = (ab)(a'b') = aba'b'
+\end{equation*}
+Dado que ambos desarrollos coinciden, concluimos que
+\begin{equation*}
+f((a,b)(a',b')) = f(a,b)f(a',b')
+\end{equation*}
+
+Ahora veamos que $f$ es inyectiva.
+Supongamos que $(a,b) \in \ker(f)$. Entonces:
+\begin{equation*}
+f(a,b) = e \iff ab = e
+\end{equation*}
+De la igualdad $ab=e$, despejando $b$, obtenemos $b^{-1} = a$.
+Sabemos que $a \in H$ y $b \in K$ (lo que implica $b^{-1} \in K$).
+Por lo tanto:
+\begin{equation*}
+b^{-1} = a \in H \cap K
+\end{equation*}
+Por hipótesis, la intersección es trivial, es decir $H \cap K = \{e\}$. Esto implica que $a = e$.
+Sustituyendo en la ecuación original, $b = a^{-1} = e$.
+Así, $(a,b) = (e,e)$, por lo que el núcleo es trivial y $f$ es inyectiva.
+
+Finalmente, veamos que $f$ es sobreyectiva.
+Sea $g \in G$. Como $G = HK$, existen $a \in H$ y $b \in K$ tales que $g = ab$.
+Luego:
+\begin{equation*}
+f(a,b) = ab = g
+\end{equation*}
+lo cual muestra que $f$ es sobreyectiva.
+
+Resumiendo la construcción:
+Dada una acción $\varphi: H \to \text{Aut}(K)$, formamos $(G, \cdot)$ con el producto
+\begin{equation*}
+(a,b)(a',b') = (aa', b^{a'}b')
+\end{equation*}
+Esto implica que $G = H \ltimes_{\varphi} K$ es un grupo donde identificamos $H \leq G$ y $K \triangleleft G$ tales que $G = HK$ y $H \cap K = \{e\}$.
+
+Recíprocamente, si tenemos
+\begin{equation*}
+H \leq G, \quad K \triangleleft G, \quad G = HK
+\end{equation*}
+y
+\begin{equation*}
+H \cap K = \{e\}
+\end{equation*}
+entonces
+\begin{equation*}
+G \cong H \ltimes_{\varphi} K
+\end{equation*}
+\end{proof}
+
+\begin{eje}
+Sea $G$ un grupo de orden 8. Supongamos que $G$ no es abeliano.
+
+Entonces $G$ tiene un elemento de orden 4.
+En efecto, supongamos lo contrario (que $G$ no tiene elementos de orden 4). Entonces todos sus elementos distintos de la identidad tendrían orden 2. Es decir, $a^2 = e$ para todo $a \in G$.
+Esto implicaría que $G$ es abeliano, pues para cualesquiera $a, b \in G$:
+\begin{align*}
+ab &= (ab)^{-1} \quad (\text{pues } (ab)^2=e) \\
+&= b^{-1}a^{-1} \\
+&= ba \quad (\text{pues } b^2=e, a^2=e \implies b=b^{-1}, a=a^{-1})
+\end{align*}
+Esto es una contradicción ($G$ no es abeliano). Por lo tanto, existe un elemento de orden 4.
+
+Por lo tanto, $G$ tiene al menos un elemento de orden 4.
+Sea $a \in G$ tal que $o(a)=4$. Definamos $K = \langle a \rangle$.
+Como $|K|=4$ y $|G|=8$, el índice es $[G:K]=2$, lo que implica que $K \triangleleft G$.
+
+Ahora analizamos los elementos que están fuera de $K$. Distinguimos dos casos:
+
+Caso 1. Existe $b \in G \setminus K$ tal que $b^2 = e$.
+Tomando $H = \langle b \rangle$, se tiene un subgrupo de orden 2.
+Verificamos las condiciones:
+\begin{itemize}
+    \item $H \cap K = \{e\}$ (pues $b$ tiene orden 2 y el único elemento de orden 2 en $K$ es $a^2$, y $b \neq a^2$).
+    \item $K \triangleleft G$.
+    \item $G = HK$ (pues $|HK| = \frac{|H||K|}{|H \cap K|} = 8$).
+\end{itemize}
+Por el teorema anterior, tenemos que:
+\begin{equation*}
+G \cong H \ltimes_{\varphi} K
+\end{equation*}
+
+Para determinar el grupo, analizamos la acción $\varphi: H \to \text{Aut}(K)$.
+Sabemos que $\text{Aut}(K) \cong (\mathbb{Z}_4)^\ast \cong \mathbb{Z}_2$, generado por la inversión $\theta(k) = k^{-1}$.
+Si $\varphi$ fuera trivial, $G$ sería abeliano (contradicción).
+Por lo tanto, $\varphi$ debe ser el isomorfismo que envía el generador de $H$ a la inversión en $K$.
+Esta estructura corresponde al grupo Diédrico:
+\begin{equation*}
+G \cong D_4
+\end{equation*}
+
+Caso 2. Todo elemento de orden 2 está en $K$.
+Supongamos que no existe ningún elemento de orden 2 fuera de $K$. Entonces, cualquier $b \in G \setminus K$ debe tener orden 4.
+Si tomamos $H = \langle b \rangle$, entonces $H$ es un subgrupo de orden 4.
+Observamos que $a^2$ es el único elemento de orden 2 en $K$, y $b^2$ es el único elemento de orden 2 en $H$. Como por hipótesis todos los elementos de orden 2 están en $K$, necesariamente $b^2 = a^2$.
+Esto implica que $H \cap K \neq \{e\}$ (la intersección es al menos $\{e, a^2\}$).
+Por lo tanto, en este caso $G$ no se puede descomponer como un producto semidirecto interno de un subgrupo de orden 4 y uno de orden 2 con intersección trivial.
+(Nota: Este caso corresponde al grupo de los Cuaterniones, $Q_8$).
+
+\end{eje}
+

@@ -1,0 +1,300 @@
+\section{Grupos Abelianos Finitos}
+\label{sec:Grupos Abelianos Finitos}
+
+Sea $G$ un grupo abeliano finito de orden $n$, con la factorización en primos dada por:
+\begin{equation*}
+n = p_1^{e_1} \cdots p_r^{e_r}
+\end{equation*}
+donde los $p_i$ son números primos distintos.
+
+\TeoremaBox{Descomposición Primaria de Grupos Abelianos}{
+$G$ es isomorfo al producto directo de sus subgrupos de Sylow.
+}
+
+\begin{proof}
+Como se estableció, sea $|G| = n = p_1^{e_1} \cdots p_r^{e_r}$. Por los Teoremas de Sylow, para cada $i$ existe un subgrupo de Sylow $P_i$ de orden $p_i^{e_i}$.
+Queremos demostrar que:
+\begin{equation*}
+G \cong P_1 \times P_2 \times \cdots \times P_r
+\end{equation*}
+
+En efecto, como $G$ es abeliano, todos sus subgrupos son normales. Por lo tanto, $P_i \triangleleft G$ para todo $i$.
+Más aún, demostremos que la intersección de $P_1$ con el producto de los otros es trivial:
+\begin{equation*}
+P_1 \cap (P_2 \cdots P_r) = \{e\}
+\end{equation*}
+Pues si tomamos un elemento $g \in P_1 \cap (P_2 \cdots P_r)$, tenemos:
+Por una parte, $g \in P_1$, lo que implica que su orden divide al orden del grupo, es decir, $o(g) \mid |P_1| = p_1^{e_1}$.
+Por otra parte, $g \in P_2 \cdots P_r$. El orden de este subgrupo es el producto de los órdenes (al ser coprimos y normales), por lo que $o(g) \mid |P_2 \cdots P_r|$.
+Como los primos son distintos, tenemos que:
+\begin{equation*}
+\text{mcd}(|P_1|, |P_2 \cdots P_r|) = 1
+\end{equation*}
+Esto implica que $o(g) = 1$, y por lo tanto $g = e$.
+
+Tomando $H = P_1$ y $K = P_2 \cdots P_r$, se tiene entonces que $H, K \triangleleft G$ (al ser $G$ abeliano), $H \cap K = \{e\}$ y $G = HK$.
+De donde:
+\begin{equation*}
+G \cong H \times K = P_1 \times (P_2 \cdots P_r)
+\end{equation*}
+
+Por inducción se sigue que:
+\begin{equation*}
+G \cong P_1 \times P_2 \times \cdots \times P_r
+\end{equation*}
+\end{proof}
+
+Probaremos ahora que todo grupo abeliano finito es producto de subgrupos cíclicos disjuntos, para lo cual será suficiente ver el caso en que $G$ es un $p$-grupo.
+
+\TeoremaBox{}{
+Sea $G$ un $p$-grupo finito y $a$ un elemento de orden máximo. Entonces existe un subgrupo $H \leq G$ tal que
+\begin{equation*}
+G = H \times K
+\end{equation*}
+con $K = \langle a \rangle$ y $H \cap K = \{e\}$.
+}
+
+\begin{proof}
+Procedemos por inducción sobre $n$, donde $|G| = p^n$.
+Si $n=1$, $G$ es cíclico de orden $p$. Tomando $H=\{e\}$ se tiene $G = H \times K$, lo cual cumple lo pedido.
+
+Supongamos que el resultado es válido para todo grupo de orden $p^k$ con $1 \leq k < n$.
+Sea $a$ un elemento de orden máximo en $G$, y definamos $K = \langle a \rangle$.
+Si $G = K$, tomamos $H = \{e\}$ y terminamos.
+Supongamos que $G \neq K$. Para aplicar la inducción, necesitamos encontrar un subgrupo normal de orden $p$ que interseque trivialmente con $K$.
+
+Paso 1: Existencia de un elemento de orden $p$ fuera de $K$.
+Sea $x \in G \setminus K$ tal que $x^p \in K$ (podemos elegir tal $x$ tomando un elemento de orden mínimo en $G \setminus K$).
+Como $x^p \in K$, existe un entero $i$ tal que $x^p = a^i$.
+Sea $m = o(a)$. Si $p \nmid i$, entonces $m \nmid i \frac{m}{p}$, por lo que $a^{i \frac{m}{p}} \neq e$.
+Sin embargo, calculemos la potencia $m$-ésima de $x$:
+\begin{equation*}
+x^m = (x^p)^{\frac{m}{p}} = (a^i)^{\frac{m}{p}} = a^{\frac{im}{p}} \neq e
+\end{equation*}
+Esto contradice el hecho de que $a$ es un elemento de orden máximo $m$ (pues implicaría que $x$ tiene orden mayor a $m$).
+Por tanto, debe ocurrir que $p \mid i$.
+Así, $i = pj$ para algún entero $j$, de donde $x^p = a^{pj}$.
+Definamos el elemento $b = a^{-j}x$.
+
+Veamos que $b \notin K$. Si $b \in K$, entonces $x = a^j b \in K$, lo cual contradice la elección de $x$.
+Veamos el orden de $b$:
+\begin{equation*}
+b^p = (a^{-j}x)^p = a^{-jp} x^p = a^{-i} a^i = e
+\end{equation*}
+Así, hemos construido un elemento $b \in G \setminus K$ de orden $p$.
+Sea $M = \langle b \rangle$. Notemos que $M \cap K = \{e\}$ (pues $b \notin K$ y tiene orden primo). Además, como $G$ es un $p$-grupo abeliano, $M \triangleleft G$.
+
+Paso 2: Paso al cociente.
+Consideremos el grupo cociente $\overline{G} = G/M$.
+El orden es $|\overline{G}| = p^{n-1}$.
+Sea $\overline{a}$ la imagen de $a$ en $\overline{G}$. Observemos que $o(\overline{a}) = o(a)$.
+En efecto, $\overline{a}^{o(a)} = \overline{a^{o(a)}} = \overline{e}$. Así $o(\overline{a}) \mid o(a)$.
+Por otro lado, si $\overline{a}^k = \overline{e}$, entonces $a^k \in M$.
+Como $a^k \in K$ y $M \cap K = \{e\}$, entonces $a^k = e$, por lo que $o(a) \mid o(\overline{a})$.
+Por tanto, $\overline{a}$ es un elemento de orden máximo en $\overline{G}$.
+
+Paso 3: Hipótesis de Inducción.
+Como $|\overline{G}| < |G|$, por hipótesis de inducción existe un subgrupo $\overline{H} \leq \overline{G}$ tal que:
+\begin{equation*}
+\overline{G} = \overline{H} \times \langle \overline{a} \rangle
+\end{equation*}
+Esto implica que $\overline{H} \cap \langle \overline{a} \rangle = \{\overline{e}\}$ y $\overline{G} = \overline{H} \langle \overline{a} \rangle$.
+
+Paso 4: Levantamiento y Conclusión.
+Por el Teorema de la Correspondencia, existe un subgrupo $H \leq G$ que contiene a $M$ tal que $\overline{H} = H/M$.
+Veamos que $G = H \times K$.
+
+Primero, analicemos los órdenes:
+\begin{equation*}
+p^{n-1} = |\overline{G}| = |\overline{H}| |\langle \overline{a} \rangle| = \frac{|H|}{|M|} |K| = \frac{|H||K|}{p}
+\end{equation*}
+Multiplicando por $p$, obtenemos $|G| = |H||K|$, lo que implica $G = HK$.
+
+Segundo, veamos la intersección. Sea $z \in H \cap K$.
+Entonces la imagen en el cociente cumple $\overline{z} \in \overline{H} \cap \overline{K} = \overline{H} \cap \langle \overline{a} \rangle$.
+Por la suma directa en el cociente, $\overline{z} = \overline{e}$.
+Esto significa que $z \in M$.
+Entonces $z \in M \cap K$.
+Pero construimos $M$ tal que $M \cap K = \{e\}$.
+Por lo tanto, $z = e$, lo que prueba que $H \cap K = \{e\}$.
+
+Concluimos que $G = H \times K$.
+\end{proof}
+
+\CorolarioBox{}{
+Sea $G$ un $p$-grupo finito, entonces $G$ es producto de factores cíclicos.
+Más aún, la representación como producto de factores cíclicos es única salvo orden.
+}
+
+\begin{proof}
+Por el teorema anterior, si $a$ es un elemento de orden máximo, existe un subgrupo $K$ tal que
+\begin{equation*}
+G = H \times K
+\end{equation*}
+con $H = \langle a \rangle$ y $K \cap H = \{e\}$.
+
+De hecho, tenemos que $|K| < |G| = |H||K|$, pues $|H| > 1$.
+Aplicando inducción sobre $n$ (donde $|G|=p^n$) se sigue el resultado.
+
+Ahora observe que si $\varphi: G \to G$ está definida por $\varphi(g) = g^p$ (o en notación aditiva $pg = g + \dots + g$, $p$ veces), entonces $\varphi$ es un homomorfismo.
+Y de hecho:
+\begin{equation*}
+|\varphi(G)| = \frac{|G|}{p^k}
+\end{equation*}
+con $k$ el número de factores cíclicos de $G$.
+
+En efecto, podemos pensar primero que $G = \mathbb{Z}_{p^e}$, en cuyo caso $|\mathbb{Z}_{p^e}| = p^e$.
+\begin{equation*}
+|\varphi(\mathbb{Z}_{p^e})| = |p\mathbb{Z}_{p^e}| = \frac{|\mathbb{Z}_{p^e}|}{p}
+\end{equation*}
+El núcleo es:
+\begin{equation*}
+\text{Ker } \varphi = \{\bar{a} \mid p\bar{a} = \bar{0}\} = \{\bar{0}, \overline{p^{e-1}}, 2\overline{p^{e-1}}, \dots, (p-1)\overline{p^{e-1}}\}
+\end{equation*}
+y por lo tanto $|\text{Ker } \varphi| = p$.
+
+Si $G \cong \mathbb{Z}_{p^{e_1}} \times \mathbb{Z}_{p^{e_2}} \times \dots \times \mathbb{Z}_{p^{e_k}}$,
+entonces el núcleo se descompone componente a componente:
+\begin{equation*}
+\text{Ker } \varphi \cong \text{Ker } \varphi|_{\mathbb{Z}_{p^{e_1}}} \times \dots \times \text{Ker } \varphi|_{\mathbb{Z}_{p^{e_k}}}
+\end{equation*}
+
+Así, calculamos el orden de la imagen:
+\begin{equation*}
+|\varphi(G)| = \frac{|G|}{|\text{Ker } \varphi|} = \frac{|\mathbb{Z}_{p^{e_1}}|}{p} \cdot \dots \cdot \frac{|\mathbb{Z}_{p^{e_k}}|}{p}
+\end{equation*}
+Agrupando los términos:
+\begin{equation*}
+|\varphi(G)| = \frac{|\mathbb{Z}_{p^{e_1}}| \dots |\mathbb{Z}_{p^{e_k}}|}{p^k} = \frac{|G|}{p^k}
+\end{equation*}
+
+Además, observemos que el subgrupo $\varphi(G) = \{g^p \mid g \in G\}$ está definido de manera intrínseca y no depende de la representación (descomposición) de $G$.
+Luego, cualesquiera dos representaciones deben tener el mismo número de factores, i.e. $k$ es un invariante del grupo.
+
+Es decir, $k$ es un invariante del grupo.
+
+Si tenemos dos descomposiciones:
+\begin{equation*}
+G = \mathbb{Z}_{p^{r_1}} \times \dots \times \mathbb{Z}_{p^{r_k}} = \mathbb{Z}_{p^{s_1}} \times \dots \times \mathbb{Z}_{p^{s_t}}
+\end{equation*}
+entonces, aplicando el resultado anterior sobre el orden de la imagen del homomorfismo $\varphi$:
+\begin{equation*}
+\frac{|G|}{p^k} = |\varphi(G)| = \frac{|G|}{p^t}
+\end{equation*}
+y de ahí se sigue que $k=t$.
+
+Ahora, ordenando los factores podemos suponer $r_1 \ge \dots \ge r_k$ y $s_1 \ge \dots \ge s_k$.
+Si $r_1 > s_1$, entonces $G$ tiene un elemento de orden $p^{r_1}$ (proveniente del primer factor de la primera descomposición).
+Pero por otra parte, dada la segunda descomposición, el elemento de orden más grande de $G$ es $p^{s_1}$.
+Esto genera una contradicción (\#C) con el hecho de que exista un elemento de orden $p^{r_1}$.
+Por tanto, debe ser $r_1 \le s_1$.
+
+Por simetría (intercambiando los roles de las descomposiciones), se tiene $s_1 \le r_1$.
+En conclusión, $r_1 = s_1$.
+
+Cancelando estos factores (o iterando el proceso) se concluye que:
+\begin{equation*}
+r_i = s_i \quad \forall 1 \le i \le k=t
+\end{equation*}
+
+\end{proof}
+
+\begin{eje}
+1) Sea $G$ un grupo abeliano, $|G| = 60 = 5 \cdot 2^2 \cdot 3$.
+Entonces sus subgrupos de Sylow son:
+\begin{equation*}
+P_5 \cong \mathbb{Z}_5, \quad P_3 \cong \mathbb{Z}_3
+\end{equation*}
+Para el primo 2, como $2^2=4$, tenemos dos posibilidades:
+\begin{equation*}
+P_2 \cong \begin{cases} \mathbb{Z}_{2^2} = \mathbb{Z}_4 \\ \mathbb{Z}_2 \times \mathbb{Z}_2 \end{cases}
+\end{equation*}
+Por lo tanto, las posibles estructuras para $G$ son:
+\begin{itemize}
+    \item $G \cong \mathbb{Z}_5 \times \mathbb{Z}_3 \times \mathbb{Z}_4 \cong \mathbb{Z}_{60}$
+    \item $G \cong \mathbb{Z}_5 \times \mathbb{Z}_3 \times \mathbb{Z}_2 \times \mathbb{Z}_2 \cong \mathbb{Z}_{30} \times \mathbb{Z}_2$
+\end{itemize}
+
+2) Si $|G|=8$ y es abeliano. Entonces $G = P_2$.
+Las posibilidades corresponden a las particiones del exponente 3:
+\begin{itemize}
+    \item $\mathbb{Z}_{2^3} = \mathbb{Z}_8$
+    \item $\mathbb{Z}_{2^2} \times \mathbb{Z}_2 = \mathbb{Z}_4 \times \mathbb{Z}_2$
+    \item $\mathbb{Z}_2 \times \mathbb{Z}_2 \times \mathbb{Z}_2$
+\end{itemize}
+\end{eje}
+
+\TeoremaBox{Teorema Fundamental de los Grupos Abelianos Finitos}{
+Sea $G$ un grupo abeliano finito, entonces $G$ se puede...
+expresar como producto de factores cíclicos
+\begin{equation*}
+G \cong C_1 \times C_2 \times \dots \times C_k
+\end{equation*}
+en donde $|C_{i+1}|$ divide a $|C_i|$ para $1 \le i \le k-1$. Y de hecho la representación es única.
+}
+
+
+\begin{proof}
+Por el teorema anterior, $G$ es producto de subgrupos cíclicos de orden potencia de primos.
+De hecho, esta representación se obtiene de la representación de sus $p$-grupos de Sylow.
+
+Sea $G = P_{p_1} \dots P_{p_r}$ con los $P_{p_i}$ los $p_i$-grupos de Sylow de $G$ y
+\begin{equation*}
+P_{p_i} \cong \underbrace{\mathbb{Z}_{p_i^{e_{i1}}} \times \dots \times \mathbb{Z}_{p_i^{e_{ij_i}}}}_{j_i \text{ factores}}
+\end{equation*}
+
+Tomemos
+\begin{align*}
+C_1 &= \mathbb{Z}_{p_1^{e_{11}}} \times \dots \times \mathbb{Z}_{p_r^{e_{r1}}} \\
+&\vdots \\
+C_k &= \mathbb{Z}_{p_1^{e_{1k}}} \times \dots \times \mathbb{Z}_{p_r^{e_{rk}}}
+\end{align*}
+en donde $\mathbb{Z}_{p_t^{e_{tl}}} = \{e\}$ si $l > j_t$ (es decir, si se acaban los factores para ese primo, rellenamos con la identidad).
+
+Claramente:
+\begin{equation*}
+|C_{i+1}| = p_1^{e_{1(i+1)}} \dots p_r^{e_{r(i+1)}} \biggm| p_1^{e_{1i}} \dots p_r^{e_{ri}} = |C_i|
+\end{equation*}
+(Esto se cumple porque ordenamos los exponentes de mayor a menor para cada primo: $e_{t1} \ge e_{t2} \ge \dots$).
+
+Veamos ahora la unicidad de esta descomposición.
+
+Supongamos que $G$ admite dos descomposiciones en factores cíclicos que cumplen la condición de divisibilidad:
+\begin{equation*}
+G \cong A_1 \times A_2 \times \dots \times A_k
+\end{equation*}
+donde $|A_{i+1}|$ divide a $|A_i|$, y
+\begin{equation*}
+G \cong B_1 \times B_2 \times \dots \times B_m
+\end{equation*}
+donde $|B_{j+1}|$ divide a $|B_j|$.
+
+Queremos demostrar que $k=m$ y que $A_i \cong B_i$ para todo $i$ (o equivalentemente, que $|A_i| = |B_i|$).
+
+Sabemos, por el teorema de descomposición primaria y el corolario anterior, que $G$ se descompone de manera única (salvo orden) en producto de grupos cíclicos de orden potencia de primo (sus divisores elementales).
+Descompongamos cada $A_i$ en sus partes primarias:
+\begin{equation*}
+A_i \cong \mathbb{Z}_{p_1^{e_{i,1}}} \times \mathbb{Z}_{p_2^{e_{i,2}}} \times \dots \times \mathbb{Z}_{p_r^{e_{i,r}}}
+\end{equation*}
+La condición de divisibilidad $|A_{i+1}| \mid |A_i|$ implica que para cada primo $p_j$, los exponentes deben ser decrecientes respecto al índice $i$:
+\begin{equation*}
+e_{1,j} \ge e_{2,j} \ge e_{3,j} \ge \dots
+\end{equation*}
+Esto significa que $|A_1|$ se forma tomando la potencia más alta de cada primo disponible en la descomposición completa de $G$; $|A_2|$ se forma tomando la segunda potencia más alta de cada primo, y así sucesivamente.
+
+Si hiciéramos lo mismo con los $B_j$, tendríamos que $|B_1|$ debe contener la potencia más alta de cada primo en la descomposición de divisores elementales de $G$.
+Como la colección de divisores elementales de $G$ es única, la potencia máxima para el primo $p_1$ es única, la potencia máxima para $p_2$ es única, etc.
+Por lo tanto:
+\begin{equation*}
+|A_1| = |B_1|
+\end{equation*}
+Una vez "gastados" los factores de mayor potencia, $|A_2|$ y $|B_2|$ deben formarse con las potencias "segundas más altas" de cada primo. Nuevamente, por la unicidad de los divisores elementales, estos coinciden:
+\begin{equation*}
+|A_2| = |B_2|
+\end{equation*}
+Iterando este proceso, concluimos que $|A_i| = |B_i|$ para todo $i$.
+Si una descomposición tuviera más términos que la otra (por ejemplo $k > m$), los términos sobrantes $A_{m+1}, \dots$ tendrían que estar formados por factores triviales (orden 1), pues ya habríamos agotado todos los factores primos no triviales de $G$.
+
+Por lo tanto, la descomposición en factores invariantes es única. A los números $|C_1|, \dots, |C_k|$ se les denomina los factores invariantes del grupo. Note que están bien determinados debido a la unicidad de la representación.
+
+\end{proof}

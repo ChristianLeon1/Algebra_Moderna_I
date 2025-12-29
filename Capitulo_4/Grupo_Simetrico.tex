@@ -1,4 +1,4 @@
-\section{El grupo Simétrico $S_n$}
+\section{El grupo Simétrico \texorpdfstring{$S_n$}{Sn}}
 \label{sec:Grupo_Simetrico}
 
 Recordemos que $S_n$ con la composición de funciones es un grupo. Cada elemento de $S_n$ se llama una permutación (la cual es una función biyectiva de $\{1, \dots, n\}$ en sí mismo). En este caso si $\sigma \in S_n$ se denotará:
@@ -99,12 +99,12 @@ Así $|\sigma| \mid k$. Además $\sigma^l(i_1) \neq i_1, \forall 1 \leq l < k$ a
     Consideremos $S_5$, entonces $\sigma = (1 \ 2)$ y $\tau = (3 \ 4 \ 5)$ son disjuntos.
 \end{eje}
 
-\NotaBox{}{
+\begin{nota}
     Si $\sigma = (i_1, \dots, i_k)$ y $\tau = (j_1, \dots, j_l)$, entonces $\sigma$ y $\tau$ son disjuntos si y sólo si
     \begin{equation*}
         \{i_1, \dots, i_k\} \cap \{j_1, \dots, j_l\} = \emptyset
     \end{equation*}
-}
+\end{nota}
 
 \ObservacionBox{}{
     Si $\sigma, \tau$ son ciclos disjuntos, entonces $\sigma \circ \tau = \tau \circ \sigma$, es decir, conmutan.
@@ -138,7 +138,12 @@ Así $|\sigma| \mid k$. Además $\sigma^l(i_1) \neq i_1, \forall 1 \leq l < k$ a
     
     Para $k=2$, $\theta=(i_1, i_2)$ y ya se tiene.
     
-    Suponga el resultado para todo $1 \leq l \leq k$ y considere que $\theta$ mueve a los elementos $\{i_1, \dots, i_k, i_{k+1}\}$. Considere que $\theta$ mueve a los elementos $\{i_1, \dots, i_k, i_{k+1}\}$. Observe que $i_1, \theta(i_1), \theta^2(i_1), \dots, \theta^{k+1}(i_1) \in \{i_1, \dots, i_{k+1}\}$, por lo tanto $\{i_1, \theta(i_1), \dots, \theta^{k+1}(i_1)\} \subseteq \{i_1, \dots, i_{k+1}\}$, luego existen $1 \leq l, l' \leq k+2$ y $\theta^l(i_1) = \theta^{l'}(i_1)$ y podemos suponer $l > l'$, en este caso $\theta^{l-l'}(i_1) = i_1$, y $1 \leq l-l' \leq k+2-l' \leq k+1$, es decir existe $p$ tal que $\theta^p(i_1) = i_1$, $1 \leq p \leq k+1$.
+    Suponga el resultado para todo $1 \leq l \leq k$ y considere que $\theta$ mueve a los elementos $\{i_1, \dots, i_k, i_{k+1}\}$. Considere que $\theta$ mueve a los elementos $\{i_1, \dots, i_k, i_{k+1}\}$. Observe que:
+    \begin{equation*}
+     i_1, \theta(i_1), \theta^2(i_1), \dots, \theta^{k+1}(i_1) \in \{i_1, \dots, i_{k+1}\}
+    \end{equation*}
+      
+    Por lo tanto $\{i_1, \theta(i_1), \dots, \theta^{k+1}(i_1)\} \subseteq \{i_1, \dots, i_{k+1}\}$, luego existen $1 \leq l, l' \leq k+2$ y $\theta^l(i_1) = \theta^{l'}(i_1)$ y podemos suponer $l > l'$, en este caso $\theta^{l-l'}(i_1) = i_1$, y $1 \leq l-l' \leq k+2-l' \leq k+1$, es decir existe $p$ tal que $\theta^p(i_1) = i_1$, $1 \leq p \leq k+1$.
     
     Sea $p$ el mínimo entero para el cual pasa esto. \par Sea $\sigma = (i_1, \theta(i_1), \dots, \theta^{p-1}(i_1))$. 
     $\{i_1, \theta(i_1), \dots, \theta^{p-1}(i_1)\} \subseteq \{i_1, \dots, i_{k+1}\}$ y definamos
