@@ -199,6 +199,28 @@ r_i = s_i \quad \forall 1 \le i \le k=t
 
 \end{proof}
 
+\TeoremaBox{}{
+Sea $G$ un grupo abeliano finito. Entonces:
+\begin{enumerate}[label=\alph*)]
+    \item $G$ es producto de grupos cíclicos de órdenes potencias de primos.
+    \item Los órdenes de los factores directos son únicos.
+    \item Si $m = |G| = p_1^{e_1} \cdots p_r^{e_r}$ con los $p_i$ primos distintos y $e_i > 0$ para todo $i$, entonces la cantidad de grupos abelianos de orden $m$ (salvo isomorfismo) es igual al producto:
+    \begin{equation*}
+    p(e_1) \cdots p(e_r)
+    \end{equation*}
+    en donde $p(n)$ cuenta la cantidad de formas distintas de expresar $n$ como suma de enteros positivos (particiones de $n$), es decir, $n = n_1 + \dots + n_k$ con $n_1 \ge n_2 \ge \dots \ge n_k$.
+\end{enumerate}
+}
+
+\begin{proof}
+\textbf{a)} Por el Teorema de Descomposición Primaria, $G$ es isomorfo al producto directo de sus $p$-subgrupos de Sylow. Por el corolario anterior, sabemos que cada $p$-subgrupo de Sylow se puede expresar como producto de subgrupos cíclicos de orden potencia de primos. Al juntar estas descomposiciones, obtenemos el resultado para $G$.
+
+\textbf{b)} La unicidad de los órdenes de los factores directos también está garantizada por el corolario anterior aplicado a cada componente primaria (los subgrupos de Sylow), dado que la descomposición en cíclicos para $p$-grupos es única salvo el orden.
+
+\textbf{c)} La última parte se sigue de la estructura de los subgrupos de Sylow. Si $P$ es un $p$-grupo de orden $p^n$, el número de grupos abelianos no isomorfos de ese orden corresponde a las distintas formas de elegir los órdenes de sus factores cíclicos, lo cual equivale a las particiones del entero $n$, denotado por $p(n)$.
+Como la estructura de $G$ está determinada independientemente por cada uno de sus subgrupos de Sylow $P_{p_i}$ de orden $p_i^{e_i}$, el número total de estructuras posibles es el producto de las posibilidades para cada primo, es decir, $p(e_1) \cdots p(e_r)$.
+\end{proof}
+
 \begin{eje}
 1) Sea $G$ un grupo abeliano, $|G| = 60 = 5 \cdot 2^2 \cdot 3$.
 Entonces sus subgrupos de Sylow son:
@@ -298,3 +320,4 @@ Si una descomposición tuviera más términos que la otra (por ejemplo $k > m$),
 Por lo tanto, la descomposición en factores invariantes es única. A los números $|C_1|, \dots, |C_k|$ se les denomina los factores invariantes del grupo. Note que están bien determinados debido a la unicidad de la representación.
 
 \end{proof}
+

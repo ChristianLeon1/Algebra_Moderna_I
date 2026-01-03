@@ -1,0 +1,301 @@
+\begin{prop}
+    El producto directo finito de grupos solubles (resp. nilpotentes) es soluble (resp. nilpotente).
+\end{prop}
+
+\begin{proof}
+    Sea $G = H \times K$ el producto directo de dos grupos. Probaremos el resultado para dos factores; el caso general se sigue por inducción matemática sobre el número de factores.
+    
+    \itshape 1. Caso Soluble: \normalfont
+    Supongamos que $H$ y $K$ son solubles. Existen enteros $n_1, n_2$ tales que $H^{(n_1)} = \{e_H\}$ y $K^{(n_2)} = \{e_K\}$. Sea $n = \max(n_1, n_2)$.
+    
+    Recordemos que las operaciones en el producto directo se realizan componente a componente. El conmutador de dos elementos $(h_1, k_1)$ y $(h_2, k_2)$ en $G$ es:
+    \begin{align*}
+        [(h_1, k_1), (h_2, k_2)] &= (h_1, k_1)(h_2, k_2)(h_1, k_1)^{-1}(h_2, k_2)^{-1} \\
+        &= (h_1 h_2 h_1^{-1} h_2^{-1}, k_1 k_2 k_1^{-1} k_2^{-1}) \\
+        &= ([h_1, h_2], [k_1, k_2]).
+    \end{align*}
+    Por inducción sobre $m$, se cumple que el término $m$-ésimo de la serie derivada es el producto directo de los términos de los factores:
+    \begin{equation*}
+        (H \times K)^{(m)} = H^{(m)} \times K^{(m)}.
+    \end{equation*}
+    Evaluando en $n = \max(n_1, n_2)$:
+    \begin{equation*}
+        G^{(n)} = H^{(n)} \times K^{(n)} = \{e_H\} \times \{e_K\} = \{(e_H, e_K)\} = \{e_G\}.
+    \end{equation*}
+    Por lo tanto, $G$ es soluble.
+
+    \itshape 2. Caso Nilpotente: \normalfont
+    Supongamos que $H$ y $K$ son nilpotentes. Existen $n_1, n_2$ tales que $H_{(n_1)} = \{e_H\}$ y $K_{(n_2)} = \{e_K\}$. Sea $n = \max(n_1, n_2)$.
+    
+    De manera análoga, el conmutador de un elemento de $G$ con uno de un término de la serie central se comporta componente a componente:
+    \begin{equation*}
+        [ (g_h, g_k), (x_h, x_k) ] = ([g_h, x_h], [g_k, x_k]).
+    \end{equation*}
+    Esto implica que para la serie central descendente se cumple:
+    \begin{equation*}
+        (H \times K)_{(m)} = H_{(m)} \times K_{(m)}.
+    \end{equation*}
+    Evaluando en $n$:
+    \begin{equation*}
+        G_{(n)} = H_{(n)} \times K_{(n)} = \{e_H\} \times \{e_K\} = \{e_G\}.
+    \end{equation*}
+    Por lo tanto, $G$ es nilpotente.
+\end{proof}
+
+\ObservacionBox{Ejemplos y Notas}{
+    \begin{enumerate}
+        \item El grupo simétrico $S_n$ no es soluble para $n \ge 5$ (como vimos con $A_n$). Dado que todo grupo nilpotente es soluble, $S_n$ tampoco es nilpotente para $n \ge 5$.
+        
+        \item Sea $G$ un $p$-grupo finito (es decir, $|G| = p^n$ con $n \ge 1$). Entonces $G$ es nilpotente.
+        
+        \item Si $G$ es un producto directo de sus subgrupos de Sylow, entonces $G$ es nilpotente. Esto se sigue de la proposición anterior, ya que los $p$-grupos son nilpotentes y el producto directo de nilpotentes es nilpotente.
+    \end{enumerate}
+}
+
+\begin{proof}[Demostración de que todo $p$-grupo es nilpotente]
+    Procedemos por inducción sobre el orden de $G$, es decir, sobre el exponente $n$ donde $|G|=p^n$.
+    
+    \itshape Base de inducción ($n=1$): \normalfont
+    Si $|G|=p$, entonces $G \cong \mathbb{Z}_p$, que es abeliano y por tanto nilpotente.
+    
+    \itshape Hipótesis de inducción: \normalfont
+    Supongamos que todo $p$-grupo de orden $p^k$ con $k < n$ es nilpotente.
+    
+    \itshape Paso inductivo: \normalfont
+    Sea $G$ un grupo de orden $p^n$. Sabemos, por la ecuación de clase para $p$-grupos, que el centro es no trivial: $Z(G) \neq \{e\}$.
+    Consideremos el grupo cociente $G/Z(G)$.
+    \begin{equation*}
+        \left| \frac{G}{Z(G)} \right| = \frac{|G|}{|Z(G)|} = \frac{p^n}{p^m} = p^{n-m}.
+    \end{equation*}
+    Como $|Z(G)| \ge p$ (es decir $m \ge 1$), el orden del cociente es estrictamente menor que el de $G$.
+    Por hipótesis de inducción, $G/Z(G)$ es nilpotente.
+    
+    Finalmente, aplicamos la observación demostrada previamente: si $G/Z(G)$ es nilpotente, entonces $G$ es nilpotente.
+\end{proof}
+
+\begin{lema}
+    Sea $G$ un grupo finito.
+    \begin{enumerate}
+        \item Si $G$ es nilpotente y $H$ es un subgrupo propio de $G$ ($H \lneq G$), entonces $H$ es un subgrupo propio de su normalizador. Es decir:
+        \begin{equation*}
+            H \lneq G \implies H \lneq N_G(H).
+        \end{equation*}
+        \item Para cualquier subgrupo de Sylow $P$ de $G$, se cumple que $N_G(N_G(P)) = N_G(P)$.
+    \end{enumerate}
+\end{lema}
+
+\begin{proof}
+    \itshape Demostración de 2: \normalfont
+    Sea $P \in \text{Syl}_p(G)$. Siempre se tiene que $N_G(P) \le N_G(N_G(P))$. Veamos la otra contención.
+    Sea $x \in N_G(N_G(P))$. Por definición de normalizador:
+    \begin{equation*}
+        x N_G(P) x^{-1} = N_G(P).
+    \end{equation*}
+    Como $P \le N_G(P)$, al conjugar por $x$ tenemos que $xPx^{-1} \le x N_G(P) x^{-1} = N_G(P)$.
+    
+    Notemos que $P$ es un $p$-subgrupo de Sylow de $N_G(P)$. Más aún, como $P \triangleleft N_G(P)$, $P$ es el \emph{único} $p$-subgrupo de Sylow de $N_G(P)$.
+    
+    Por otro lado, como $xPx^{-1}$ es un conjugado de un $p$-Sylow, también es un $p$-Sylow.
+    Dado que ambos ($P$ y $xPx^{-1}$) son subgrupos de Sylow dentro del grupo $N_G(P)$, y solo hay uno, deben ser iguales:
+    \begin{equation*}
+        xPx^{-1} = P.
+    \end{equation*}
+    Esto implica por definición que $x \in N_G(P)$.
+    Por lo tanto, $N_G(N_G(P)) \le N_G(P)$, y se da la igualdad.
+    
+    \itshape Demostración de 1: \normalfont
+    Sea $G$ nilpotente y $H \lneq G$. Procedemos por inducción sobre el orden de $G$.
+    
+    Si $G$ es abeliano, entonces $N_G(H) = G$. Como $H \lneq G$, entonces $H \lneq N_G(H)$ trivialmente.
+    
+    Supongamos que $G$ no es abeliano pero es nilpotente. Sabemos que $Z(G) \neq \{e\}$.
+    Distinguimos dos casos:
+    
+    \itshape Caso A: $Z(G) \not\le H$. \normalfont
+    Sea $z \in Z(G)$ tal que $z \notin H$.
+    Como $z$ está en el centro, conmuta con todo elemento de $G$, y en particular con todo $h \in H$.
+    Por tanto, $zHz^{-1} = H$, lo que implica $z \in N_G(H)$.
+    Como $z \notin H$ y $z \in N_G(H)$, el normalizador contiene elementos fuera de $H$.
+    Así, $H \lneq N_G(H)$ (pues contiene a $\langle H, z \rangle$).
+    
+    \itshape Caso B: $Z(G) \le H$. \normalfont
+    Consideremos el homomorfismo canónico $\pi: G \to G/Z(G)$.
+    Sea $\bar{G} = G/Z(G)$ y $\bar{H} = H/Z(G)$.
+    
+    Como $G$ es nilpotente, $\bar{G}$ es nilpotente. Además, como $Z(G) \neq \{e\}$, tenemos $|\bar{G}| < |G|$.
+    Como $H \lneq G$, entonces $\bar{H} \lneq \bar{G}$.
+    Podemos aplicar la hipótesis de inducción al grupo cociente:
+    \begin{equation*}
+        \bar{H} \lneq N_{\bar{G}}(\bar{H}).
+    \end{equation*}
+    Esto significa que existe un elemento $\bar{g} = gZ(G) \in \bar{G}$ tal que $\bar{g} \notin \bar{H}$ pero $\bar{g} \in N_{\bar{G}}(\bar{H})$.
+    La condición $\bar{g} \in N_{\bar{G}}(\bar{H})$ implica:
+    \begin{equation*}
+        (gZ(G)) \frac{H}{Z(G)} (gZ(G))^{-1} = \frac{H}{Z(G)}.
+    \end{equation*}
+    Operando en el cociente:
+    \begin{equation*}
+        \frac{gHg^{-1}}{Z(G)} = \frac{H}{Z(G)} \implies gHg^{-1} = H.
+    \end{equation*}
+    Esto implica que $g \in N_G(H)$.
+    
+    Por otro lado, como $\bar{g} \notin \bar{H}$, entonces $g \notin H$.
+    Hemos encontrado un elemento $g \in N_G(H) \setminus H$.
+    Por lo tanto, $H \lneq N_G(H)$.
+\end{proof}
+
+\ObservacionBox{}{
+    En la observación anterior sobre la relación con el centro, también es válida la versión para grupos solubles.
+    
+    \textbf{Proposición:} Sea $G$ un grupo. Si $G/Z(G)$ es soluble, entonces $G$ es soluble.
+}
+
+\begin{proof}
+    Supongamos que $G/Z(G)$ es soluble. Entonces existe un $n \in \mathbb{N}$ tal que su serie derivada llega a la identidad:
+    \begin{equation*}
+        \left(\frac{G}{Z(G)}\right)^{(n)} = \{Z(G)\}.
+    \end{equation*}
+    Usando la propiedad de los cocientes para series derivadas ($(G/N)^{(n)} = \frac{G^{(n)}N}{N}$), tenemos:
+    \begin{equation*}
+        \frac{G^{(n)}Z(G)}{Z(G)} = \{Z(G)\}.
+    \end{equation*}
+    Esto implica que $G^{(n)} \subseteq Z(G)$.
+    
+    Ahora calculamos el siguiente término de la serie derivada de $G$:
+    \begin{equation*}
+        G^{(n+1)} = [G^{(n)}, G^{(n)}].
+    \end{equation*}
+    Como $G^{(n)} \subseteq Z(G)$, el conmutador de cualesquiera dos elementos de $G^{(n)}$ es el conmutador de dos elementos centrales. Los elementos del centro conmutan entre sí, por lo que:
+    \begin{equation*}
+        [x, y] = e \quad \forall x, y \in G^{(n)}.
+    \end{equation*}
+    Por lo tanto:
+    \begin{equation*}
+        G^{(n+1)} = \{e\}.
+    \end{equation*}
+    Concluimos que $G$ es soluble.
+\end{proof}
+
+\TeoremaBox{}{
+    Sea $G$ un grupo finito. $G$ es nilpotente si y solo si $G$ es el producto directo de sus subgrupos de Sylow.
+}
+
+\begin{proof}
+    \itshape Dirección $(\Leftarrow)$: \normalfont
+    Supongamos que $G$ es el producto directo de sus subgrupos de Sylow, digamos $G = P_1 \times \dots \times P_k$.
+    Sabemos que todo $p$-grupo finito es nilpotente (visto en la observación anterior).
+    Por la proposición demostrada previamente, el producto directo finito de grupos nilpotentes es nilpotente.
+    Por lo tanto, $G$ es nilpotente.
+
+    \itshape Dirección $(\Rightarrow)$: \normalfont
+    Supongamos que $G$ es nilpotente. Sea $P$ un $p$-subgrupo de Sylow de $G$.
+    Queremos demostrar que $P \triangleleft G$.
+    Recordemos el Lema probado anteriormente: para cualquier subgrupo de Sylow $P$, se cumple que $N_G(N_G(P)) = N_G(P)$.
+    
+    Supongamos por contradicción que $N_G(P) \neq G$, es decir, $N_G(P)$ es un subgrupo propio de $G$.
+    Como $G$ es nilpotente, aplicamos la propiedad de los normalizadores para subgrupos propios ($H \lneq N_G(H)$) tomando $H = N_G(P)$.
+    Entonces:
+    \begin{equation*}
+        N_G(P) \lneq N_G(N_G(P)).
+    \end{equation*}
+    Pero esto contradice el lema que afirma $N_G(N_G(P)) = N_G(P)$.
+    La única posibilidad es que $N_G(P) = G$.
+    Esto implica que $P \triangleleft G$.
+    
+    Como esto vale para todo subgrupo de Sylow de $G$ (para cada primo que divide el orden), todos los subgrupos de Sylow son normales.
+    Sabemos que si todos los subgrupos de Sylow de un grupo finito son normales, entonces el grupo es el producto directo de ellos.
+    Concluimos que $G$ es el producto directo de sus subgrupos de Sylow.
+\end{proof}
+
+\CorolarioBox{}{
+    Si $G$ es nilpotente finito y $m$ divide a $|G|$, entonces existe un subgrupo $H \le G$ tal que $|H| = m$.
+}
+
+\begin{proof}
+    Por el teorema anterior, $G \cong P_1 \times \dots \times P_k$, donde cada $P_i$ es un $p_i$-grupo.
+    Sea $m = p_1^{\alpha_1} \dots p_k^{\alpha_k}$ la descomposición prima de $m$.
+    Como cada $P_i$ es un $p$-grupo, satisface el recíproco del Teorema de Lagrange (para $p$-grupos siempre existen subgrupos de cualquier orden que divida al total).
+    Entonces, para cada $i$, existe $H_i \le P_i$ tal que $|H_i| = p_i^{\alpha_i}$.
+    Tomando $H = H_1 \times \dots \times H_k$, tenemos un subgrupo de $G$ con orden:
+    \begin{equation*}
+        |H| = |H_1| \cdots |H_k| = p_1^{\alpha_1} \dots p_k^{\alpha_k} = m.
+    \end{equation*}
+\end{proof}
+
+\TeoremaBox{Caracterizaciones de Nilpotencia}{
+    Sea $G$ un grupo finito. Las siguientes afirmaciones son equivalentes:
+    \begin{enumerate}
+        \item $G$ es nilpotente (es decir, $G_{(n)} = \{e\}$ para algún $n$).
+        \item Para todo subgrupo propio $H \lneq G$, se cumple $H \lneq N_G(H)$.
+        \item La serie central ascendente alcanza al grupo, es decir, $C_{(n)} = G$ para algún $n$.
+    \end{enumerate}
+}
+
+\begin{proof}
+    Ya hemos demostrado $(1) \implies (2)$ en el lema de la página 27 y usamos $(2) \implies (1)$ implícitamente en el teorema de Sylow (vía la descomposición en producto directo). Ahora nos enfocaremos en la equivalencia con la serie central ascendente $(1) \iff (3)$.
+
+    \itshape Demostración de $(1) \implies (3)$: \normalfont
+    Sea $G$ nilpotente. Sea $n$ el mínimo entero tal que $G_{(n)} = \{e\}$.
+    Demostraremos por inducción sobre $j$ que $G_{(n-j)} \subseteq C_{(j)}$ para todo $0 \le j \le n$.
+    
+    Para $j=0$: $G_{(n)} = \{e\} = C_{(0)}$. La base es cierta.
+    
+    Supongamos que $G_{(n-j)} \subseteq C_{(j)}$. Queremos ver que $G_{(n-(j+1))} \subseteq C_{(j+1)}$.
+    Recordemos la definición de la serie ascendente mediante el conmutador:
+    \begin{equation*}
+        C_{(j+1)} = \{ g \in G \mid [g, x] \in C_{(j)} \forall x \in G \}.
+    \end{equation*}
+    Tomemos un elemento arbitrario $y \in G_{(n-j-1)}$. Queremos ver que $y \in C_{(j+1)}$.
+    Para verificar esto, tomamos cualquier $x \in G$ y calculamos el conmutador $[x, y]$.
+    Por definición de la serie central descendente:
+    \begin{equation*}
+        [x, y] \in [G, G_{(n-j-1)}] = G_{(n-j)}.
+    \end{equation*}
+    Por hipótesis de inducción, sabemos que $G_{(n-j)} \subseteq C_{(j)}$.
+    Por lo tanto, $[x, y] \in C_{(j)}$.
+    Esto implica, por la definición de $C_{(j+1)}$, que $y \in C_{(j+1)}$.
+    
+    Así hemos probado que $G_{(n-j-1)} \subseteq C_{(j+1)}$.
+    Tomando $j=n$, obtenemos:
+    \begin{equation*}
+        G_{(0)} \subseteq C_{(n)}.
+    \end{equation*}
+    Como $G_{(0)} = G$, tenemos $G \subseteq C_{(n)}$, lo que implica $C_{(n)} = G$.
+
+    \itshape Demostración de $(3) \implies (1)$: \normalfont
+    Supongamos que $C_{(n)} = G$ para algún $n$.
+    Demostraremos por inducción que $G_{(j)} \subseteq C_{(n-j)}$.
+    
+    Para $j=0$: $G_{(0)} = G = C_{(n)}$. La base es cierta.
+    
+    Supongamos que $G_{(j)} \subseteq C_{(n-j)}$. Queremos ver qué sucede con $G_{(j+1)}$.
+    \begin{equation*}
+        G_{(j+1)} = [G, G_{(j)}].
+    \end{equation*}
+    Por hipótesis de inducción, $G_{(j)} \subseteq C_{(n-j)}$. Usando la monotonía del conmutador:
+    \begin{equation*}
+        G_{(j+1)} \subseteq [G, C_{(n-j)}].
+    \end{equation*}
+    Recordemos la propiedad del término de la serie ascendente: $C_{(n-j)}/C_{(n-j-1)} = Z(G/C_{(n-j-1)})$.
+    Esto significa que para todo $c \in C_{(n-j)}$ y $g \in G$, el conmutador $[g, c]$ pertenece a $C_{(n-j-1)}$.
+    Por lo tanto:
+    \begin{equation*}
+        [G, C_{(n-j)}] \subseteq C_{(n-j-1)}.
+    \end{equation*}
+    Combinando las inclusiones:
+    \begin{equation*}
+        G_{(j+1)} \subseteq C_{(n-(j+1))}.
+    \end{equation*}
+    Tomando $j=n$, obtenemos:
+    \begin{equation*}
+        G_{(n)} \subseteq C_{(0)} = \{e\}.
+    \end{equation*}
+    Por lo tanto, $G_{(n)} = \{e\}$, y $G$ es nilpotente.
+\end{proof}
+
+ En la demostración anterior se verificó la relación inversa entre las series. Específicamente:
+    \begin{itemize}
+        \item Si la serie descendente termina en la identidad ($G_{(n)}=\{e\}$), entonces la ascendente cubre todo el grupo ($C_{(n)}=G$).
+        \item Si la serie ascendente cubre todo el grupo, entonces la descendente termina en la identidad.
+    \end{itemize}
+    Esto unifica las definiciones de nilpotencia usando cualquiera de las dos series centrales.

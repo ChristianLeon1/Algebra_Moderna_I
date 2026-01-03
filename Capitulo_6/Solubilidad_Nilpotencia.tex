@@ -1,0 +1,398 @@
+\section{Solubilidad y Nilpotencia}
+\label{sec:solubilidad_nilpotencia}
+
+
+\begin{defi}[Conmutador]
+    Sea $G$ un grupo y sean $a, b \in G$. Denotamos el \emph{conmutador} de $a$ y $b$ por $[a, b]$, el cual definimos como:
+    \begin{equation*}
+        [a, b] = aba^{-1}b^{-1}.
+    \end{equation*}
+\end{defi}
+
+\begin{nota}
+    El conmutador es llamado así pues mide la falta de conmutatividad del grupo. Note que $G$ es abeliano si y solo si el único conmutador es la identidad, es decir, $[a, b] = e$ para todo $a, b \in G$.
+\end{nota}
+
+\begin{defi}
+    Si $H, K \le G$, denotamos por $[H, K]$ al subgrupo generado por los conmutadores de $H$ y $K$:
+    \begin{equation*}
+        [H, K] = \langle [h, k] \mid h \in H, k \in K \rangle.
+    \end{equation*}
+    A este subgrupo se le llama el conmutador de $H$ y $K$.
+\end{defi}
+
+\ObservacionBox{}{
+    Se cumple que $[H, K] \le G$.
+    Si $H = K = G$, entonces se denota por:
+    \begin{equation*}
+        G' = G^{(1)} = [G, G] = \langle [g, h] \mid g, h \in G \rangle.
+    \end{equation*}
+    Y se llama el \emph{grupo derivado} de $G$.
+}
+
+\begin{proof}
+    El hecho de que $[H,K] \le G$ es inmediato por la definición de subgrupo generado por un subconjunto de elementos de $G$. Para el caso $G'$, note que el inverso de un conmutador es un conmutador:
+    \begin{equation*}
+        [a,b]^{-1} = (aba^{-1}b^{-1})^{-1} = bab^{-1}a^{-1} = [b,a].
+    \end{equation*}
+    Y el conjugado de un conmutador es un conmutador:
+    \begin{equation*}
+        g[a,b]g^{-1} = [gag^{-1}, gbg^{-1}].
+    \end{equation*}
+    Por lo tanto, $G'$ es un subgrupo normal de $G$.
+\end{proof}
+
+Inductivamente se define la siguiente serie:
+\begin{equation*}
+    G^{(n)} = (G^{(n-1)})' = [G^{(n-1)}, G^{(n-1)}].
+\end{equation*}
+
+\ObservacionBox{Serie Derivada}{
+    Como $G' \le G$, se tiene que $G'' = G^{(2)} = (G')' \le G' = G^{(1)} \le G = G^{(0)}$.
+    Y en general:
+    \begin{equation*}
+        G^{(n)} = (G^{(n-1)})' \le G^{(n-1)} \le G^{(n-2)} \le \dots \le G^{(0)} = G.
+    \end{equation*}
+    A esta serie de subgrupos se le denomina \emph{serie derivada}.
+}
+
+\begin{proof}
+    Demostraremos la cadena descendente por inducción sobre $n$.
+    Para $n=1$, tenemos $G^{(1)} = [G, G]$. Como el conmutador de dos elementos de $G$ es un producto de elementos de $G$ y sus inversos, claramente $[G, G] \subseteq G$, y al ser subgrupo, $G^{(1)} \le G^{(0)}$.
+    
+    Supongamos válida la hipótesis de inducción: $G^{(n-1)} \le G^{(n-2)}$.
+    Queremos ver que $G^{(n)} \le G^{(n-1)}$.
+    Por definición, $G^{(n)} = [G^{(n-1)}, G^{(n-1)}]$.
+    Dado que $G^{(n-1)}$ es un grupo, el conmutador de cualesquiera dos de sus elementos pertenece a $G^{(n-1)}$. Por lo tanto, el subgrupo generado por estos conmutadores está contenido en $G^{(n-1)}$.
+    Es decir, $G^{(n)} \le G^{(n-1)}$.
+\end{proof}
+
+\begin{defi}
+    Sea $G$ un grupo. Se define inductivamente la serie $G_{(n)}$ como:
+    \begin{align*}
+        G_{(1)} &= [G, G] = G^{(1)} = G', \\
+        G_{(n)} &= [G, G_{(n-1)}].
+    \end{align*}
+\end{defi}
+
+\ObservacionBox{}{
+    Para cada $n \in \mathbb{N}$, se cumple que $G_{(n)} \triangleleft G$.
+}
+
+\begin{proof}
+    Procedemos por inducción sobre $n$.
+    
+    \textit{Base de inducción ($n=1$):}
+    $G_{(1)} = [G, G] = G'$. Sabemos que el subgrupo derivado es normal en $G$, pues para cualquier $g \in G$ y cualquier conmutador $[x, y] \in G'$, tenemos:
+    \begin{equation*}
+        g[x, y]g^{-1} = [gxg^{-1}, gyg^{-1}] \in G'.
+    \end{equation*}
+    
+    \textit{Paso inductivo:}
+    Supongamos que $G_{(n-1)} \triangleleft G$. Queremos demostrar que $G_{(n)} \triangleleft G$.
+    Recordemos que $G_{(n)} = [G, G_{(n-1)}]$. Este grupo está generado por elementos de la forma $[a, b]$ donde $a \in G$ y $b \in G_{(n-1)}$.
+    Sea $g \in G$. Debemos probar que $g[a, b]g^{-1} \in G_{(n)}$.
+    Desarrollamos el conjugado algebraicamente:
+    \begin{align*}
+        g[a, b]g^{-1} &= g(aba^{-1}b^{-1})g^{-1} \\
+        &= (gag^{-1})(gbg^{-1})(ga^{-1}g^{-1})(gb^{-1}g^{-1}) \\
+        &= (gag^{-1})(gbg^{-1})(gag^{-1})^{-1}(gbg^{-1})^{-1} \\
+        &= [gag^{-1}, gbg^{-1}].
+    \end{align*}
+    Analicemos los términos del nuevo conmutador $[gag^{-1}, gbg^{-1}]$:
+    \begin{enumerate}
+        \item El primer término $gag^{-1}$ pertenece a $G$, ya que $a \in G$ y $G$ es cerrado bajo conjugación.
+        \item El segundo término $gbg^{-1}$ pertenece a $G_{(n-1)}$. Esto es cierto por la \textbf{hipótesis de inducción}, ya que asumimos que $G_{(n-1)} \triangleleft G$.
+    \end{enumerate}
+    Por definición de $G_{(n)} = [G, G_{(n-1)}]$, el conmutador de un elemento de $G$ con uno de $G_{(n-1)}$ pertenece a $G_{(n)}$.
+    Por lo tanto, $[gag^{-1}, gbg^{-1}] \in G_{(n)}$.
+    Esto demuestra que $G_{(n)}$ es cerrado bajo conjugación por elementos de $G$, luego $G_{(n)} \triangleleft G$.
+\end{proof}
+
+\ObservacionBox{Serie Central Descendente}{
+    Se cumple la siguiente cadena de contenciones:
+    \begin{equation*}
+        G = G_{(0)} \supseteq G_{(1)} \supseteq G_{(2)} \supseteq \dots \supseteq G_{(n)}.
+    \end{equation*}
+    Esta serie es llamada la \emph{serie central descendente}.
+}
+
+\begin{proof}
+    Debemos demostrar que $G_{(n)} \subseteq G_{(n-1)}$ para todo $n \ge 1$.
+    Por definición, $G_{(n)} = [G, G_{(n-1)}]$.
+    Los generadores de $G_{(n)}$ son de la forma $[g, h] = ghg^{-1}h^{-1}$ con $g \in G$ y $h \in G_{(n-1)}$.
+    
+    Como acabamos de demostrar en la observación anterior, $G_{(n-1)} \triangleleft G$.
+    La normalidad implica que para todo $g \in G$ y $h \in G_{(n-1)}$, el conjugado $ghg^{-1} \in G_{(n-1)}$.
+    Entonces, el elemento $[g, h]$ se puede escribir como:
+    \begin{equation*}
+        [g, h] = (ghg^{-1})h^{-1}.
+    \end{equation*}
+    Dado que $ghg^{-1} \in G_{(n-1)}$ y $h^{-1} \in G_{(n-1)}$ (pues es un subgrupo), el producto pertenece a $G_{(n-1)}$.
+    Así, todos los generadores de $G_{(n)}$ están en $G_{(n-1)}$, lo que implica $G_{(n)} \subseteq G_{(n-1)}$.
+\end{proof}
+
+Nuevamente definimos otra serie importante.
+
+\begin{defi}
+    Sea $G$ un grupo. Definimos $C_{(1)} = Z(G)$. Definimos inductivamente $C_{(n)}$ tal que, dado $C_{(n-1)} \triangleleft G$, aplicamos el Teorema de la Correspondencia. $C_{(n)}$ es el subgrupo de $G$ que corresponde a $Z(G/C_{(n-1)})$. Es decir:
+    \begin{equation*}
+        \frac{C_{(n)}}{C_{(n-1)}} = Z\left(\frac{G}{C_{(n-1)}}\right).
+    \end{equation*}
+    Iniciamos la recursión con $C_{(0)} = \{e\}$.
+\end{defi}
+
+\ObservacionBox{Serie Central Ascendente}{
+    Se tiene la cadena de subgrupos normales:
+    \begin{equation*}
+        C_{(n)} \supseteq C_{(n-1)} \supseteq \dots \supseteq C_{(2)} \supseteq C_{(1)} = Z(G).
+    \end{equation*}
+    Esta se llama la \emph{serie central ascendente}.
+}
+
+\begin{proof}
+    Primero justificamos la normalidad $C_{(n)} \triangleleft G$.
+    El centro de cualquier grupo es un subgrupo normal (de hecho, característico). Por tanto, $Z(G/C_{(n-1)})$ es un subgrupo normal del grupo cociente $G/C_{(n-1)}$.
+    Por el Teorema de la Correspondencia, la preimagen de un subgrupo normal en el cociente es un subgrupo normal en el grupo original que contiene al núcleo.
+    Así, $C_{(n)} \triangleleft G$.
+    
+    Para la contención $C_{(n)} \supseteq C_{(n-1)}$:
+    El subgrupo identidad del cociente $G/C_{(n-1)}$ es el conjunto $\{C_{(n-1)}\}$.
+    Claramente, la identidad pertenece al centro del cociente.
+    Bajo la correspondencia canónica $\pi: G \to G/C_{(n-1)}$, tenemos que:
+    \begin{equation*}
+        C_{(n)} = \pi^{-1}\left( Z\left(\frac{G}{C_{(n-1)}}\right) \right).
+    \end{equation*}
+    Como el centro contiene a la identidad del cociente, la preimagen $C_{(n)}$ debe contener al núcleo del homomorfismo, que es $C_{(n-1)}$.
+    Por lo tanto, $C_{(n)} \supseteq C_{(n-1)}$.
+\end{proof}
+
+\begin{defi}
+    Un grupo $G$ es:
+    \begin{enumerate}
+        \item \emph{Soluble} si $G^{(n)} = \{e\}$ para algún $n \in \mathbb{N}$.
+        \item \emph{Nilpotente} si $G_{(n)} = \{e\}$ para algún $n \in \mathbb{N}$.
+    \end{enumerate}
+\end{defi}
+
+\ObservacionBox{}{
+    Para todo $n \in \mathbb{N}$, se cumple que $G^{(n)} \subseteq G_{(n)}$.
+}
+
+\begin{proof}
+    Demostraremos esta inclusión por inducción sobre $n$.
+    
+    \textit{Base de inducción ($n=1$):}
+    Por definición, $G^{(1)} = [G, G]$ y $G_{(1)} = [G, G]$.
+    Claramente $G^{(1)} \subseteq G_{(1)}$ (de hecho son iguales).
+    
+    \textit{Paso inductivo:}
+    Supongamos que $G^{(n-1)} \subseteq G_{(n-1)}$. Queremos probar que $G^{(n)} \subseteq G_{(n)}$.
+    Recordemos las definiciones:
+    \begin{align*}
+        G^{(n)} &= [G^{(n-1)}, G^{(n-1)}], \\
+        G_{(n)} &= [G, G_{(n-1)}].
+    \end{align*}
+    Usamos la propiedad de monotonía del conmutador: si $A \subseteq C$ y $B \subseteq D$, entonces $[A, B] \subseteq [C, D]$.
+    Tenemos dos inclusiones:
+    \begin{enumerate}
+        \item $G^{(n-1)} \subseteq G$ (esto es cierto para cualquier término de la serie derivada).
+        \item $G^{(n-1)} \subseteq G_{(n-1)}$ (por hipótesis de inducción).
+    \end{enumerate}
+    Aplicando la monotonía:
+    \begin{equation*}
+        G^{(n)} = [G^{(n-1)}, G^{(n-1)}] \subseteq [G, G_{(n-1)}] = G_{(n)}.
+    \end{equation*}
+    Por lo tanto, $G^{(n)} \subseteq G_{(n)}$.
+\end{proof}
+
+\begin{prop}
+    Sea $G$ un grupo. Si $G$ es nilpotente, entonces $G$ es soluble.
+\end{prop}
+
+\begin{proof}
+    Supongamos que $G$ es nilpotente.
+    Por definición, esto significa que la serie central descendente llega a la identidad en un número finito de pasos. Es decir, existe un $n \in \mathbb{N}$ tal que:
+    \begin{equation*}
+        G_{(n)} = \{e\}.
+    \end{equation*}
+    Utilizando la observación anterior, sabemos que $G^{(n)} \subseteq G_{(n)}$.
+    Sustituyendo $G_{(n)} = \{e\}$, obtenemos:
+    \begin{equation*}
+        G^{(n)} \subseteq \{e\}.
+    \end{equation*}
+    Como $G^{(n)}$ es un subgrupo, la única posibilidad es que $G^{(n)} = \{e\}$.
+    Esto cumple exactamente con la definición de solubilidad.
+    Por lo tanto, $G$ es soluble.
+\end{proof}
+
+\begin{prop}
+    Sea $G$ un grupo. Si $G$ es nilpotente, entonces $G$ es soluble.
+\end{prop}
+
+\begin{proof}
+    Previamente observamos la relación entre los términos de las series: para todo $k \in \mathbb{N}$, se cumple que $G^{(k)} \subseteq G_{(k)}$.
+    
+    Si $G$ es nilpotente, por definición existe un entero $n \in \mathbb{N}$ tal que la serie central descendente llega a la identidad, es decir, $G_{(n)} = \{e\}$.
+    
+    Sustituyendo en la contención mencionada:
+    \begin{equation*}
+        G^{(n)} \subseteq G_{(n)} = \{e\} \implies G^{(n)} = \{e\}.
+    \end{equation*}
+    Dado que la serie derivada llega a la identidad en un número finito de pasos, concluimos que $G$ es soluble.
+\end{proof}
+
+\TeoremaBox{}{
+    Sea $G$ un grupo soluble (resp. nilpotente).
+    \begin{enumerate}
+        \item Si $H \le G$, entonces $H$ es soluble (resp. nilpotente).
+        \item Si $N \triangleleft G$, entonces $G/N$ es soluble (resp. nilpotente).
+    \end{enumerate}
+}
+
+\begin{proof}
+    \itshape 1. Para Subgrupos: \normalfont
+    
+    Sea $H \le G$. Dado que $H \subseteq G$, el conjunto de conmutadores de elementos de $H$ está contenido en el de $G$. Inductivamente mostramos que las series de $H$ decrecen más rápido o igual que las de $G$.
+    
+    \textit{Caso Soluble:}
+    Probaremos que $H^{(k)} \subseteq G^{(k)}$.
+    Para $k=0$, $H \subseteq G$.
+    Supongamos que $H^{(k-1)} \subseteq G^{(k-1)}$. Entonces, por la monotonía del conmutador:
+    \begin{equation*}
+        H^{(k)} = [H^{(k-1)}, H^{(k-1)}] \subseteq [G^{(k-1)}, G^{(k-1)}] = G^{(k)}.
+    \end{equation*}
+    Si $G$ es soluble, existe $n$ tal que $G^{(n)} = \{e\}$. Entonces $H^{(n)} \subseteq \{e\}$, de donde $H^{(n)} = \{e\}$, por lo que $H$ es soluble.
+    
+    \textit{Caso Nilpotente:}
+    Probaremos que $H_{(k)} \subseteq G_{(k)}$.
+    Para $k=1$, $H_{(1)} = [H,H] \subseteq [G,G] = G_{(1)}$.
+    Supongamos que $H_{(k-1)} \subseteq G_{(k-1)}$. Entonces:
+    \begin{equation*}
+        H_{(k)} = [H, H_{(k-1)}] \subseteq [G, G_{(k-1)}] = G_{(k)}.
+    \end{equation*}
+    Si $G$ es nilpotente, $G_{(n)} = \{e\}$ para algún $n$, lo que implica $H_{(n)} = \{e\}$. Por tanto $H$ es nilpotente.
+    
+    \itshape 2. Para Cocientes: \normalfont
+    
+    Sea $\pi: G \to G/N$ el homomorfismo canónico definido por $\pi(g) = gN$. Usaremos la propiedad fundamental de que la imagen de un conmutador es el conmutador de las imágenes: $\pi([A, B]) = [\pi(A), \pi(B)]$.
+    
+    \textit{Caso Soluble:}
+    Probaremos por inducción que $(G/N)^{(k)} = \pi(G^{(k)})$.
+    Para $k=1$:
+    \begin{equation*}
+        (G/N)^{(1)} = [G/N, G/N] = [\pi(G), \pi(G)] = \pi([G,G]) = \pi(G^{(1)}).
+    \end{equation*}
+    Supongamos válido para $k-1$. Entonces:
+    \begin{equation*}
+        (G/N)^{(k)} = [(G/N)^{(k-1)}, (G/N)^{(k-1)}] = [\pi(G^{(k-1)}), \pi(G^{(k-1)})] = \pi([G^{(k-1)}, G^{(k-1)}]) = \pi(G^{(k)}).
+    \end{equation*}
+    Si $G$ es soluble, existe $n$ tal que $G^{(n)} = \{e\}$. Entonces:
+    \begin{equation*}
+        (G/N)^{(n)} = \pi(G^{(n)}) = \pi(\{e\}) = \{N\}.
+    \end{equation*}
+    Como $\{N\}$ es la identidad en $G/N$, el cociente es soluble.
+    
+    \textit{Caso Nilpotente:}
+    Probaremos que $(G/N)_{(k)} = \pi(G_{(k)})$.
+    Para $k=1$, $(G/N)_{(1)} = [G/N, G/N] = \pi(G_{(1)})$.
+    Supongamos válido para $k-1$. Entonces:
+    \begin{equation*}
+        (G/N)_{(k)} = [G/N, (G/N)_{(k-1)}] = [\pi(G), \pi(G_{(k-1)})] = \pi([G, G_{(k-1)}]) = \pi(G_{(k)}).
+    \end{equation*}
+    Si $G$ es nilpotente, $G_{(n)} = \{e\}$. Entonces $(G/N)_{(n)} = \pi(\{e\}) = \{N\}$.
+    El cociente es nilpotente.
+\end{proof}
+
+\begin{prop}
+    Sea $G$ un grupo y $N \triangleleft G$.
+    Si $N$ es soluble y $G/N$ es soluble, entonces $G$ es soluble.
+\end{prop}
+
+\begin{proof}
+    Como $G/N$ es soluble, existe un entero $k \in \mathbb{N}$ tal que la serie derivada del cociente llega a la identidad. Usando la relación demostrada en el teorema anterior ($(G/N)^{(k)} = \pi(G^{(k)})$):
+    \begin{equation*}
+        (G/N)^{(k)} = \frac{G^{(k)}N}{N} = \{N\}.
+    \end{equation*}
+
+    Esto implica que $G^{(k)}N \subseteq N$. Dado que $N \subseteq G^{(k)}N$, tenemos la igualdad $G^{(k)}N = N$, lo que implica $G^{(k)} \subseteq N$.
+    
+    Por otro lado, como $N$ es soluble, existe un entero $m \in \mathbb{N}$ tal que $N^{(m)} = \{e\}$.
+    Dado que $G^{(k)} \subseteq N$, aplicamos la propiedad de monotonía para subgrupos demostrada anteriormente:
+    \begin{equation*}
+        (G^{(k)})^{(m)} \subseteq N^{(m)} = \{e\}.
+    \end{equation*}
+    Recordando que $(G^{(k)})^{(m)} = G^{(k+m)}$, tenemos:
+    \begin{equation*}
+        G^{(k+m)} = \{e\}.
+    \end{equation*}
+    Esto demuestra que la serie derivada de $G$ termina en la identidad, por lo tanto $G$ es soluble.
+\end{proof}
+
+\ObservacionBox{}{
+    La proposición anterior no es cierta si se cambia "soluble" por "nilpotente". Es decir, si $N$ y $G/N$ son nilpotentes, $G$ no necesariamente es nilpotente.
+}
+
+\begin{proof}
+    Analicemos el contraejemplo $G = S_3$ (grupo simétrico de grado 3).
+    Tomamos $N = A_3$ (grupo alternante).
+    \begin{itemize}
+        \item $N = A_3 \cong \mathbb{Z}_3$. Es abeliano, luego nilpotente.
+        \item $G/N = S_3/A_3 \cong \mathbb{Z}_2$. Es abeliano, luego nilpotente.
+    \end{itemize}
+    Sin embargo, $S_3$ no es nilpotente. Su centro es trivial $Z(S_3)=\{e\}$, por lo que la serie central ascendente es constante $C_{(n)}=\{e\}$.
+    Equivalentemente, veamos su serie central descendente:
+    \begin{equation*}
+        G_{(1)} = [S_3, S_3] = A_3.
+    \end{equation*}
+    Para el siguiente término $G_{(2)} = [S_3, A_3]$. Sean $\tau = (12) \in S_3$ y $\sigma = (123) \in A_3$:
+    \begin{equation*}
+        [\tau, \sigma] = \tau \sigma \tau^{-1} \sigma^{-1} = (12)(123)(12)(132) = (12)(123)(13) = (123).
+    \end{equation*}
+    Como el conmutador genera todo $A_3$, tenemos $G_{(2)} = A_3$.
+    Inductivamente $G_{(n)} = A_3 \ne \{e\}$ para todo $n$. Así, $S_3$ no es nilpotente.
+\end{proof}
+
+\ObservacionBox{}{
+    En general, para $n \ge 5$, se cumple que $A_n = A_n'$. Por lo tanto, $A_n$ no es soluble.
+}
+
+\begin{proof}
+    Si $G = A_n$ con $n \ge 5$, el grupo es simple no abeliano.
+    Calculamos su derivado $A_n' = [A_n, A_n]$. Como $A_n'$ es un subgrupo normal de $A_n$, y $A_n$ es simple, las únicas posibilidades son $A_n' = \{e\}$ o $A_n' = A_n$.
+    Como $A_n$ no es abeliano (para $n \ge 5$), $A_n' \ne \{e\}$.
+    Por lo tanto, $A_n' = A_n$.
+    Esto implica que la serie derivada es constante:
+    \begin{equation*}
+        A_n^{(k)} = A_n \ne \{e\} \quad \forall k.
+    \end{equation*}
+    Luego, $A_n$ no es soluble.
+\end{proof}
+
+\ObservacionBox{}{
+    Sea $G$ un grupo. Si $G/Z(G)$ es nilpotente, entonces $G$ es nilpotente.
+}
+
+\begin{proof}
+    Supongamos que $G/Z(G)$ es nilpotente. Existe $n$ tal que:
+    \begin{equation*}
+        (G/Z(G))_{(n)} = \{Z(G)\}.
+    \end{equation*}
+    Usando la identidad $(G/N)_{(n)} = \frac{G_{(n)}N}{N}$ con $N=Z(G)$:
+    \begin{equation*}
+        \frac{G_{(n)}Z(G)}{Z(G)} = \{Z(G)\}.
+    \end{equation*}
+    Esto implica $G_{(n)} \subseteq Z(G)$.
+    
+    Analizamos el siguiente término de la serie central descendente de $G$:
+    \begin{equation*}
+        G_{(n+1)} = [G, G_{(n)}].
+    \end{equation*}
+    Como $G_{(n)} \subseteq Z(G)$, para todo $x \in G_{(n)}$, $x$ conmuta con todo elemento de $G$.
+    Entonces, para todo $g \in G$ y $x \in G_{(n)}$, $[g, x] = e$.
+    Por lo tanto:
+    \begin{equation*}
+        G_{(n+1)} = \{e\}.
+    \end{equation*}
+    Concluimos que $G$ es nilpotente.
+\end{proof}
