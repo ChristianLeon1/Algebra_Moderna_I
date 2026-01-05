@@ -1,5 +1,433 @@
-\newpage
+\begin{prop}
+	Sea $H$ un grupo que actúa como grupo en $K$, $H \cap K = \emptyset$, $G = H \times K$.
+	Definamos en $G$ la sig. operación:
+	\begin{equation*}
+		(h_1, k_1)(h_2, k_2) = (h_1 h_2, k_1^{h_2} k_2)
+	\end{equation*}
+	entonces $G$ con esta operación es un grupo con identidad $(e_H, e_K)$.
+\end{prop}
 
-acá las primeras fotos
+\begin{proof}
+	Nota, la operación definida realmente es una operación, i.e. es cerrada.
 
-\newpage
+	Además:
+	i) Asociatividad:
+	\begin{align*}
+		((h_1, k_1)(h_2, k_2))(h_3, k_3) & = (h_1 h_2, k_1^{h_2} k_2)(h_3, k_3)         \\
+		                                 & = (h_1 h_2 h_3, (k_1^{h_2} k_2)^{h_3} k_3)   \\
+		                                 & = (h_1 h_2 h_3, k_1^{h_2 h_3} k_2^{h_3} k_3) \\
+		                                 & = (h_1, k_1)(h_2 h_3, k_2^{h_3} k_3)         \\
+		                                 & = (h_1, k_1)((h_2, k_2)(h_3, k_3))
+	\end{align*}
+
+
+	ii) Identidad:
+	\begin{equation*}
+		(h_1, k_1)(e_H, e_K) = (h_1 e_H, k_1^{e_H} e_K) = (h_1, k_1 e_K) = (h_1, k_1)
+	\end{equation*}
+
+
+	iii) Inversos:
+	\begin{equation*}
+		(h_1, k_1)(h_1^{-1}, (k_1^{h_1^{-1}})^{-1}) = (h_1 h_1^{-1}, k_1^{h_1^{-1}} (k_1^{h_1^{-1}})^{-1}) = (e_H, e_K)
+	\end{equation*}
+
+\end{proof}
+
+\ObservacionBox{Observaciones}{
+	Si $\tilde{\varphi}$ es una acción del grupo $H$ en el grupo $K$ ($\tilde{\varphi}: H \times K \to K$, $\varphi: H \to \text{Aut}(K)$).
+	Entonces para el grupo inducido por $\varphi$ se tiene:
+	\begin{equation*}
+		(h, k)(h^{-1}, k_1) = (e_H, e_K) \iff (e_H, k^{h^{-1}} k_1) = (e_H, e_K)
+	\end{equation*}
+	\begin{equation*}
+		k_1 = (k^{h^{-1}})^{-1}
+	\end{equation*}
+	También:
+	\begin{equation*}
+		(h^{-1}, (k^{-1})^{h^{-1}})(h, k) = (e_H, ((k^{-1})^{h^{-1}})^h k) = (e_H, (k^{-1})^{h^{-1}h} k) = (e_H, k^{-1} k) = (e_H, e_K)
+	\end{equation*}
+
+}
+
+\begin{defi}
+	de donde $e^h = e \quad \forall h \in H$.
+
+	Sean $H, K$ dos grupos con $H \cap K = \{e\}$. Suponga que $H$ actúa como grupo en $K$ con acción $\varphi$, al grupo $G$ del teorema anterior se le denotará por
+	\begin{equation*}
+		G = H \ltimes_\varphi K
+	\end{equation*}
+	y se llama el producto semidirecto de $H$ y $K$.
+\end{defi}
+
+\begin{eje}
+	3) Sea $G$ grupo, $K \triangleleft G$, $G$ actuando en $K$ por conjugación, entonces la acción es como grupo.
+	i) y ii) Ya se tiene.
+	iii)
+	\begin{align*}
+		(k_1 k_2)^h & = (k_1 k_2)^h = h(k_1 k_2)h^{-1}                     \\
+		            & = (h k_1 h^{-1} k_2) = (h k_1 h^{-1})(h k_2 h^{-1})K \\
+		            & = k_1^h k_2^h
+	\end{align*}
+
+\end{eje}
+
+\begin{eje}
+	Sea $G$ un grupo y hagamos actuar $G$ en si mismo por conjugación, i.e.
+	\begin{equation*}
+		\tilde{\varphi}: G \times G \to G, \quad (g, h) = ghg^{-1}
+	\end{equation*}
+	(Cumple i), ii), iii)).
+	En este caso:
+	\begin{equation*}
+		(h_1, k_1) \cdot (h_2, k_2) = (h_1 h_2, k_1^{h_2} k_2) = (h_1 h_2, h_2 k_1 h_2^{-1} k_2)
+	\end{equation*}
+	En particular si $G$ es abeliano la operación es justamente la del producto directo, así el nuevo grupo coincide con el producto directo.
+\end{eje}
+
+\TeoremaBox{}{
+	Sea $G = H \ltimes_\varphi K$, entonces las funciones
+	\begin{align*}
+		\varphi_1 & : H \to G, & h & \mapsto (h, e_K) \\
+		\varphi_2 & : K \to G, & k & \mapsto (e_H, k)
+	\end{align*}
+	son monomorfismos. Además $\varphi_1(H) \le G$, $\varphi_2(K) \triangleleft G$.
+	Identificando $H$ con $\varphi_1(H)$ y $K$ con $\varphi_2(K)$ se tiene:
+	$H \le G$, $K \triangleleft G$, $G = HK$ y $H \cap K = \{e\}$.
+}
+
+\begin{proof}
+	$\varphi_1$ es homomorfismo:
+	\begin{equation*}
+		\varphi_1(h h_1) = (h h_1, e_K)
+	\end{equation*}
+	\begin{equation*}
+		\varphi_1(h) \varphi_1(h_1) = (h, e_K)(h_1, e_K) = (h h_1, e_K^{h_1} e_K) = (h h_1, e_K)
+	\end{equation*}
+	$\varphi_1$ es inyectiva:
+	\begin{equation*}
+		\varphi_1(h) = (e_H, e_K) \iff (h, e_K) = (e_H, e_K) \iff h = e_H
+	\end{equation*}
+
+
+	$\varphi_2$ es homomorfismo:
+	\begin{equation*}
+		\varphi_2(k_1 k_2) = (e_H, k_1 k_2)
+	\end{equation*}
+	\begin{equation*}
+		\varphi_2(k_1) \varphi_2(k_2) = (e_H, k_1)(e_H, k_2) = (e_H, k_1^{e_H} k_2) = (e_H, k_1 k_2)
+	\end{equation*}
+	$\varphi_2$ es inyectiva: claro. Como $\varphi_1$ y $\varphi_2$ son homomorfismos $\varphi_1(H), \varphi_2(K) \le G$.
+
+	Sea $(h, k) \in G$, entonces
+	\begin{equation*}
+		(h, e_K)(e_H, k) = (h, e_K^h k) = (h, e_K k) = (h, k)
+	\end{equation*}
+	de donde $G = \varphi_1(H) \varphi_2(K)$.
+
+	\begin{equation*}
+		(h, k) \in \varphi_1(H) \cap \varphi_2(K) \iff (h, k) = \varphi_1(h_1) = (h_1, e_K) \iff k=e_K
+	\end{equation*}
+	\begin{equation*}
+		(h, k) = \varphi_2(k_1) = (e_H, k_1) \iff h=e_H
+	\end{equation*}
+
+	Sea $H$ un grupo que actúa como grupo en $K$, $H \cap K = \emptyset$, $G = H \times K$.
+	Definamos en $G$ la sig. operación:
+	\begin{equation*}
+		(h_1, k_1)(h_2, k_2) = (h_1 h_2, k_1^{h_2} k_2)
+	\end{equation*}
+	entonces $G$ con esta operación es un grupo con identidad $(e_H, e_K)$.
+	Nota, la operación definida realmente es una operación, i.e. es cerrada.
+
+	Además:
+	i) Asociatividad:
+	\begin{align*}
+		((h_1, k_1)(h_2, k_2))(h_3, k_3) & = (h_1 h_2, k_1^{h_2} k_2)(h_3, k_3)         \\
+		                                 & = (h_1 h_2 h_3, (k_1^{h_2} k_2)^{h_3} k_3)   \\
+		                                 & = (h_1 h_2 h_3, k_1^{h_2 h_3} k_2^{h_3} k_3) \\
+		                                 & = (h_1, k_1)(h_2 h_3, k_2^{h_3} k_3)         \\
+		                                 & = (h_1, k_1)((h_2, k_2)(h_3, k_3))
+	\end{align*}
+
+
+	ii) Identidad:
+	\begin{equation*}
+		(h_1, k_1)(e_H, e_K) = (h_1 e_H, k_1^{e_H} e_K) = (h_1, k_1 e_K) = (h_1, k_1)
+	\end{equation*}
+
+
+	iii) Inversos:
+	\begin{equation*}
+		(h_1, k_1)(h_1^{-1}, (k_1^{h_1^{-1}})^{-1}) = (h_1 h_1^{-1}, k_1^{h_1^{-1}} (k_1^{h_1^{-1}})^{-1}) = (e_H, e_K)
+	\end{equation*}
+
+\end{proof}
+
+\ObservacionBox{Observaciones}{
+	Si $\tilde{\varphi}$ es una acción del grupo $H$ en el grupo $K$ ($\tilde{\varphi}: H \times K \to K$, $\varphi: H \to \text{Aut}(K)$).
+	Entonces para el grupo inducido por $\varphi$ se tiene:
+	\begin{equation*}
+		(h, k)(h^{-1}, k_1) = (e_H, e_K) \iff (e_H, k^{h^{-1}} k_1) = (e_H, e_K)
+	\end{equation*}
+	\begin{equation*}
+		k_1 = (k^{h^{-1}})^{-1}
+	\end{equation*}
+	También:
+	\begin{equation*}
+		(h^{-1}, (k^{-1})^{h^{-1}})(h, k) = (e_H, ((k^{-1})^{h^{-1}})^h k) = (e_H, (k^{-1})^{h^{-1}h} k) = (e_H, k^{-1} k) = (e_H, e_K)
+	\end{equation*}
+
+}
+
+\begin{defi}
+	de donde $e^h = e \quad \forall h \in H$.
+
+	Sean $H, K$ dos grupos con $H \cap K = \{e\}$. Suponga que $H$ actúa como grupo en $K$ con acción $\varphi$, al grupo $G$ del teorema anterior se le denotará por
+	\begin{equation*}
+		G = H \ltimes_\varphi K
+	\end{equation*}
+	y se llama el producto semidirecto de $H$ y $K$.
+\end{defi}
+
+\begin{eje}
+	Sea $G$ grupo, $K \triangleleft G$, $G$ actuando en $K$ por conjugación, entonces la acción es como grupo.
+	i) y ii) Ya se tiene.
+	iii)
+	\begin{align*}
+		(k_1 k_2)^h & = (k_1 k_2)^h = h(k_1 k_2)h^{-1}                     \\
+		            & = (h k_1 h^{-1} k_2) = (h k_1 h^{-1})(h k_2 h^{-1})K \\
+		            & = k_1^h k_2^h
+	\end{align*}
+
+\end{eje}
+
+\begin{eje}
+	Sea $G$ un grupo y hagamos actuar $G$ en si mismo por conjugación, i.e.
+	\begin{equation*}
+		\tilde{\varphi}: G \times G \to G, \quad (g, h) = ghg^{-1}
+	\end{equation*}
+	(Cumple i), ii), iii)).
+	En este caso:
+	\begin{equation*}
+		(h_1, k_1) \cdot (h_2, k_2) = (h_1 h_2, k_1^{h_2} k_2) = (h_1 h_2, h_2 k_1 h_2^{-1} k_2)
+	\end{equation*}
+	En particular si $G$ es abeliano la operación es justamente la del producto directo, así el nuevo grupo coincide con el producto directo.
+\end{eje}
+
+\TeoremaBox{}{
+	Sea $G = H \ltimes_\varphi K$, entonces las funciones
+	\begin{align*}
+		\varphi_1 & : H \to G, & h & \mapsto (h, e_K) \\
+		\varphi_2 & : K \to G, & k & \mapsto (e_H, k)
+	\end{align*}
+	son monomorfismos. Además $\varphi_1(H) \le G$, $\varphi_2(K) \triangleleft G$.
+	Identificando $H$ con $\varphi_1(H)$ y $K$ con $\varphi_2(K)$ se tiene:
+	$H \le G$, $K \triangleleft G$, $G = HK$ y $H \cap K = \{e\}$.
+}
+
+\begin{proof}
+	$\varphi_1$ es homomorfismo:
+	\begin{equation*}
+		\varphi_1(h h_1) = (h h_1, e_K)
+	\end{equation*}
+	\begin{equation*}
+		\varphi_1(h) \varphi_1(h_1) = (h, e_K)(h_1, e_K) = (h h_1, e_K^{h_1} e_K) = (h h_1, e_K)
+	\end{equation*}
+	$\varphi_1$ es inyectiva:
+	\begin{equation*}
+		\varphi_1(h) = (e_H, e_K) \iff (h, e_K) = (e_H, e_K) \iff h = e_H
+	\end{equation*}
+
+
+	$\varphi_2$ es homomorfismo:
+	\begin{equation*}
+		\varphi_2(k_1 k_2) = (e_H, k_1 k_2)
+	\end{equation*}
+	\begin{equation*}
+		\varphi_2(k_1) \varphi_2(k_2) = (e_H, k_1)(e_H, k_2) = (e_H, k_1^{e_H} k_2) = (e_H, k_1 k_2)
+	\end{equation*}
+	$\varphi_2$ es inyectiva: claro. Como $\varphi_1$ y $\varphi_2$ son homomorfismos $\varphi_1(H), \varphi_2(K) \le G$.
+
+	Sea $(h, k) \in G$, entonces
+	\begin{equation*}
+		(h, e_K)(e_H, k) = (h, e_K^h k) = (h, e_K k) = (h, k)
+	\end{equation*}
+	de donde $G = \varphi_1(H) \varphi_2(K)$.
+
+	\begin{equation*}
+		(h, k) \in \varphi_1(H) \cap \varphi_2(K) \iff (h, k) = \varphi_1(h_1) = (h_1, e_K) \iff k=e_K
+	\end{equation*}
+	\begin{equation*}
+		(h, k) = \varphi_2(k_1) = (e_H, k_1) \iff h=e_H
+	\end{equation*}
+
+	Sean $h=e_H, k_1=e_K$, entonces:
+	\begin{equation*}
+		(h, k_1) = (e_H, e_K) = e_G
+	\end{equation*}
+	Luego $\varphi_1(H) \cap \varphi_2(K) = \{e_G\}$.
+
+	Sea $f: G \to H \ltimes_\varphi K$, definido como $(h, k) \mapsto (h, k)$, $f$ es homomorfismo.
+	\begin{align*}
+		f((h, k)(h_1, k_1)) & = f(h h_1, k^{h_1} k_1) \\
+		                    & = (h h_1, k^{h_1} k_1)  \\
+		                    & = (h, k)(h_1, k_1)      \\
+		                    & = f(h, k)f(h_1, k_1)
+	\end{align*}
+
+
+	$\varphi_2$ es inyectivo: claro. Como $\varphi_1$ y $\varphi_2$ son homomorfismos $\varphi_1(H), \varphi_2(K) \le G$.
+	Sea $(h, k) \in G$, entonces:
+	\begin{equation*}
+		(h, e_K)(e_H, k) = (h, e_K^h k) = (h, e_K k) = (h, k)
+	\end{equation*}
+	de donde $G = \varphi_1(H)\varphi_2(K)$.
+
+	$(h, k) \in \varphi_1(H) \cap \varphi_2(K) \iff (h, k) = \varphi_1(h) = (h, e_K)$ y $(h, k) = \varphi_2(k) = (e_H, k)$.
+	$\implies h=e_H, k=e_K \implies (h, k)=e_G$.
+	Luego $\varphi_1(H) \cap \varphi_2(K) = \{e_G\}$.
+\end{proof}
+
+\begin{eje}
+	Sea $A$ un grupo abeliano de orden $n$, tal que $\exists b \in A$ con $b^2 \neq e$.
+	Entonces $\eta: A \to A$, $\eta(a) = a^{-1}$ es un automorfismo no trivial.
+	$|\langle \eta \rangle| = 2$.
+	(Note que $(a^{-1})^{-1} = a \implies \eta^2 = id$).
+\end{eje}
+
+\begin{prop}
+	Sea $H$ un grupo que actúa como grupo en $K$, $H \cap K = \emptyset$, $G = H \times K$.
+	Definamos en $G$ la sig. operación:
+	\begin{equation*}
+		(h_1, k_1)(h_2, k_2) = (h_1 h_2, k_1^{h_2} k_2)
+	\end{equation*}
+	entonces $G$ con esta operación es un grupo con identidad $(e_H, e_K)$.
+\end{prop}
+
+\begin{proof}
+	Nota, la operación definida realmente es una operación, i.e. es cerrada.
+
+	Además:
+	i) Asociatividad:
+	\begin{align*}
+		((h_1, k_1)(h_2, k_2))(h_3, k_3) & = (h_1 h_2, k_1^{h_2} k_2)(h_3, k_3)         \\
+		                                 & = (h_1 h_2 h_3, (k_1^{h_2} k_2)^{h_3} k_3)   \\
+		                                 & = (h_1 h_2 h_3, k_1^{h_2 h_3} k_2^{h_3} k_3) \\
+		                                 & = (h_1, k_1)(h_2 h_3, k_2^{h_3} k_3)         \\
+		                                 & = (h_1, k_1)((h_2, k_2)(h_3, k_3))
+	\end{align*}
+
+
+	ii) Identidad:
+	\begin{equation*}
+		(h_1, k_1)(e_H, e_K) = (h_1 e_H, k_1^{e_H} e_K) = (h_1, k_1 e_K) = (h_1, k_1)
+	\end{equation*}
+
+
+	iii) Inversos:
+	\begin{equation*}
+		(h_1, k_1)(h_1^{-1}, (k_1^{h_1^{-1}})^{-1}) = (h_1 h_1^{-1}, k_1^{h_1^{-1}} (k_1^{h_1^{-1}})^{-1}) = (e_H, e_K)
+	\end{equation*}
+
+\end{proof}
+
+\ObservacionBox{Observaciones}{
+	Si $\tilde{\varphi}$ es una acción del grupo $H$ en el grupo $K$ ($\tilde{\varphi}: H \times K \to K$, $\varphi: H \to \text{Aut}(K)$).
+	Entonces para el grupo inducido por $\varphi$ se tiene:
+	\begin{equation*}
+		(h, k)(h^{-1}, k_1) = (e_H, e_K) \iff (e_H, k^{h^{-1}} k_1) = (e_H, e_K)
+	\end{equation*}
+	\begin{equation*}
+		k_1 = (k^{h^{-1}})^{-1}
+	\end{equation*}
+	También:
+	\begin{equation*}
+		(h^{-1}, (k^{-1})^{h^{-1}})(h, k) = (e_H, ((k^{-1})^{h^{-1}})^h k) = (e_H, (k^{-1})^{h^{-1}h} k) = (e_H, k^{-1} k) = (e_H, e_K)
+	\end{equation*}
+
+}
+
+\begin{defi}
+	de donde $e^h = e \quad \forall h \in H$.
+
+	Sean $H, K$ dos grupos con $H \cap K = \{e\}$. Suponga que $H$ actúa como grupo en $K$ con acción $\varphi$, al grupo $G$ del teorema anterior se le denotará por
+	\begin{equation*}
+		G = H \ltimes_\varphi K
+	\end{equation*}
+	y se llama el producto semidirecto de $H$ y $K$.
+\end{defi}
+
+\begin{eje}
+	3) Sea $G$ grupo, $K \triangleleft G$, $G$ actuando en $K$ por conjugación, entonces la acción es como grupo.
+	i) y ii) Ya se tiene.
+	iii)
+	\begin{align*}
+		(k_1 k_2)^h & = (k_1 k_2)^h = h(k_1 k_2)h^{-1}                     \\
+		            & = (h k_1 h^{-1} k_2) = (h k_1 h^{-1})(h k_2 h^{-1})K \\
+		            & = k_1^h k_2^h
+	\end{align*}
+
+\end{eje}
+
+\begin{eje}
+	Sea $G$ un grupo y hagamos actuar $G$ en si mismo por conjugación, i.e.
+	\begin{equation*}
+		\tilde{\varphi}: G \times G \to G, \quad (g, h) = ghg^{-1}
+	\end{equation*}
+	(Cumple i), ii), iii)).
+	En este caso:
+	\begin{equation*}
+		(h_1, k_1) \cdot (h_2, k_2) = (h_1 h_2, k_1^{h_2} k_2) = (h_1 h_2, h_2 k_1 h_2^{-1} k_2)
+	\end{equation*}
+	En particular si $G$ es abeliano la operación es justamente la del producto directo, así el nuevo grupo coincide con el producto directo.
+\end{eje}
+
+\TeoremaBox{}{
+	Sea $G = H \ltimes_\varphi K$, entonces las funciones
+	\begin{align*}
+		\varphi_1 & : H \to G, & h & \mapsto (h, e_K) \\
+		\varphi_2 & : K \to G, & k & \mapsto (e_H, k)
+	\end{align*}
+	son monomorfismos. Además $\varphi_1(H) \le G$, $\varphi_2(K) \triangleleft G$.
+	Identificando $H$ con $\varphi_1(H)$ y $K$ con $\varphi_2(K)$ se tiene:
+	$H \le G$, $K \triangleleft G$, $G = HK$ y $H \cap K = \{e\}$.
+}
+
+\begin{proof}
+	$\varphi_1$ es homomorfismo:
+	\begin{equation*}
+		\varphi_1(h h_1) = (h h_1, e_K)
+	\end{equation*}
+	\begin{equation*}
+		\varphi_1(h) \varphi_1(h_1) = (h, e_K)(h_1, e_K) = (h h_1, e_K^{h_1} e_K) = (h h_1, e_K)
+	\end{equation*}
+	$\varphi_1$ es inyectiva:
+	\begin{equation*}
+		\varphi_1(h) = (e_H, e_K) \iff (h, e_K) = (e_H, e_K) \iff h = e_H
+	\end{equation*}
+
+
+	$\varphi_2$ es homomorfismo:
+	\begin{equation*}
+		\varphi_2(k_1 k_2) = (e_H, k_1 k_2)
+	\end{equation*}
+	\begin{equation*}
+		\varphi_2(k_1) \varphi_2(k_2) = (e_H, k_1)(e_H, k_2) = (e_H, k_1^{e_H} k_2) = (e_H, k_1 k_2)
+	\end{equation*}
+	$\varphi_2$ es inyectiva: claro. Como $\varphi_1$ y $\varphi_2$ son homomorfismos $\varphi_1(H), \varphi_2(K) \le G$.
+
+	Sea $(h, k) \in G$, entonces
+	\begin{equation*}
+		(h, e_K)(e_H, k) = (h, e_K^h k) = (h, e_K k) = (h, k)
+	\end{equation*}
+	de donde $G = \varphi_1(H) \varphi_2(K)$.
+
+	\begin{equation*}
+		(h, k) \in \varphi_1(H) \cap \varphi_2(K) \iff (h, k) = \varphi_1(h_1) = (h_1, e_K) \iff k=e_K
+	\end{equation*}
+	\begin{equation*}
+		(h, k) = \varphi_2(k_1) = (e_H, k_1) \iff h=e_H
+	\end{equation*}
+
+\end{proof}
