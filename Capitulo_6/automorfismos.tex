@@ -318,14 +318,14 @@ Podemos visualizar la acción del automorfismo inducido a través del siguiente 
 
     $\Psi$ es biyectiva. En efecto:
     \begin{itemize}
-        \item \textbf{Inyectiva:} Si $\Psi(f) = (Id_{H_1}, Id_{H_2})$, entonces $f(h, e_2) = (h, e_2)$ y $f(e_1, k) = (e_1, k)$.
+        \item Inyectiva: Si $\Psi(f) = (Id_{H_1}, Id_{H_2})$, entonces $f(h, e_2) = (h, e_2)$ y $f(e_1, k) = (e_1, k)$.
         Para un elemento arbitrario $(h, k) \in H_1 \times H_2$:
         \begin{equation*}
             f(h, k) = f((h, e_2)(e_1, k)) = f(h, e_2)f(e_1, k) = (h, e_2)(e_1, k) = (h, k)
         \end{equation*}
         Luego $f = Id_{H_1 \times H_2}$, así que $\ker \Psi$ es trivial.
         
-        \item \textbf{Sobreyectiva:} Dado $(\alpha, \beta) \in \text{Aut}(H_1) \times \text{Aut}(H_2)$, definimos $f: H_1 \times H_2 \to H_1 \times H_2$ como $f(h, k) = (\alpha(h), \beta(k))$.
+        \item Sobreyectiva: Dado $(\alpha, \beta) \in \text{Aut}(H_1) \times \text{Aut}(H_2)$, definimos $f: H_1 \times H_2 \to H_1 \times H_2$ como $f(h, k) = (\alpha(h), \beta(k))$.
         Es fácil verificar que $f$ es un automorfismo y que $\Psi(f) = (\alpha, \beta)$.
     \end{itemize}
     
@@ -354,7 +354,7 @@ Podemos visualizar la acción del automorfismo inducido a través del siguiente 
         \Psi(f) = \overline{c_f} \quad \text{donde } f(g) = g^{c_f}
     \end{equation*}
     
-    \textbf{1. $\Psi$ es un homomorfismo:}
+    1. $\Psi$ es un homomorfismo:
     Sean $f_1, f_2 \in \text{Aut}(G)$ con $f_1(g) = g^{c_{f_1}}$ y $f_2(g) = g^{c_{f_2}}$.
     \begin{equation*}
         (f_1 \circ f_2)(g) = f_1(f_2(g)) = f_1(g^{c_{f_2}}) = (f_1(g))^{c_{f_2}} = (g^{c_{f_1}})^{c_{f_2}} = g^{c_{f_1} c_{f_2}}
@@ -364,13 +364,13 @@ Podemos visualizar la acción del automorfismo inducido a través del siguiente 
         \Psi(f_1 \circ f_2) = \overline{c_{f_1} c_{f_2}} = \overline{c_{f_1}} \cdot \overline{c_{f_2}} = \Psi(f_1) \Psi(f_2)
     \end{equation*}
     
-    \textbf{2. $\Psi$ es inyectiva:}
+    2. $\Psi$ es inyectiva:
     \begin{equation*}
         \Psi(f) = \overline{1} \implies c_f \equiv 1 \pmod n \implies f(g) = g^1 = g
     \end{equation*}
     Como el automorfismo fija al generador, fija a todo el grupo. Luego $f = Id_G$.
     
-    \textbf{3. $\Psi$ es sobreyectiva:}
+    3. $\Psi$ es sobreyectiva:
     Sea $\overline{k} \in (\mathbb{Z}/n\mathbb{Z})^*$. Entonces $\gcd(k, n) = 1$.
     Definimos $f: G \to G$ por $f(x) = x^k$.
     Como $\gcd(k, n) = 1$, la aplicación $x \mapsto x^k$ es una biyección en el grupo cíclico finito y es un homomorfismo ($f(xy) = (xy)^k = x^k y^k$ pues $G$ es abeliano).
